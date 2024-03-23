@@ -18,7 +18,9 @@
         <input type="email" name="email" id="email"><br>
         <label for="password">Password :</label>
         <input type="password" name="password" id="password"><br>
-        <input type="submit" value="submit">
+        <label for="cpassword">Confirm Password :</label>
+        <input type="password" name="cpassword" id="cpassword"><br>
+        <input type="submit" value="Register">
     </form>
 </body>
 </html>
