@@ -20,7 +20,7 @@ if($queryPrep->rowCount() == 0){
     echo "Wrong email";
     header("Location: loginform.php?error=Wrong%20Email");
 }
-elseif (!password_verify($queryResult->Password ,$password)){
+elseif (!password_verify($password, $queryResult->Password)){
     echo "Wrong password";
     header("Location: loginform.php?error=Wrong%20Password");
 }

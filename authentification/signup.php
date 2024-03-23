@@ -20,7 +20,7 @@ try{
     $queryPrep->execute([$email,$hashedPassword,$name]);
 }
 catch(PDOException $e){
-    header("localtion:signupform.php?error=Email%20Already%20Used");
+    header("Location: signupform.php?error=Email%20Already%20Used");
 }
 
 //header("localtion:home.php")
