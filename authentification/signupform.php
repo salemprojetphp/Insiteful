@@ -6,6 +6,11 @@
     <title>Insiteful</title>
 </head>
 <body>
+    <?php
+        if(isset($_GET['error'])) {
+            echo "<h1>" . $_GET['error'] . "</h1>";
+        }
+    ?>
     <form method="post" action="signup.php">
         <label>Name :</label>
         <input type="text" name="username"><br>

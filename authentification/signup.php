@@ -16,7 +16,11 @@ $database = Database::getDatabase();
 $query = "insert into members(Email,Password,Username) values (?, ?, ?)";
 
 $queryPrep = $database->prepare($query);
-
-$queryPrep->execute([$email,$hashedPassword,$name]);
+try{
+    $queryPrep->execute([$email,$hashedPassword,$name]);
+}
+catch(PDOException $e){
+    header("localtion:signupform.php?error=Email%20Already%20Used");
+}
 
 //header("localtion:home.php")
