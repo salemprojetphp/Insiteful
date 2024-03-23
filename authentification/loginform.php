@@ -20,6 +20,6 @@
         <input type="submit" value="Submit"><br>
     </form>
     <p>Not a member ?</p>
-    <a href="Signup/signupform.php">Sign up</a>
+    <a href="signupform.php">Sign up</a>
 </body>
 </html>
