@@ -11,7 +11,7 @@
             echo "<h1>" . $_GET['error'] . "</h1>";
         }
     ?>
-    <form method="post" action="signup.php">
+    <form method="post" action="/signup/action">
         <label>Name :</label>
         <input type="text" name="username"><br>
         <label for="email">Email :</label>
