@@ -62,7 +62,7 @@ header .navigation a.login-btn{
     transition-property: background , transform;
 }
 header .navigation a:not(:last-child){
-    marging-right: 30px;
+    margin-right: 30px;
 }
 header .navigation a.login-btn:hover{
     background-image: linear-gradient(to bottom,#1F254C,#353A5D,#4B506F,grey);
