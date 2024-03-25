@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body,html {
+    height: 100%;
+    color: #1F254C;
+}
+
+main{
+    flex-direction: column;
+}
+
+main h2, main .h2 {
+   font: 700 37px poppins;
+   line-height: 48px
+}
+  
+main h3, main .h3 {
+   font: 700 22px poppins;
+   line-height: 30px
+}
+
+.white {
+    color: #fff
+}
+
+.black {
+    color: #1F254C
+}
+
+.gray {
+    color: #565d8b
+}
+
+.bg-white {
+    background-color: #fff
+}
+
+.radius-sm {
+    border-radius: 3px
+}
+
+.radius-lg {
+    border-radius: 16px
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 2px rgba(0,0,0,.04)
+}
+
+.title {
+    font: 400 24px nunito sans;
+    line-height: 33px
+}
+
+.caption {
+    line-height: 19px
+}
+
+.mr24 {
+    margin-right: 24px
+}
+
+.mb16 {
+    margin-bottom: 16px
+}
+
+.mb24 {
+    margin-bottom: 24px
+}
+
+.mb32 {
+    margin-bottom: 32px
+}
+
+.ml8 {
+    margin-left: 8px
+}
+
+main a {
+    text-decoration: none;
+    color: #147efb;
+    transition: color .2s
+}
+
+main a:hover {
+    color: #147efb
+}
+
+main a:active {
+    color: #0053c7
+}
+
+.flex {
+    display: flex;
+    width: 100%
+}
