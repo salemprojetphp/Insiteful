@@ -17,6 +17,25 @@ main{
     flex-direction: column;
 }
 
+main a {
+    text-decoration: none;
+    color: #147efb;
+    transition: color .2s
+}
+
+main a:hover {
+    color: #147efb
+}
+
+.flex {
+    display: flex;
+    width: 100%
+}
+
+.gradient-orange {
+    background: linear-gradient( 142.67deg,#ed3a26b3 0%,#f18635c5 100% )
+}
+
 main h2, main .h2 {
    font: 700 37px poppins;
    line-height: 48px
@@ -25,10 +44,6 @@ main h2, main .h2 {
 main h3, main .h3 {
    font: 700 22px poppins;
    line-height: 30px
-}
-
-.white {
-    color: #fff
 }
 
 .black {
@@ -43,62 +58,32 @@ main h3, main .h3 {
     background-color: #fff
 }
 
-.radius-sm {
-    border-radius: 3px
-}
-
-.radius-lg {
-    border-radius: 16px
-}
-
 .shadow-sm {
     box-shadow: 0 2px 2px rgba(0,0,0,.04)
-}
-
-.title {
-    font: 400 24px nunito sans;
-    line-height: 33px
 }
 
 .caption {
     line-height: 19px
 }
 
+
+/* margins */
 .mr24 {
     margin-right: 24px
 }
-
 .mb16 {
     margin-bottom: 16px
 }
-
 .mb24 {
     margin-bottom: 24px
 }
-
+.mb8{
+    margin-bottom: 8px;
+}
 .mb32 {
     margin-bottom: 32px
 }
-
 .ml8 {
     margin-left: 8px
 }
 
-main a {
-    text-decoration: none;
-    color: #147efb;
-    transition: color .2s
-}
-
-main a:hover {
-    color: #147efb
-}
-
-main a:active {
-    color: #0053c7
-}
-
-.flex {
-    display: flex;
-    width: 100%
-}
