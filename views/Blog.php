@@ -17,7 +17,7 @@
     <section class="all">
         <header>
             <h2>
-                <a href="Blog.html" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
+                <a href="Blog.php" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
             </h2>
             <div class="navigation">
                 <a href="home.php">Home</a>
@@ -60,7 +60,7 @@
                                         Apr 14, 2023
                                 </div>
                                 <div class="flex">
-                                    <span class="ml8">1 min read</span>
+                                    <!-- like dislike comment btns  -->
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                 Sep 18, 2022
                 </div>
                 <div class="flex">
-                <span class="ml8">1 min read</span>
+                <!-- like dislike comment btns  -->
                 </div>
                 </div>
                 </div>
@@ -102,7 +102,7 @@
                 May 22, 2022
                 </div>
                 <div class="flex">
-                <span class="ml8">1 min read</span>
+                <!-- like dislike comment btns  -->
                 </div></div>
                 </div>
                 </a>
