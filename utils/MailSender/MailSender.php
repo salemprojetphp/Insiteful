@@ -6,7 +6,10 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require 'src/PHPMailer.php';
+require 'src/SMTP.php';
+require 'src/Exception.php';
+
 class MailSender{
     public static function sendMail($emails, $subject, $body, $attachments = []) {
         // Create an instance; passing `true` enables exceptions
@@ -30,7 +33,7 @@ class MailSender{
             $mail->Port       = 465;                                     // TCP port to connect to
     
             // Set sender
-            $mail->setFrom('insitefulcontact@gmail.com', 'Mailer');
+            $mail->setFrom('insitefulcontact@gmail.com', 'INSITEFUL');
             
             // Add recipients
             foreach ($emails as $email) {
@@ -53,11 +56,7 @@ class MailSender{
     
             // Send email
             $mail->send();
-        } catch (Exception $e) {
-            // Handle exception
-            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
+        } catch (Exception $e) {}   
     }
-    
 }
 ?>
