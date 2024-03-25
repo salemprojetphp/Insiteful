@@ -9,12 +9,14 @@ class AuthController extends Controller{
         require_once 'views/login.php';
     }
 
+    public function signup(){
+        require_once 'views/signup.php';
+    }
+
     public function authenticate() {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        echo $email;
-        echo $password;
 
         $userModel = new User();
         $loginResult = $userModel->login($email, $password);
@@ -27,6 +29,34 @@ class AuthController extends Controller{
             exit;
         }
         
+    }
+
+    public function register(){
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $userModel = new User();
+
+        if($password == $cpassword){
+            try{;
+                $exists= $userModel->getUserByEmail($email);
+                if($exists){
+                    header("Location: /signup?error=Email%20Already%20Used");
+                    exit;
+                }
+                $userModel->register($email, $hashedPassword, $username);
+                header("Location: /login");
+            }
+            catch(PDOException $e){
+                header("Location: /signup?error=Email%20Already%20Used");
+            }
+        }
+        else{
+            header("Location: /signup?error=Verify%20Password".password." ".cpassword);
+        }
     }
 }
 ?>

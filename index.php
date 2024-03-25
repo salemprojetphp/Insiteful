@@ -15,9 +15,12 @@ if (php_sapi_name() === 'cli-server') {
 $routes = [
     '' => 'HomeController@index',
     '/login' => 'AuthController@login',
-    '/login/authenticate' => 'AuthController@authenticate',
+    '/signup' => 'AuthController@signup',
+    '/signup/action' => 'AuthController@register',
+    '/login/action' => 'AuthController@authenticate',
     '/dashboard' => 'DashboardController@index',
 ];
+
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $url = rtrim($url, '/');
