@@ -4,3 +4,13 @@ CREATE TABLE users(
     Password VARCHAR(255) NOT NULL,
     Username VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE posts(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image LONGBLOB,
+    imageFormat VARCHAR(10),
+    title VARCHAR(30) NOT NULL,
+    description TEXT NOT NULL,
+    Author INT NOT NULL,
+    FOREIGN KEY (Author) REFERENCES users(id)
+);

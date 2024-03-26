@@ -65,17 +65,6 @@ header .navigation a:hover{
     header .navigation{
         display: none;
     }
-    label{
-        display: block;
-        font-size: 25px;
-        cursor: pointer;
-    }
-    label:hover{
-        color: #F18835;
-    }
-    label .close-btn{
-        display: none;
-    }
     #check:checked ~ header .navigation{
         z-index: 2;
         position: fixed;

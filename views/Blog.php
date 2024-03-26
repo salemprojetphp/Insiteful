@@ -43,15 +43,14 @@
             <section class="blog">
                 <div class="content">
                     <!-- newsletter -->
-                        <div class="blog-sidebar newsletter gradient-orange">
-                            <h3 class="mb8">Newsletter</h3>
-                            <div class="caption gray mb16">No spam, ever. Only musings and writings.</div>
-                            <form id="newsletter-subscribe" method="POST" action="/newsletterRegister">
-                                <input type="text" class="width-full mb16" name="mail" placeholder="Enter your email" />
-                                <button type="submit" name="button" class="btn-white">Subscribe</button>
-                            </form>         
-                        </div> 
-
+                    <div class="blog-sidebar newsletter gradient-orange">
+                        <h3 class="mb8">Newsletter</h3>
+                        <div class="caption gray mb16">No spam, ever. Only musings and writings.</div>
+                        <form id="newsletter-subscribe" method="POST" action="/newsletterRegister">
+                            <input type="text" class="width-full mb16" name="mail" placeholder="Enter your email" />
+                            <button type="submit" name="button" class="btn-white">Subscribe</button>
+                        </form>         
+                    </div> 
 
                     <!-- blog  -->
                     <div class="blog-articles" id="blogContainer">
@@ -70,8 +69,10 @@
                                         <span class="ml8 mr24">Irae Hueck Costa</span>
                                             Apr 14, 2023
                                     </div>
-                                    <div class="flex">
-                                        <!-- like dislike comment btns  -->
+                                    <div class="interact flex">
+                                        <button><img src="../public/images/like.svg" alt="like"></button>
+                                        <button><img src="../public/images/comment.svg" alt="comment"></button>
+                                        <button><img src="../public/images/more.svg" alt="more"></button>
                                     </div>
                                 </div>
                             </div>
@@ -90,8 +91,10 @@
                                     <span class="ml8 mr24">Irae Hueck Costa</span>
                                     Sep 18, 2022
                                 </div>
-                                <div class="flex">
-                                    <!-- like dislike comment btns  -->
+                                <div class="interact flex">
+                                    <button><img src="../public/images/like.svg" alt="like"></button>
+                                    <button><img src="../public/images/comment.svg" alt="comment"></button>
+                                    <button><img src="../public/images/more.svg" alt="more"></button>
                                 </div>
                             </div>
                         </div>
@@ -110,14 +113,14 @@
                                     <span class="ml8 mr24">Irae Hueck Costa</span>
                                     May 22, 2022
                                 </div>
-                                <div class="flex">
-                                    <!-- like dislike comment btns  -->
+                                <div class="interact flex">
+                                    <button><img src="../public/images/like.svg" alt="like"></button>
+                                    <button><img src="../public/images/comment.svg" alt="comment"></button>
+                                    <button><img src="../public/images/more.svg" alt="more"></button>
                                 </div>
                             </div>
                         </div>
                     </a>
-                
-                    
                 </div>
             </section>
         </main>
@@ -125,5 +128,4 @@
     </section>
 </body>
 <script src="../public/js/Blog.js"></script>
-<script src="../public/js/addPost.js"></script>
 </html>
