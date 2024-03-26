@@ -25,8 +25,8 @@
                 <a href="Blog.php">Blog</a>
                 <a href="#">Contact</a>
                 <a href="#">Feedback</a>
-                <a href="#" class="login-btn">Log in</a>
-                <a href="#" class="login-btn">Sign up</a>
+                <a href="signup.php" class="login-btn">Get Started</a>
+
 
             </div>
             <label for="check">
