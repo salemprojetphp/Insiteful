@@ -12,10 +12,10 @@
     <link rel="icon" href="../public/images/insiteful.png">
     <link rel="stylesheet" href="../public/css/general.css">
     <link rel="stylesheet" href="../public/css/Blog.css">
+    <script src="../public/js/Blog.js" defer></script>
 </head>
 
 <body>
-
 
     <main class="flex">
         <!-- filter buttons  -->
@@ -44,7 +44,7 @@
                 <div class="blog-articles" id="blogContainer">
                     <h1 class="h2 mb32">Blog</h1>
                     <!-- Articles -->
-                    <a href="" class="blog-article bg-white shadow-sm mb32">
+                    <a href="#" class="blog-article bg-white shadow-sm mb32">
                         <div class="blog-preview">
                             <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
                         </div>
@@ -58,15 +58,21 @@
                                         Apr 14, 2023
                                 </div>
                                 <div class="interact flex">
-                                    <button><img src="../public/images/like.svg" alt="like"></button>
-                                    <button><img src="../public/images/comment.svg" alt="comment"></button>
-                                    <button><img src="../public/images/more.svg" alt="more"></button>
+                                <button class="like-btn">
+                                    <img src="../public/images/like.svg" alt="like">
+                                    <p>0</p>
+                                </button>
+                                <button>
+                                    <img src="../public/images/comment.svg" alt="comment">
+                                    <p>0</p>
+                                </button>
+                                <button><img src="../public/images/more.svg" alt="more"></button>
                                 </div>
                             </div>
                         </div>
                     </a>
     
-                <a href="" class="blog-article bg-white shadow-sm mb32">
+                <a href="#" class="blog-article bg-white shadow-sm mb32">
                     <div class="blog-preview">
                         <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
                     </div>
@@ -80,15 +86,21 @@
                                 Sep 18, 2022
                             </div>
                             <div class="interact flex">
-                                <button><img src="../public/images/like.svg" alt="like"></button>
-                                <button><img src="../public/images/comment.svg" alt="comment"></button>
+                                <button class="like-btn">
+                                    <img src="../public/images/like.svg" alt="like">
+                                    <p>0</p>
+                                </button>
+                                <button>
+                                    <img src="../public/images/comment.svg" alt="comment">
+                                    <p>0</p>
+                                </button>
                                 <button><img src="../public/images/more.svg" alt="more"></button>
                             </div>
                         </div>
                     </div>
                 </a>
     
-                <a href="" class="blog-article bg-white shadow-sm mb32">
+                <a href="#" class="blog-article bg-white shadow-sm mb32">
                     <div class="blog-preview">
                         <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
                     </div>
@@ -102,8 +114,14 @@
                                 May 22, 2022
                             </div>
                             <div class="interact flex">
-                                <button><img src="../public/images/like.svg" alt="like"></button>
-                                <button><img src="../public/images/comment.svg" alt="comment"></button>
+                                <button class="like-btn">
+                                    <img src="../public/images/like.svg" alt="like">
+                                    <p>0</p>
+                                </button>
+                                <button>
+                                    <img src="../public/images/comment.svg" alt="comment">
+                                    <p>0</p>
+                                </button>
                                 <button><img src="../public/images/more.svg" alt="more"></button>
                             </div>
                         </div>
@@ -114,5 +132,5 @@
     </main>
     <footer></footer>
 </body>
-<script src="../public/js/Blog.js"></script>
+
 </html>

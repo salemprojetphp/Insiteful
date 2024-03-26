@@ -1,4 +1,5 @@
 //selection of filter buttons
+console.log('Blog.js loaded');
 const filterBtns = document.querySelectorAll(".filter-btn");
 let activeFilterBtns = document.querySelector(".selected");
 filterBtns.forEach(function(btn) {
@@ -47,3 +48,34 @@ function addPost(title,description,pathToImage){
     const existingContainer = document.getElementById("blogContainer");
     existingContainer.appendChild(blogLink);
 }
+
+//like buttons 
+const likeBtns = document.querySelectorAll(".like-btn");
+console.log(likeBtns)
+likeBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        let img, nbLikes;
+        e.preventDefault();
+        if(e.target.tagName == 'BUTTON') {
+            img = e.target.querySelector('img');
+            nbLikes = e.target.querySelector('p');
+        } else {
+            img = e.target.parentElement.querySelector('img');
+            nbLikes = e.target.parentElement.querySelector('p');
+        }
+        const currentSrc = img.getAttribute('src');
+        const newSrc = currentSrc.includes('like.svg') ? '../public/images/like-active.svg' : '../public/images/like.svg';
+        img.setAttribute('src', newSrc);
+        nbLikes.textContent = currentSrc.includes('like.svg') ? parseInt(nbLikes.textContent) + 1 : parseInt(nbLikes.textContent) - 1;
+    });
+});
+
+//removing the refresh from the articles 
+const posts = document.querySelectorAll('.blog-article');
+posts.forEach(function(post) {
+    post.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+});
+
