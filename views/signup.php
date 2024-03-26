@@ -56,7 +56,7 @@ if(isset($_GET['error'])) {
             <div class="overlay-panel overlay-left">
                 <h1 >Welcome Back!</h1>
                 <p> keep connected with us please log in<br>with your personal info</p>
-                <button class="ghost" id="signIn">Sign In</button>
+                <button class="ghost" id="signIn">Log In</button>
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>   Hello, Friend!</h1>

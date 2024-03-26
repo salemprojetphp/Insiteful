@@ -1,3 +1,7 @@
+<?php
+    include_once 'header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,26 +18,15 @@
 
 <body>
     <section>
+
         <input type="checkbox" id="check">
         <header>
-            <h2>
-                <a href="" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
-            </h2>
-            <div class="navigation">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="Blog.php">Blog</a>
-                <a href="#">Contact</a>
-                <a href="#">Feedback</a>
-                <a href="signup.php" class="login-btn">Get Started</a>
-
-
-            </div>
             <label for="check">
                 <i class="fas fa-bars menu-btn"></i>
                 <i class="fas fa-times close-btn"></i>
             </label>
         </header>
+
         <div class="content">
             <div class="info">
                 <h2>INSITEFUL<br>
@@ -46,7 +39,6 @@
             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#"><i class="fa-brands fa-twitter"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
-
         </div>
     </section>
 </body>
