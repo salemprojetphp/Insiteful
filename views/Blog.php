@@ -46,7 +46,7 @@
                     <div class="blog-sidebar newsletter gradient-orange">
                         <h3 class="mb8">Newsletter</h3>
                         <div class="caption gray mb16">No spam, ever. Only musings and writings.</div>
-                        <form id="newsletter-subscribe" method="POST" action="/newsletterRegister">
+                        <form id="newsletter-subscribe" method="POST">
                             <input type="text" class="width-full mb16" name="mail" placeholder="Enter your email" />
                             <button type="submit" name="button" class="btn-white">Subscribe</button>
                         </form>         
