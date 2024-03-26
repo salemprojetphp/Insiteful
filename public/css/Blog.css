@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+main{
+  flex-direction: column;
+}
+main a {
+  text-decoration: none;
+  color: #147efb;
+  transition: color .2s
+}
+main a:hover {
+  color: #147efb
+}
+
 /* contenu */
 .blog-articles {
   width: 825px;
@@ -32,7 +44,21 @@
     background-color: #1F254C;     
     color: white;
 }
-
+.add-btn {
+  width: 60px;
+  scale: 0.6;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid #1F254C;
+  color: #1F254C;
+  font-size: 40px;
+  align-self: center;
+}
+.add-btn:hover {
+  background-color: #1F254C;
+  color: white;
+}
 
 /* Articles */
 .blog-article {

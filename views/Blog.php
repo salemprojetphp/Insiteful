@@ -25,7 +25,7 @@
             <button class="filter-btn" id="popular-btn">Popular</button>
         </div>
         
-        <a href="AddPost.php">+</a>
+        <a href="AddForm.php" class="add-btn">+</a>
         <!-- contenu -->
         <section class="blog">
             <div class="content">

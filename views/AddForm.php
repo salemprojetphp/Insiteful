@@ -16,20 +16,20 @@
 </head>
 
 <body>
-    <main>
+    <main class="flex">
         <!-- add post form -->
-        <form action="" class="add-post-form gradient-white flex">
+        <form action="" class="add-post-form gradient-white flex ml64">
             <label for="title">Title</label>
-            <input type="text" name="title" placeholder="Title">
+            <input type="text" name="title" placeholder="Title" class="title-input">
             <br>
             <label for="content">Content</label>
-            <input name="content" placeholder="Content">
+            <textarea name="content" placeholder="Content" class="content-input"></textarea>
             <br>
             <label for="image">Image</label>
             <input type="file" name="image">
             <br>
             <div class="btn-container">
-                <input type="reset" value="Cancel" class="btn-white">
+                <a href="Blog.php" class="btn-white">Cancel</a>
                 <input type="submit" value="Add" class="btn-blue">
             </div>
         </form>
