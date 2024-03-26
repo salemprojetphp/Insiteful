@@ -18,15 +18,17 @@
 <body>
     <main class="flex">
         <!-- add post form -->
-        <form action="" class="add-post-form gradient-white flex ml64">
+        <form action="" class="add-post-form gradient-white flex">
+            <h2 style="position: absolute"><a href="Blog.php"><</a></h2>
+            <h2 class="mb32 form-title">Add Post</h2>
             <label for="title">Title</label>
-            <input type="text" name="title" placeholder="Title" class="title-input">
+            <input type="text" name="title" placeholder="Title" class=" ml8 title-input">
             <br>
             <label for="content">Content</label>
-            <textarea name="content" placeholder="Content" class="content-input"></textarea>
+            <textarea name="content" placeholder="Content" class=" ml8 content-input"></textarea>
             <br>
             <label for="image">Image</label>
-            <input type="file" name="image">
+            <input type="file" name="image" class = "image-input ml8">
             <br>
             <div class="btn-container">
                 <a href="Blog.php" class="btn-white">Cancel</a>

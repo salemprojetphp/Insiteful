@@ -5,7 +5,7 @@ main {
 
 .add-post-form{
     align-self: center;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -67,6 +67,7 @@ main {
     border-radius: 3px;
     margin-bottom: 16px;
     font-size: 16px;
+    font-weight: 600;
 }
 .content-input{
     width: 90%;
@@ -77,4 +78,15 @@ main {
     margin-bottom: 16px;
     font-size: 16px;
     resize: none;
+}
+.image-input {
+    width: 90%;
+    cursor: pointer;
+}
+.form-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F254C;
+    margin-bottom: 20px;
+    align-self: center;
 }
