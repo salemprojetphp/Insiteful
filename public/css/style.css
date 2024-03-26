@@ -14,68 +14,8 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: url("/public/images/bg7.png")no-repeat;;
+    background: url("/public/images/bg7.png")no-repeat;
     background-size: cover;
-}
-header{
-    position: relative;
-    top: 0;
-    width: 100%;
-    padding: 30px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-header .logo{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-}
-header .logo img{
-    width: 100px;
-    height: 100px;
-
-}
-header .navigation a{
-    color:  #1F254C;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition:  0.3s ;
-
-}
-header .navigation a.login-btn{
-    color: white;
-    background-image: linear-gradient(to bottom,#1F254C,#353A5D,#4B506F);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-radius: 50px;
-    transition: 0.3s;
-    transition-property: background , transform;
-}
-header .navigation a:not(:last-child){
-    margin-right: 30px;
-}
-header .navigation a.login-btn:hover{
-    background-image: linear-gradient(to bottom,#1F254C,#353A5D,#4B506F,grey);
-    color: white;
-    transform: scale(1.3);
-
-}
-
-header .navigation a:hover{
-    background: #F18835;
-    color: white;
-    transform: scale(1.2);
-
 }
 .content{
     max-width: 650px;
@@ -149,9 +89,6 @@ label{
     display: none;
 }
 @media (max-width: 960px){
-    header .navigation{
-        display: none;
-    }
     label{
         display: block;
         font-size: 25px;
@@ -195,10 +132,6 @@ label{
     }
     label .menu-btn{
         position: absolute;
-    }
-header .logo {
-    position: absolute;
-    bottom: -6px;
     }
 .content .info h2 {
     font-size: 45px;

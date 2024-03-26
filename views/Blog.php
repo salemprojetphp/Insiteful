@@ -1,3 +1,8 @@
+<?php 
+    include_once 'header.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,29 +12,11 @@
     <link rel="icon" href="../public/images/insiteful.png">
     <link rel="stylesheet" href="../public/css/general.css">
     <link rel="stylesheet" href="../public/css/Blog.css">
-    <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <h2>
-            <a href="Blog.php" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
-        </h2>
-        <div class="navigation">
-            <a href="home.php">Home</a>
-            <a href="#">About</a>
-            <a href="Blog.php">Blog</a>
-            <a href="#">Contact</a>
-            <a href="#">Feedback</a>
-            <a href="#" class="login-btn">Log in</a>
-            <a href="#" class="login-btn">Sign up</a>
-        </div>
-    </header>
 
     <main class="flex">
-
         <!-- filter buttons  -->
         <div class="filter-box flex">
             <button class="filter-btn selected" id="all-btn">All</button>
@@ -38,6 +25,7 @@
             <button class="filter-btn" id="popular-btn">Popular</button>
         </div>
         
+        <a href="AddPost.php">+</a>
         <!-- contenu -->
         <section class="blog">
             <div class="content">
