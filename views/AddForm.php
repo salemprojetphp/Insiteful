@@ -19,7 +19,7 @@
 <body>
     <main class="flex" style = "margin-top:12%">
         <!-- add post form -->
-        <form action="../controllers/PostController.php" method="post" class="add-post-form gradient-white flex">
+        <form action="/post-form" method="post" class="add-post-form gradient-white flex">
             <h2 style="position: absolute"><a href="Blog.php"><</a></h2>
             <h2 class="mb32 form-title">Add Post</h2>
             <label for="title">Title</label>
