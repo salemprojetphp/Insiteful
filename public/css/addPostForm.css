@@ -1,6 +1,5 @@
 main {
     flex-direction: column;
-    margin-top: 20px;
 }
 
 .add-post-form{
@@ -89,4 +88,33 @@ main {
     color: #1F254C;
     margin-bottom: 20px;
     align-self: center;
+}
+
+/* Mobile*/
+@media (max-width: 1110px) {
+    .add-post-form{
+        width: 100%;
+    }
+    .title-input{
+        width: 100%;
+    }
+    .content-input{
+        width: 100%;
+    }
+    .image-input {
+        width: 100%;
+    }
+    .btn-container{
+        justify-content: center;
+    }
+    .btn-blue, 
+    .btn-white{
+        width: 100%;
+    }
+    .form-title {
+        font-size: 20px;
+    }
+    main {
+        margin-top: 30%;
+    }
 }

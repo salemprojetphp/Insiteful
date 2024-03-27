@@ -18,15 +18,6 @@
 
 <body>
     <section>
-
-        <input type="checkbox" id="check">
-        <header>
-            <label for="check">
-                <i class="fas fa-bars menu-btn"></i>
-                <i class="fas fa-times close-btn"></i>
-            </label>
-        </header>
-
         <div class="content">
             <div class="info">
                 <h2>INSITEFUL<br>

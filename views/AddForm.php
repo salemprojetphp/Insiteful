@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <main class="flex">
+    <main class="flex" style = "margin-top:12%">
         <!-- add post form -->
         <form action="" class="add-post-form gradient-white flex">
             <h2 style="position: absolute"><a href="Blog.php"><</a></h2>

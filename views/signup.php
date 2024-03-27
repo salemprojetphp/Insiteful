@@ -6,6 +6,7 @@
     <title>Insiteful</title>
     <link rel="icon" href="../public/images/insiteful.png">
     <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/public/css/signup.css" type="text/css">
 
@@ -43,7 +44,7 @@ if(isset($_GET['error'])) {
     </div>
     <div class="form-container sign-in-container">
         <form action="/login/authenticate" method="post">
-            <h1>sign in</h1>
+            <h1>Sign In</h1>
             <span>or use your email for registration</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
@@ -67,5 +68,5 @@ if(isset($_GET['error'])) {
     </div>
 </div>
 </body>
-<script src="/public/js/signup.js"></script>
+<script src="../public/js/signup.js"></script>
 </html>

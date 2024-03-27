@@ -10,14 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSITEFUL</title>
     <link rel="icon" href="../public/images/insiteful.png">
-    <link rel="stylesheet" href="../public/css/general.css">
     <link rel="stylesheet" href="../public/css/Blog.css">
+    <link rel="stylesheet" href="../public/css/general.css">
     <script src="../public/js/Blog.js" defer></script>
 </head>
 
 <body>
-
-    <main class="flex">
+    <main class="flex" style="margin-top:12%">
         <!-- filter buttons  -->
         <div class="filter-box flex">
             <button class="filter-btn selected" id="all-btn">All</button>

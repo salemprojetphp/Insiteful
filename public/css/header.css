@@ -8,6 +8,16 @@
     font-family: "Poppins", sans-serif;
     color: #1F254C;
 }
+body{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: url("insiteful/public/images/bg7.png")no-repeat;;
+    background-size: cover;
+}
 header{
     position: absolute;
     top: 0;
@@ -62,8 +72,26 @@ header .navigation a:hover{
     color: white;
     transform: scale(1.2);
 }
+label{
+    display: none;
+}
+#check{
+    z-index: 12;
+    display: none;
+}
 @media (max-width: 960px){
     header .navigation{
+        display: none;
+    }
+    label{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    label:hover{
+        color: #F18835;
+    }
+    label .close-btn{
         display: none;
     }
     #check:checked ~ header .navigation{
@@ -92,7 +120,7 @@ header .navigation a:hover{
         display: none;
     }
     #check:checked ~ header label .close-btn{
-        z-index: 2;
+        z-index: 11;
         display: block;
         position: fixed;
     }
@@ -102,5 +130,5 @@ header .navigation a:hover{
     header .logo {
         position: absolute;
         bottom: -6px;
-        }
+    }
 }
