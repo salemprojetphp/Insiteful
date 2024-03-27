@@ -3,7 +3,6 @@
     require_once '../models/Post.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
