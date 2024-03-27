@@ -89,7 +89,6 @@ main {
     margin-bottom: 20px;
     align-self: center;
 }
-
 /* Mobile*/
 @media (max-width: 1110px) {
     .add-post-form{

@@ -1,5 +1,6 @@
 <?php 
     include_once 'header.php';
+    require_once '../models/Post.php';
 ?>
 
 
@@ -43,89 +44,10 @@
                 <div class="blog-articles" id="blogContainer">
                     <h1 class="h2 mb32">Blog</h1>
                     <!-- Articles -->
-                    <a href="#" class="blog-article bg-white shadow-sm mb32">
-                        <div class="blog-preview">
-                            <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
-                        </div>
-                        <div class="blog-article-content">
-                            <h2 class="h3 mb16 black">No News is Good News</h2>
-                            <div class="blog-description gray mb24">Everything is operating normally.</div>
-                            <div class="blog-article-content-info flex caption gray">
-                                <div class="flex">
-                                    <img src="../public/images/user.png" width="24" height="24" alt="author">
-                                    <span class="ml8 mr24">Irae Hueck Costa</span>
-                                        Apr 14, 2023
-                                </div>
-                                <div class="interact flex">
-                                <button class="like-btn">
-                                    <img src="../public/images/like.svg" alt="like">
-                                    <p>0</p>
-                                </button>
-                                <button>
-                                    <img src="../public/images/comment.svg" alt="comment">
-                                    <p>0</p>
-                                </button>
-                                <button><img src="../public/images/more.svg" alt="more"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-    
-                <a href="#" class="blog-article bg-white shadow-sm mb32">
-                    <div class="blog-preview">
-                        <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
-                    </div>
-                    <div class="blog-article-content">
-                        <h2 class="h3 mb16 black">External tracking script</h2>
-                        <div class="blog-description gray mb24">No more inline javascript needed</div>
-                        <div class="blog-article-content-info flex caption gray">
-                            <div class="flex">
-                                <img src="../public/images/user.png" width="24" height="24" alt="author">
-                                <span class="ml8 mr24">Irae Hueck Costa</span>
-                                Sep 18, 2022
-                            </div>
-                            <div class="interact flex">
-                                <button class="like-btn">
-                                    <img src="../public/images/like.svg" alt="like">
-                                    <p>0</p>
-                                </button>
-                                <button>
-                                    <img src="../public/images/comment.svg" alt="comment">
-                                    <p>0</p>
-                                </button>
-                                <button><img src="../public/images/more.svg" alt="more"></button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="blog-article bg-white shadow-sm mb32">
-                    <div class="blog-preview">
-                        <img src="../public/images/hello.svg" width="258" height="200" alt="Hello blog world">
-                    </div>
-                    <div class="blog-article-content">
-                        <h2 class="h3 mb16 black">Hello blog world</h2>
-                        <div class="blog-description gray mb24">We have a blog now.</div>
-                        <div class="blog-article-content-info flex caption gray">
-                            <div class="flex">
-                                <img src="../public/images/user.png" width="24" height="24" alt="author">
-                                <span class="ml8 mr24">Irae Hueck Costa</span>
-                                May 22, 2022
-                            </div>
-                            <div class="interact flex">
-                                <button class="like-btn">
-                                    <img src="../public/images/like.svg" alt="like">
-                                    <p>0</p>
-                                </button>
-                                <button>
-                                    <img src="../public/images/comment.svg" alt="comment">
-                                    <p>0</p>
-                                </button>
-                                <button><img src="../public/images/more.svg" alt="more"></button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                        <?php
+                            $postDisplayer= new Post();
+                            echo $postDisplayer->getAllPosts();
+                        ?>
             </div>
         </section>
     </main>

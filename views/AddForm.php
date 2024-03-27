@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="../public/css/addPostForm.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="../public/js/AddForm.js" defer></script>
 </head>
 
 <body>
     <main class="flex" style = "margin-top:12%">
         <!-- add post form -->
-        <form action="" class="add-post-form gradient-white flex">
+        <form action="../controllers/PostController.php" method="post" class="add-post-form gradient-white flex">
             <h2 style="position: absolute"><a href="Blog.php"><</a></h2>
             <h2 class="mb32 form-title">Add Post</h2>
             <label for="title">Title</label>
@@ -32,7 +33,7 @@
             <br>
             <div class="btn-container">
                 <a href="Blog.php" class="btn-white">Cancel</a>
-                <input type="submit" value="Add" class="btn-blue">
+                <input type="submit" value="Add" class="btn-blue" id="add-btn">
             </div>
         </form>
     </main>    

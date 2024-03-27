@@ -79,6 +79,48 @@ class Post extends Model {
             return false;
         }
     }
+
+    //return all posts as html elements
+    public function getAllPosts() {
+        $query = "SELECT post.*, members.username AS author_name FROM post JOIN members ON post.author = members.id";
+        $posts = $this->db->query($query);
+        $posts->setFetchMode(PDO::FETCH_ASSOC);
+        $html = "";
+        foreach ($posts as $post) {
+            $imgSrc = $this->extractImage($post['id']);
+            // Format date
+            $date = date('F j, Y', strtotime($post['date']));
+            $html .= "<a href='#' class='blog-article bg-white shadow-sm mb32'>";
+            $html .= "<div class='blog-preview'>";
+            $html .= "<img src='" . $imgSrc . "' width='258' height='200' alt='" . $post['title'] . "'>";
+            $html .= "</div>";
+            $html .= "<div class='blog-article-content'>";
+            $html .= "<h2 class='h3 mb16 black'>" . $post['title'] . "</h2>";
+            $html .= "<div class='blog-description gray mb24'>" . $post['description'] . "</div>";
+            $html .= "<div class='blog-article-content-info flex caption gray'>";
+            $html .= "<div class='flex'>";
+            $html .= "<img src='../public/images/user.png' width='24' height='24' alt='author'>";
+            $html .= "<span class='ml8 mr24'>" . $post['author_name'] . "</span>";
+            $html .= "<span>" . $date . "</span>";
+            $html .= "</div>";
+            $html .= "<div class='interact flex'>";
+            $html .= "<button class='like-btn'>";
+            $html .= "<img src='../public/images/like.svg' alt='like'>";
+            $html .= "<p>0</p>";
+            $html .= "</button>";
+            $html .= "<button>";
+            $html .= "<img src='../public/images/comment.svg' alt='comment'>";
+            $html .= "<p>0</p>";
+            $html .= "</button>";
+            $html .= "<button><img src='../public/images/more.svg' alt='more'></button>";
+            $html .= "</div>";
+            $html .= "</div>";
+            $html .= "</div>";
+            $html .= "</a>";
+        }
+        return $html;
+    }
+    
     
 }    
 ?>

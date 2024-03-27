@@ -31,7 +31,12 @@ main h3, main .h3 {
 }
 
 .bg-white {
-    background-color: #fff
+    background-color: #fff;
+}
+
+.bg-red {
+    background-color: #ff606044;
+    border: #fff;
 }
 
 .shadow-sm {
