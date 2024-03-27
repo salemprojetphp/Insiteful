@@ -71,10 +71,11 @@ class Post extends Model {
                 $base64Image = base64_encode($imageData);
                 //construct and return src for image
                 $imgSrc = "data:" . $imageFormat . ";base64," . $base64Image;
-                return $imgSrc;
+                
             } else {
-                return false;
+                $imgSrc="../public/images/hello.svg";
             }
+            return $imgSrc;
         } catch (PDOException $e) {
             return false;
         }
@@ -90,7 +91,7 @@ class Post extends Model {
             $imgSrc = $this->extractImage($post['id']);
             // Format date
             $date = date('F j, Y', strtotime($post['date']));
-            $html .= "<a href='#' class='blog-article bg-white shadow-sm mb32'>";
+            $html .= "<a href='#' class='blog-article bg-white shadow-sm mb32' id='" .$post["id"]."'>";
             $html .= "<div class='blog-preview'>";
             $html .= "<img src='" . $imgSrc . "' width='258' height='200' alt='" . $post['title'] . "'>";
             $html .= "</div>";
