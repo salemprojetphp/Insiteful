@@ -18,7 +18,11 @@ $routes = [
     '/signup/action' => 'AuthController@register',
     '/login/action' => 'AuthController@authenticate',
     '/dashboard' => 'DashboardController@index',
-    '/post-form' => 'controllers/PostController.php@handleFormSubmission',
+    '/post-form' => 'PostController@handleFormSubmission',
+    '/blog' => 'PostController@blog',
+    '/blog/deletePost' => 'PostController@handleDeletePost',
+    '/addPost' => 'PostController@addPost',
+    '/addPost/action' => 'PostController@handleFormSubmission',
 ];
 
 

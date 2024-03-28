@@ -5,12 +5,13 @@ CREATE TABLE users(
     Username VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE posts(
+CREATE TABLE post(
     id INT AUTO_INCREMENT PRIMARY KEY,
     image LONGBLOB,
     imageFormat VARCHAR(10),
     title VARCHAR(30) NOT NULL,
     description TEXT NOT NULL,
     Author INT NOT NULL,
+    date DATE,
     FOREIGN KEY (Author) REFERENCES users(id)
 );

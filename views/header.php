@@ -19,7 +19,7 @@
         <div class="navigation">
             <a href="/">Home</a>
             <a href="#">About</a>
-            <a href="Blog.php">Blog</a>
+            <a href="/blog">Blog</a>
             <a href="#">Contact</a>
             <a href="#">Feedback</a>
             <a href="/auth" class="login-btn">Get Started</a>

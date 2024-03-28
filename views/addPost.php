@@ -18,9 +18,8 @@
 
 <body>
     <main class="flex" style = "margin-top:12%">
-        <!-- add post form -->
-        <form action="../controllers/PostController.php" method="post" enctype="multipart/form-data" class="add-post-form gradient-white flex">
-            <h2 style="position: absolute"><a href="Blog.php"><</a></h2>
+        <form action="/addPost/action" method="post" enctype="multipart/form-data" class="add-post-form gradient-white flex">
+            <h2 style="position: absolute"><a href="blog.php"><</a></h2>
             <h2 class="mb32 form-title">Add Post</h2>
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" class=" ml8 title-input">
@@ -32,7 +31,7 @@
             <input type="file" name="image" class = "image-input ml8">
             <br>
             <div class="btn-container">
-                <a href="Blog.php" class="btn-white">Cancel</a>
+                <a href="/blog" class="btn-white">Cancel</a>
                 <input type="submit" value="Add" class="btn-blue" id="add-btn">
             </div>
         </form>

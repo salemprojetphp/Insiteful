@@ -4,11 +4,9 @@ require_once 'Model.php';
 class Post extends Model {
     public $db;
 
-    //inserts post in db and returns true if successful
     public function insert($title, $description, $author, $date, $imageInputName) {
-        // Check if image was provided
+        // checking if image was provided
         if (empty($_FILES[$imageInputName]['tmp_name']) || $_FILES[$imageInputName]['error'] === UPLOAD_ERR_NO_FILE) {
-            // No image provided, set image and image format to null
             $photo = null;
             $imageFormat = null;
         } elseif ($_FILES[$imageInputName]['error'] === UPLOAD_ERR_OK) {
@@ -20,17 +18,16 @@ class Post extends Model {
             // Read binary data from image
             $photo = file_get_contents($_FILES[$imageInputName]["tmp_name"]);
             if ($photo === false) {
-                return false; // Unable to read image data
+                return false;
             }
         } else {
-            return false; // File upload error
+            return false; // error
         }
     
-        // Insert post into database
         $query = "INSERT INTO post (title, description, author, date, image, imageFormat) VALUES (:title, :description, :author, :date, :image, :imageFormat)";
         $insertQuery = $this->db->prepare($query);
         if (!$insertQuery) {
-            return false; // Failed to prepare query
+            return false;
         }
         $insertQuery->bindParam(':title', $title);
         $insertQuery->bindParam(':description', $description);
@@ -41,12 +38,12 @@ class Post extends Model {
     
         $result = $insertQuery->execute();
     
-        return $result; // Return true if successful, false otherwise
+        return $result;
     }
     
     
 
-    //delete post from db and return true if successful
+    //returns true if successful
     public function delete($postId) {
         $query = "DELETE FROM post WHERE id = :post_id";
         $deleteQuery = $this->db->prepare($query);
@@ -55,10 +52,8 @@ class Post extends Model {
         return $result;
     }
 
-    // return src of image
     public function extractImage($postId) {
         try {
-            //fetch img and imgformat
             $query = "SELECT image FROM post WHERE id = :post_id";
             $query2 = "SELECT imageFormat FROM post WHERE id = :post_id";
             $takeImg = $this->db->prepare($query);
@@ -73,9 +68,7 @@ class Post extends Model {
             
             //check the image data
             if ($imageData) {
-                //convert binary data of img into image
                 $base64Image = base64_encode($imageData);
-                //construct and return src for image
                 $imgSrc = "data:" . $imageFormat . ";base64," . $base64Image;
                 
             } else {
@@ -89,7 +82,7 @@ class Post extends Model {
 
     //return all posts as html elements
     public function getAllPosts() {
-        $query = "SELECT post.*, members.username AS author_name FROM post JOIN members ON post.author = members.id";
+        $query = "SELECT post.*, users.username AS author_name FROM post JOIN users ON post.author = users.id";
         $posts = $this->db->query($query);
         $posts->setFetchMode(PDO::FETCH_ASSOC);
         $html = "";

@@ -1,6 +1,6 @@
 <?php 
     include_once 'header.php';
-    require_once '../models/Post.php';
+    // require_once '../models/Post.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
             <button class="filter-btn" id="popular-btn">Popular</button>
         </div>
         
-        <a href="AddForm.php" class="add-btn">+</a>
+        <a href="/addPost" class="add-btn">+</a>
         <!-- contenu -->
         <section class="blog">
             <div class="content">

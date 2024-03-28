@@ -15,12 +15,12 @@
 
 <header>
     <h2>
-        <a href="Blog.php" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
+        <a href="blog.php" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
     </h2>
     <div class="navigation">
         <a href="/">Home</a>
         <a href="#">About</a>
-        <a href="Blog.php">Blog</a>
+        <a href="blog.php">Blog</a>
         <a href="#">Contact</a>
         <a href="#">Feedback</a>
     </div>

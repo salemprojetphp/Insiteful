@@ -94,7 +94,7 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
                 // Confirm deletion with the user
                 if (confirm('Are you sure you want to delete this post?')) {
                     // Send an AJAX request to delete the post as JSON
-                    fetch('../controllers/PostControllers/DeletePost.php', {
+                    fetch('/blog/deletePost', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
                     })
                     .then(response => {
                         if (response.ok) {
-                            window.location.href = '../controllers/PostControllers/DeletePost.php';
+                            window.location.href = '/blog/deletePost';
                         } else {
                             console.error('Failed to delete post');
                         }
