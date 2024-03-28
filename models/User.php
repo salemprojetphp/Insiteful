@@ -41,6 +41,11 @@ class User  extends Model{
         $queryPrep->execute([$email]);
         return $queryPrep->fetch(PDO::FETCH_OBJ);
     }
+    public function setPassword($email, $password){
+        $query = "Update users set Password = ? where Email = ?";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute([$password, $email]);
+    }
 
 }
 ?>
