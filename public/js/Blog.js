@@ -91,10 +91,9 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         menu.addEventListener('click', function(event) {
             if (event.target.classList.contains('delete-btn')) {
                 const postId = event.target.dataset.postId;
-
                 // Confirm deletion with the user
                 if (confirm('Are you sure you want to delete this post?')) {
-                    // Send an AJAX request to delete the post
+                    // Send an AJAX request to delete the post as JSON
                     fetch('../controllers/PostControllers/DeletePost.php', {
                         method: 'POST',
                         headers: {
@@ -104,11 +103,8 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Post successfully deleted, perform further actions if needed
                             window.location.href = '../controllers/PostControllers/DeletePost.php';
-                            console.log('Post deleted successfully');
                         } else {
-                            // Handle errors
                             console.error('Failed to delete post');
                         }
                     })
