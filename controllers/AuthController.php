@@ -5,12 +5,8 @@ require_once __DIR__ . '\\..\\models\\User.php';
 
 
 class AuthController extends Controller{
-    public function login() {
-        require_once 'views/login.php';
-    }
-
-    public function signup(){
-        require_once 'views/signup.php';
+    public function auth(){
+        require_once 'views/auth.php';
     }
 
     public function authenticate() {
@@ -25,7 +21,7 @@ class AuthController extends Controller{
             header('Location: /dashboard');
             exit;
         } else {
-            header('Location: /login?error=' . urlencode($loginResult));
+            header('Location: /auth?error=' . urlencode($loginResult));
             exit;
         }
         
@@ -37,25 +33,26 @@ class AuthController extends Controller{
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
         $userModel = new User();
 
         if($password == $cpassword){
             try{;
                 $exists= $userModel->getUserByEmail($email);
+                error_log($exists);
+
                 if($exists){
-                    header("Location: /signup?error=Email%20Already%20Used");
+                    header("Location: /auth?error=Email%20Already%20Used");
                     exit;
                 }
                 $userModel->register($email, $hashedPassword, $username);
-                header("Location: /login");
+                header("Location: /dashboard");
             }
             catch(PDOException $e){
-                header("Location: /signup?error=Email%20Already%20Used");
+                header("Location: /auth?error=Internal%20Error");
             }
         }
         else{
-            header("Location: /signup?error=Verify%20Password".password." ".cpassword);
+            header("Location: /auth?error=Verify%20Password".password." ".cpassword);
         }
     }
 }

@@ -17,12 +17,12 @@
             <a href="" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
         </h2>
         <div class="navigation">
-            <a href="home.php">Home</a>
+            <a href="/">Home</a>
             <a href="#">About</a>
             <a href="Blog.php">Blog</a>
             <a href="#">Contact</a>
             <a href="#">Feedback</a>
-            <a href="signup.php" class="login-btn">Get Started</a>
+            <a href="/auth" class="login-btn">Get Started</a>
         </div>
         <label for="check">
             <i class="fas fa-bars menu-btn"></i>

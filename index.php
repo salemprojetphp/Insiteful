@@ -14,8 +14,7 @@ if (php_sapi_name() === 'cli-server') {
 
 $routes = [
     '' => 'HomeController@index',
-    '/login' => 'AuthController@login',
-    '/signup' => 'AuthController@signup',
+    '/auth' => 'AuthController@auth',
     '/signup/action' => 'AuthController@register',
     '/login/action' => 'AuthController@authenticate',
     '/dashboard' => 'DashboardController@index',
