@@ -1,7 +1,5 @@
-const form = document.querySelector('.add-post-form');
-const formData = new FormData(form); // Create form data object
-const titleInput = form.querySelector('input[name="title"]');
-const contentInput = form.querySelector('textarea[name="content"]');
+const titleInput = document.querySelector('input[name="title"]');
+const contentInput = document.querySelector('textarea[name="content"]');
 const submitButton = document.getElementById('add-btn');
 
 //can't submit if title or content is empty

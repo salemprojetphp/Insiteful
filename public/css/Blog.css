@@ -157,6 +157,33 @@ main a:hover {
   width: 95%;
 }
 
+/* dropdown menu for more  */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 999;
+  border-radius: 5px;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+
 /* Mobile*/
 @media (max-width: 1110px) {
   .blog .content {

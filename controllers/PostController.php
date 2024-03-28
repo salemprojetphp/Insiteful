@@ -9,5 +9,12 @@ class PostController {
         $postAdder->insert($title, $content, 2, date("Y-m-d"), "image");
         header("Location: ../views/Blog.php");
     }
+
+    public function handleDeletePost() {
+        $postId = $_POST["postId"];
+        $postDeleter = new Post();
+        $postDeleter->delete($postId);
+        header("Location: ../views/Blog.php");
+    }
 }
 ?>

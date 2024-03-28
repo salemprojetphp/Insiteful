@@ -1,81 +1,124 @@
 //selection of filter buttons
-console.log('Blog.js loaded');
 const filterBtns = document.querySelectorAll(".filter-btn");
-let activeFilterBtns = document.querySelector(".selected");
-filterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        //removing the selected class from the active button
-        activeFilterBtns.classList.remove('selected');
-        e.target.classList.add('selected');
-        activeFilterBtns = e.target;
+    let activeFilterBtns = document.querySelector(".selected");
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            //removing the selected class from the active button
+            activeFilterBtns.classList.remove('selected');
+            e.target.classList.add('selected');
+            activeFilterBtns = e.target;
+        });
     });
-});
 
-//adding post 
-function addPost(title,description,pathToImage){
-    // Create a new link element
-    const blogLink = document.createElement("a");
-
-    // Set the href attribute for the link
-    blogLink.classList.add("blog-article");
-    blogLink.classList.add("bg-white");
-    blogLink.classList.add("shadow-sm");
-    blogLink.classList.add("mb32");
-    console.log(blogLink);
-
-    // Set the innerHTML of the link to the provided blog content
-    blogLink.innerHTML = `
-        <div class="blog-preview">
-        <img src="${pathToImage}" width="258" height="200" alt="Hello blog world">
-        </div>
-        <div class="blog-article-content">
-        <h2 class="h3 mb16 black">${title}</h2>
-        <div class="blog-description gray mb24">${description}</div>
-        <div class="blog-article-content-info flex caption gray">
-            <div class="flex">
-                <img src="image/user.png" width="24" height="24" alt="author">
-                <span class="ml8 mr24">Irae Hueck Costa</span>
-                    Apr 14, 2023
-            </div>
-            <div class="flex">
-                <span class="ml8">1 min read</span>
-            </div>
-        </div>
-        </div>
-    `;
-
-    // Append the new link to an existing container (e.g., with ID "blogContainer")
-    const existingContainer = document.getElementById("blogContainer");
-    existingContainer.appendChild(blogLink);
-}
-
-//like buttons 
+//like buttons (changing the src of the image and the number of likes)
 const likeBtns = document.querySelectorAll(".like-btn");
-console.log(likeBtns)
-likeBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        let img, nbLikes;
-        e.preventDefault();
-        if(e.target.tagName == 'BUTTON') {
-            img = e.target.querySelector('img');
-            nbLikes = e.target.querySelector('p');
-        } else {
-            img = e.target.parentElement.querySelector('img');
-            nbLikes = e.target.parentElement.querySelector('p');
-        }
-        const currentSrc = img.getAttribute('src');
-        const newSrc = currentSrc.includes('like.svg') ? '../public/images/like-active.svg' : '../public/images/like.svg';
-        img.setAttribute('src', newSrc);
-        nbLikes.textContent = currentSrc.includes('like.svg') ? parseInt(nbLikes.textContent) + 1 : parseInt(nbLikes.textContent) - 1;
+    likeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let img, nbLikes;
+            e.preventDefault();
+            if(e.target.tagName == 'BUTTON') {
+                img = e.target.querySelector('img');
+                nbLikes = e.target.querySelector('p');
+            } else {
+                img = e.target.parentElement.querySelector('img');
+                nbLikes = e.target.parentElement.querySelector('p');
+            }
+            const currentSrc = img.getAttribute('src');
+            const newSrc = currentSrc.includes('like.svg') ? '../public/images/like-active.svg' : '../public/images/like.svg';
+            img.setAttribute('src', newSrc);
+            nbLikes.textContent = currentSrc.includes('like.svg') ? parseInt(nbLikes.textContent) + 1 : parseInt(nbLikes.textContent) - 1;
+        });
     });
-});
 
-//removing the refresh from the articles 
+//removing the refresh from the articles && truncating the description
 const posts = document.querySelectorAll('.blog-article');
-posts.forEach(function(post) {
-    post.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+
+    // Truncate text to a specified length without cutting words in half
+    function truncateText(text, limit) {
+        let lastSpaceIndex = text.lastIndexOf(' ', limit);
+        if (lastSpaceIndex === -1) {
+            return text;
+        }
+        let truncatedText = text.substring(0, lastSpaceIndex);
+        return truncatedText + ' ...';
+    }
+
+    // Truncate text in each post
+    posts.forEach(function(post) {
+        const description = post.querySelector('.blog-description');
+        const originalText = description.textContent;
+        const truncatedText = truncateText(originalText, 200);
+        if (originalText.length > 200) {
+            description.textContent = truncatedText ;
+        }
+        post.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
     });
-});
+
+// dropdown menu animation and event listener
+const dropdownButtons = document.querySelectorAll('.more-btn');
+const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+    // Attach click event listener to each dropdown button
+    dropdownButtons.forEach(function(button, index) {
+        button.addEventListener('click', function(event) {
+            // Toggle visibility of corresponding dropdown menu
+            const menu = dropdownMenus[index];
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+
+            // Close other dropdown menus
+            dropdownMenus.forEach(function(otherMenu, otherIndex) {
+                if (index !== otherIndex) {
+                    otherMenu.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Close dropdown menus when clicking outside of them
+    document.addEventListener('click', function(event) {
+        dropdownMenus.forEach(function(menu) {
+            if (!menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
+    });
+
+    // send ajax request to delete post when clicking the delete button
+    dropdownMenus.forEach(function(menu) {
+        menu.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-btn')) {
+                const postId = event.target.dataset.postId;
+
+                // Confirm deletion with the user
+                if (confirm('Are you sure you want to delete this post?')) {
+                    // Send an AJAX request to delete the post
+                    fetch('../controllers/PostControllers/DeletePost.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 'postId': postId })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Post successfully deleted, perform further actions if needed
+                            window.location.href = '../controllers/PostControllers/DeletePost.php';
+                            console.log('Post deleted successfully');
+                        } else {
+                            // Handle errors
+                            console.error('Failed to delete post');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
+            }
+        });
+    });
+
+
 

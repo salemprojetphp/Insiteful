@@ -5,28 +5,32 @@ class Post extends Model {
     public $db;
 
     //inserts post in db and returns true if successful
-    public function insert($title, $description, $author, $date, $image) {
-        //check the upload of the image
-        if ($_FILES[$image]['error'] !== UPLOAD_ERR_OK) {
-            echo "Upload error";
-            return false;
+    public function insert($title, $description, $author, $date, $imageInputName) {
+        // Check if image was provided
+        if (empty($_FILES[$imageInputName]['tmp_name']) || $_FILES[$imageInputName]['error'] === UPLOAD_ERR_NO_FILE) {
+            // No image provided, set image and image format to null
+            $photo = null;
+            $imageFormat = null;
+        } elseif ($_FILES[$imageInputName]['error'] === UPLOAD_ERR_OK) {
+            // Image provided and upload was successful
+            // Extract image format
+            $imageInfo = getimagesize($_FILES[$imageInputName]['tmp_name']);
+            $imageFormat = $imageInfo['mime'];
+    
+            // Read binary data from image
+            $photo = file_get_contents($_FILES[$imageInputName]["tmp_name"]);
+            if ($photo === false) {
+                return false; // Unable to read image data
+            }
+        } else {
+            return false; // File upload error
         }
     
-        //extracting image format
-        $imageInfo = getimagesize($_FILES[$image]['tmp_name']);
-        $imageFormat = $imageInfo['mime'];
-
-        // read binary data from image
-        $photo = file_get_contents($_FILES[$image]["tmp_name"]);
-        if ($photo === false) {
-            return false;
-        }
-    
-        //insert post in db
+        // Insert post into database
         $query = "INSERT INTO post (title, description, author, date, image, imageFormat) VALUES (:title, :description, :author, :date, :image, :imageFormat)";
         $insertQuery = $this->db->prepare($query);
         if (!$insertQuery) {
-            return false;
+            return false; // Failed to prepare query
         }
         $insertQuery->bindParam(':title', $title);
         $insertQuery->bindParam(':description', $description);
@@ -34,11 +38,13 @@ class Post extends Model {
         $insertQuery->bindParam(':date', $date);
         $insertQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
         $insertQuery->bindParam(':imageFormat', $imageFormat);
-
+    
         $result = $insertQuery->execute();
-
-        return $result; 
+    
+        return $result; // Return true if successful, false otherwise
     }
+    
+    
 
     //delete post from db and return true if successful
     public function delete($postId) {
@@ -113,11 +119,11 @@ class Post extends Model {
             $html .= "<img src='../public/images/comment.svg' alt='comment'>";
             $html .= "<p>0</p>";
             $html .= "</button>";
-            $html .= "<button><img src='../public/images/more.svg' alt='more'></button>";
-            $html .= "</div>";
-            $html .= "</div>";
-            $html .= "</div>";
-            $html .= "</a>";
+            $html .= "<button class='more-btn'><img src='../public/images/more.svg' alt='more'></button>";
+            $html .= "<div class='dropdown-menu'>
+                        <button class='edit-btn'>Edit</button>
+                        <button class='delete-btn' data-post-id='" .$post["id"]."' >Delete</button>";
+            $html .= "</div></div></div></div></a>";
         }
         return $html;
     }
