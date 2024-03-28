@@ -2,8 +2,18 @@ CREATE TABLE users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     Email VARCHAR(255) UNIQUE NOT NULL,
     Password VARCHAR(255) NOT NULL,
-    Username VARCHAR(255) NOT NULL
+    Username VARCHAR(255) NOT NULL,
+    Role ENUM('Admin', 'User') DEFAULT 'User',
+    Verified BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE verification (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    verification_code VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 CREATE TABLE post(
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,7 +51,7 @@ VALUES (1, 'insat.tn', '192.168.1.1', '2024-03-27', 'Facebook', 'Country A', 'Co
        (1, 'insat.tn', '192.168.1.7', '2024-03-21', 'Facebook', 'Country A', 'Computer', 'Chrome'),
        (1, 'website.tn', '192.168.1.8', '2024-03-20', 'Instagram', 'Country B', 'Phone', 'Firefox'),
        (1, 'insat.tn', '192.168.1.9', '2024-03-19', 'Direct', 'Country A', 'Computer', 'Safari'),
-       (1, 'insat.tn', '192.168.1.10', '2024-03-18', 'Google', 'Country B', 'Phone', 'Opera');
+       (1, 'insat.tn', '192.168.1.10', '2024-03-18', 'Google', 'Country B', 'Phone', 'Opera'),
        (1, 'website.tn', '192.168.1.11', '2024-03-17', 'Twitter', 'Country A', 'Computer', 'Edge'),
        (1, 'insat.tn', '192.168.1.12', '2024-03-16', 'Direct', 'Country B', 'Phone', 'Other'),
        (1, 'insat.tn', '192.168.1.13', '2024-03-15', 'Facebook', 'Country A', 'Computer', 'Chrome'),

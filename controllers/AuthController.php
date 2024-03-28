@@ -1,7 +1,9 @@
 <?php
 require_once 'Controller.php';
 require_once __DIR__ . '\\..\\models\\User.php';
+require_once __DIR__ . '\\..\\models\\Verification.php';
 require_once 'utils\MailSender\MailSender.php';
+require_once 'utils\unique_code.php';
 
 
 
@@ -11,7 +13,38 @@ class AuthController extends Controller{
     }
 
     public function verifyEmail(){
-        require_once 'views/PasswordRecovery/emailverification.php';
+        $email = $_GET['email'];
+        $userModel = new User();
+        $verificationModel = new Verification();
+        $user = $userModel->getUserByEmail($email);
+        if($user){
+            if($user->Verified){
+                header('Location: /dashboard?message=Email%20Already%20Verified');
+                exit;
+            }
+        }
+        else{
+            header('Location: /auth?error=Email%20Not%20Registered');
+            exit;
+        }
+        $token = generateUniqueVerificationCode();
+        $verificationModel->insertVerificationToken($email, $token);
+        $link= "http://localhost:8000/verify?email=$email&token=$token";
+        MailSender::sendMail([$email], "Email verification", $link);
+        require_once 'views/emailverification.php';
+    }
+
+    public function verifyToken(){
+        $email = $_GET['email'];
+        $token = $_GET['token'];
+        $verificationModel = new Verification();
+        $result = $verificationModel->verifiy($email, $token);
+        if($result){
+            header('Location: /dashboard?message=Email%20Verified');
+        }
+        else{
+            header("Location: /emailverification?email=$email&error=Invalid%20Token");
+        }
     }
 
     public function passwordChange(){
@@ -27,6 +60,11 @@ class AuthController extends Controller{
         $loginResult = $userModel->login($email, $password);
 
         if ($loginResult === "Correct information") {
+            if(!$userModel->isVerified($email)){
+                echo "Email not verified";
+                header('Location: /emailverification?email=' . $email);
+                exit;
+            }
             header('Location: /dashboard');
             exit;
         } else {
@@ -54,7 +92,7 @@ class AuthController extends Controller{
                     exit;
                 }
                 $userModel->register($email, $hashedPassword, $username);
-                header("Location: /dashboard");
+                header("Location: /emailverification?email=$email");
             }
             catch(PDOException $e){
                 header("Location: /auth?error=Internal%20Error");

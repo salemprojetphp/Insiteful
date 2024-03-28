@@ -24,10 +24,11 @@ $routes = [
     '/addPost' => 'PostController@addPost',
     '/addPost/action' => 'PostController@handleFormSubmission',
     '/recoverpassword/action' => 'AuthController@sendPasswordRecoveryCode',
-    //added for password recovery
     '/emailverification' => 'AuthController@verifyEmail',
+    '/verify' => 'AuthController@verifyToken',
     '/passwordchange' => 'AuthController@passwordChange',
     '/passwordchange/action' => 'AuthController@changePassword',
+    '/testemail' => 'AuthController@testEmail',
 ];
 
 

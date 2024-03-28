@@ -15,7 +15,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: url("insiteful/public/images/bg7.png")no-repeat;;
+    background: url("/public/images/bg7.png")no-repeat;;
     background-size: cover;
 }
 header{

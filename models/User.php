@@ -47,5 +47,13 @@ class User  extends Model{
         $queryPrep->execute([$password, $email]);
     }
 
+    public function isVerified($email){
+        $query = "select Verified from users where Email = ?";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute([$email]);
+        $queryResult = $queryPrep->fetch(PDO::FETCH_OBJ);
+        return $queryResult->Verified;
+    }
+
 }
 ?>
