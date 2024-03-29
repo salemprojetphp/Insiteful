@@ -8,16 +8,6 @@
     font-family: "Poppins", sans-serif;
     color: #1F254C;
 }
-body{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: url("/public/images/bg7.png")no-repeat;;
-    background-size: cover;
-}
 header{
     position: absolute;
     top: 0;

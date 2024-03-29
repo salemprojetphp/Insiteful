@@ -1,5 +1,6 @@
 <?php
-    include_once 'header.php';
+    include_once 'views/header.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -8,18 +9,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSITEFUL</title>
-    <link rel="icon" href="../public/images/insiteful.png">
-    <link rel="stylesheet" href="../public/css/general.css">
-    <link rel="stylesheet" href="../public/css/addPostForm.css">
+    <link rel="icon" href="../../public/images/insiteful.png">
+    <link rel="stylesheet" href="../../public/css/general.css">
+    <link rel="stylesheet" href="../../public/css/PostForm.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../public/js/AddForm.js" defer></script>
+    <script src="../../public/js/PostForm.js" defer></script>
 </head>
 
 <body>
     <main class="flex" style = "margin-top:12%">
         <form action="/addPost/action" method="post" enctype="multipart/form-data" class="add-post-form gradient-white flex">
-            <h2 style="position: absolute"><a href="blog.php"><</a></h2>
+            <h2 style="position: absolute"><a href="/blog"><</a></h2>
             <h2 class="mb32 form-title">Add Post</h2>
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" class=" ml8 title-input">
@@ -28,8 +29,12 @@
             <textarea name="content" placeholder="Content" class=" ml8 content-input"></textarea>
             <br>
             <label for="image">Image</label>
-            <input type="file" name="image" class = "image-input ml8">
+            <div class="image-input-container">
+                <input type="file" name="image" class = "image-input ml8" value="<?= $imgSrc?>">
+                <a class="btn-white" id="no-img-btn">Delete Image</a>
+            </div>
             <br>
+            <img src="" alt="" class="image-preview">
             <div class="btn-container">
                 <a href="/blog" class="btn-white">Cancel</a>
                 <input type="submit" value="Add" class="btn-blue" id="add-btn">

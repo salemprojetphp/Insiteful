@@ -23,7 +23,7 @@ class AuthController extends Controller{
         $user = $this->userModel->getUserByEmail($email);
         if($user){
             if($user->Verified){
-                header('Location: /dashboard?message=Email%20Already%20Verified');
+                header('Location: /dashboard?email=' . $email);
                 exit;
             }
         }
@@ -88,7 +88,7 @@ class AuthController extends Controller{
         $token = $_GET['token'];
         $result = $this->verificationModel->verifiy($email, $token);
         if($result){
-            header('Location: /dashboard?message=Email%20Verified');
+            header('Location: /dashboard?email=' . $email);
         }
         else{
             header("Location: /emailverification?email=$email&error=Invalid%20Token");
@@ -111,7 +111,12 @@ class AuthController extends Controller{
                 header('Location: /emailverification?email=' . $email);
                 exit;
             }
-            header('Location: /dashboard');
+            session_start();
+            $user = $userModel->getUserByEmail($email);
+            $user_id = $user -> id;
+            echo $user_id;
+            $_SESSION['user_id'] = $user_id;
+            header('Location: /dashboard?email=' . $email);
             exit;
         } else {
             header('Location: /auth?error=' . urlencode($loginResult));
@@ -126,17 +131,22 @@ class AuthController extends Controller{
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $userModel = new User();
 
         if($password == $cpassword){
-            try{;
-                $exists= $this->userModel->getUserByEmail($email);
+            try{
+                $exists= $userModel->getUserByEmail($email);
                 error_log($exists);
 
                 if($exists){
                     header("Location: /auth?error=Email%20Already%20Used");
                     exit;
                 }
-                $this->userModel->register($email, $hashedPassword, $username);
+                $userModel->register($email, $hashedPassword, $username);
+                session_start();
+                $user = $userModel->getUserByEmail($email);
+                $user_id = $user -> id;
+                $_SESSION['user_id'] = $user_id;
                 header("Location: /emailverification?email=$email");
             }
             catch(PDOException $e){

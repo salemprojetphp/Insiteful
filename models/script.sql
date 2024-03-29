@@ -4,7 +4,7 @@ CREATE TABLE users(
     Password VARCHAR(255) NOT NULL,
     Username VARCHAR(255) NOT NULL,
     Role ENUM('Admin', 'User') DEFAULT 'User',
-    Verified BOOLEAN DEFAULT FALSE
+    Verified BOOLEAN DEFAULT FALSE,
 );
 
 CREATE TABLE verification (
