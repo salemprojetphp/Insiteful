@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '\\..\\models\\Post.php';
+require_once 'Controller.php';
 
-class PostController {
+class PostController extends Controller{
     public function blog(){
         require_once 'views/blog.php';
     }
@@ -18,8 +19,9 @@ class PostController {
         $title = $_POST["title"];
         $content = $_POST["content"];
         $postAdder = new Post(); 
-        // TODO: author id should be dynamic instead of 2 
-        $postAdder->insert($title, $content, 2, date("Y-m-d"), "image");
+        $userModel = new User();
+        $userId= $_SESSION['user_id'];
+        $postAdder->insert($title, $content, $userId, date("Y-m-d"), "image");
         header("Location: /blog");
     }
 

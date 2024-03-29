@@ -65,6 +65,11 @@ class AuthController extends Controller{
                 header('Location: /emailverification?email=' . $email);
                 exit;
             }
+            session_start();
+            $user = $userModel->getUserByEmail($email);
+            $user_id = $user -> id;
+            echo $user_id;
+            $_SESSION['user_id'] = $user_id;
             header('Location: /dashboard?email=' . $email);
             exit;
         } else {
@@ -92,6 +97,10 @@ class AuthController extends Controller{
                     exit;
                 }
                 $userModel->register($email, $hashedPassword, $username);
+                session_start();
+                $user = $userModel->getUserByEmail($email);
+                $user_id = $user -> id;
+                $_SESSION['user_id'] = $user_id;
                 header("Location: /emailverification?email=$email");
             }
             catch(PDOException $e){

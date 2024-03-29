@@ -85,6 +85,8 @@ class Post extends Model {
         $query = "SELECT post.*, users.username AS author_name FROM post JOIN users ON post.author = users.id";
         $posts = $this->db->query($query);
         $posts->setFetchMode(PDO::FETCH_ASSOC);
+        $userModel = new User();
+        $user = $userModel->getUserById($_SESSION['user_id']);
         $html = "";
         foreach ($posts as $post) {
             $imgSrc = $this->extractImage($post['id']);
@@ -112,11 +114,14 @@ class Post extends Model {
             $html .= "<img src='../public/images/comment.svg' alt='comment'>";
             $html .= "<p>0</p>";
             $html .= "</button>";
-            $html .= "<button class='more-btn'><img src='../public/images/more.svg' alt='more'></button>";
-            $html .= "<div class='dropdown-menu'>
-                        <button class='edit-btn' data-post-id='" .$post["id"]."'>Edit</button>
-                        <button class='delete-btn' data-post-id='" .$post["id"]."' >Delete</button>";
-            $html .= "</div></div></div></div></a>";
+            if($user && $user->Role == "admin"){
+                $html .= "<button class='more-btn'><img src='../public/images/more.svg' alt='more'></button>";
+                $html .= "<div class='dropdown-menu'>
+                            <button class='edit-btn' data-post-id='" .$post["id"]."'>Edit</button>
+                            <button class='delete-btn' data-post-id='" .$post["id"]."' >Delete</button>";
+                $html .= "</div>";
+            }
+            $html .= "</div></div></div></a>";
         }
         return $html;
     }
