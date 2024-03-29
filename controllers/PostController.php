@@ -1,18 +1,19 @@
 <?php
 require_once __DIR__ . '\\..\\models\\Post.php';
 require_once 'Controller.php';
+require_once __DIR__ . '\\..\\models\\User.php';
 
 class PostController extends Controller{
     public function blog(){
-        require_once 'views/blog.php';
+        require_once 'views/Blog/Blog.php';
     }
 
     public function addPost(){
-        require_once 'views/addPost.php';
+        require_once 'views/Blog/addPost.php';
     }
 
     public function edit(){
-        require_once 'views/editPost.php';
+        require_once 'views/Blog/editPost.php';
     }
     
     public function handleFormSubmission() {
@@ -20,6 +21,7 @@ class PostController extends Controller{
         $content = $_POST["content"];
         $postAdder = new Post(); 
         $userModel = new User();
+        session_start();
         $userId= $_SESSION['user_id'];
         $postAdder->insert($title, $content, $userId, date("Y-m-d"), "image");
         header("Location: /blog");

@@ -1,5 +1,5 @@
 <?php 
-    include_once 'header.php';
+    include_once 'views/header.php';
     require_once 'models/User.php';
 ?>
 
@@ -9,10 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSITEFUL</title>
-    <link rel="icon" href="../public/images/insiteful.png">
-    <link rel="stylesheet" href="../public/css/Blog.css">
-    <link rel="stylesheet" href="../public/css/general.css">
-    <script src="../public/js/Blog.js" defer></script>
+    <link rel="icon" href="../../public/images/insiteful.png">
+    <link rel="stylesheet" href="../../public/css/Blog.css">
+    <link rel="stylesheet" href="../../public/css/general.css">
+    <script src="../../public/js/Blog.js" defer></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             $userModel = new User();
             session_start();
             $user = $userModel->getUserById($_SESSION['user_id']);
-            if($user && $user->Role == "admin"){
+            if($user && $user->Role == "Admin"){
                 echo "<a href='/addPost' class='add-btn'>+</a>";
             }
         ?>

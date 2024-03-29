@@ -102,5 +102,5 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         });
     });
 
-
+//show whole article when clicking on it
 

@@ -27,3 +27,29 @@ submitButton.addEventListener('click', function(event) {
     });
 });
 
+// image preview
+const imageInput = document.querySelector('input[name="image"]');
+const imagePreview = document.querySelector('.image-preview');
+const deleteImageButton = document.getElementById('no-img-btn');
+console.log(deleteImageButton);
+
+imageInput.addEventListener('input', function(event) {
+    const file = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        imagePreview.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } 
+});
+
+deleteImageButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    imageInput.value = null;
+    imagePreview.src = '';
+});
+
+    

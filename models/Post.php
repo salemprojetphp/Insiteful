@@ -114,7 +114,7 @@ class Post extends Model {
             $html .= "<img src='../public/images/comment.svg' alt='comment'>";
             $html .= "<p>0</p>";
             $html .= "</button>";
-            if($user && $user->Role == "admin"){
+            if($user && $user->Role == "Admin"){
                 $html .= "<button class='more-btn'><img src='../public/images/more.svg' alt='more'></button>";
                 $html .= "<div class='dropdown-menu'>
                             <button class='edit-btn' data-post-id='" .$post["id"]."'>Edit</button>

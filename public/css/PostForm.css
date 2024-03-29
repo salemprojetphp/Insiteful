@@ -96,6 +96,18 @@ main {
     height: auto;
     scale: 0.8;
 }
+#no-img-btn{
+    width: 170px;
+    height: 32px;
+    text-align: center;
+    padding-top: 6px;
+    border: rgba(0, 0, 0, 0.05) 1px solid;
+}
+.image-input-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 /* Mobile*/
 @media (max-width: 1110px) {
     .add-post-form{
