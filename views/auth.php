@@ -49,7 +49,7 @@
             <span>or use your email for registration</span>
             <input type="email" name='email' placeholder="Email" />
             <input type="password" name='password' placeholder="Password" />
-            <a href="#">Forgot your password?</a>
+            <a href="/forgotPassword">Forgot your password?</a>
             <button type="submit">Log in</button>
         </form>
     </div>

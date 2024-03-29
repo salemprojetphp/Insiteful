@@ -9,7 +9,7 @@ class Verification  extends Model{
         $queryPrep->execute([$email, $token]);
     }
 
-    public function verifiy($email, $token){
+    public function verifiy($email, $token, $delete=true){
         $query = "select * from verification where email = ? and verification_code = ?";
         $queryPrep = $this->db->prepare($query);
         $queryPrep->execute([$email, $token]);
@@ -18,12 +18,14 @@ class Verification  extends Model{
             return false;
         }
         else{
-            $query = "Update users set Verified = 1 where Email = ?";
-            $query2 = "delete from verification where email = ?";
-            $queryPrep = $this->db->prepare($query);
-            $queryPrep2 = $this->db->prepare($query2);
-            $queryPrep->execute([$email]);
-            $queryPrep2->execute([$email]);
+            if ($delete==true){
+                $query = "Update users set Verified = 1 where Email = ?";
+                $query2 = "delete from verification where email = ?";
+                $queryPrep = $this->db->prepare($query);
+                $queryPrep2 = $this->db->prepare($query2);
+                $queryPrep->execute([$email]);
+                $queryPrep2->execute([$email]);
+            }
             return true;
         }
     }

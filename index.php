@@ -23,12 +23,12 @@ $routes = [
     '/blog/deletePost' => 'PostController@handleDeletePost',
     '/addPost' => 'PostController@addPost',
     '/addPost/action' => 'PostController@handleFormSubmission',
-    '/recoverpassword/action' => 'AuthController@sendPasswordRecoveryCode',
     '/emailverification' => 'AuthController@verifyEmail',
     '/verify' => 'AuthController@verifyToken',
-    '/passwordchange' => 'AuthController@passwordChange',
-    '/passwordchange/action' => 'AuthController@changePassword',
-    '/testemail' => 'AuthController@testEmail',
+    '/forgotPassword' => 'AuthController@resetPsswordForm',
+    '/forgotPassword/action' => 'AuthController@resetPasswordAction',
+    '/setPassword' => 'AuthController@setPassword',
+    '/setPassword/action' => 'AuthController@setPasswordAction',
 ];
 
 

@@ -5,18 +5,22 @@ require_once __DIR__ . '\\..\\models\\Verification.php';
 require_once 'utils\MailSender\MailSender.php';
 require_once 'utils\unique_code.php';
 
-
-
 class AuthController extends Controller{
+    private $userModel;
+    private $verificationModel;
+
+    public function __construct() {
+        $this->userModel = new User();
+        $this->verificationModel = new Verification();
+    }
+
     public function auth(){
         require_once 'views/auth.php';
     }
 
     public function verifyEmail(){
         $email = $_GET['email'];
-        $userModel = new User();
-        $verificationModel = new Verification();
-        $user = $userModel->getUserByEmail($email);
+        $user = $this->userModel->getUserByEmail($email);
         if($user){
             if($user->Verified){
                 header('Location: /dashboard?message=Email%20Already%20Verified');
@@ -28,17 +32,61 @@ class AuthController extends Controller{
             exit;
         }
         $token = generateUniqueVerificationCode();
-        $verificationModel->insertVerificationToken($email, $token);
+        $this->verificationModel->insertVerificationToken($email, $token);
         $link= "http://localhost:8000/verify?email=$email&token=$token";
         MailSender::sendMail([$email], "Email verification", $link);
         require_once 'views/emailverification.php';
     }
 
+    public function resetPasswordAction(){
+        $email = $_POST['email'];
+        $user = $this->userModel->getUserByEmail($email);
+        if(!$user){
+            header('Location: /resetPassowrd?error=Email%20Not%20Registered');
+            exit;
+        }
+        $token = generateUniqueVerificationCode();
+        $this->verificationModel->insertVerificationToken($email, $token);
+        $link= "http://localhost:8000/setPassword?email=$email&token=$token";
+        header("Location: /forgotPassword?email=$email");
+        MailSender::sendMail([$email], "Password recovery", $link);
+    }
+
+    public function setPassword(){
+        $email = $_GET['email'];
+        $token = $_GET['token'];
+        $result = $this->verificationModel->verifiy($email, $token, false);
+        if($result){
+            require_once 'views/resetPassword.php';
+        }
+        else{
+            header("Location: /resetPasswordForm?error=Invalid%20Token");
+        }
+    }
+    public function setPasswordAction(){
+        $email = $_POST['email'];
+        $token = $_POST['token'];
+        $result = $this->verificationModel->verifiy($email, $token);
+        if($result){
+            $password = $_POST['password'];
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->userModel->setPassword($email, $hashedPassword);
+            header('Location: /auth?message=Password%20Changed');
+        }
+        else{
+            header("Location: /resetPasswordForm?error=Invalid%20Token");
+        }
+    }
+
+    public function resetPsswordForm(){
+        require_once 'views/resetPasswordForm.php';
+    }
+
+
     public function verifyToken(){
         $email = $_GET['email'];
         $token = $_GET['token'];
-        $verificationModel = new Verification();
-        $result = $verificationModel->verifiy($email, $token);
+        $result = $this->verificationModel->verifiy($email, $token);
         if($result){
             header('Location: /dashboard?message=Email%20Verified');
         }
@@ -55,12 +103,10 @@ class AuthController extends Controller{
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-
-        $userModel = new User();
-        $loginResult = $userModel->login($email, $password);
+        $loginResult = $this->userModel->login($email, $password);
 
         if ($loginResult === "Correct information") {
-            if(!$userModel->isVerified($email)){
+            if(!$this->userModel->isVerified($email)){
                 echo "Email not verified";
                 header('Location: /emailverification?email=' . $email);
                 exit;
@@ -80,18 +126,17 @@ class AuthController extends Controller{
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $userModel = new User();
 
         if($password == $cpassword){
             try{;
-                $exists= $userModel->getUserByEmail($email);
+                $exists= $this->userModel->getUserByEmail($email);
                 error_log($exists);
 
                 if($exists){
                     header("Location: /auth?error=Email%20Already%20Used");
                     exit;
                 }
-                $userModel->register($email, $hashedPassword, $username);
+                $this->userModel->register($email, $hashedPassword, $username);
                 header("Location: /emailverification?email=$email");
             }
             catch(PDOException $e){
@@ -104,8 +149,7 @@ class AuthController extends Controller{
     }
     public function sendPasswordRecoveryCode(){
         $email = $_POST["email"];
-        $userModel = new User();
-        $exists = $userModel->getUserByEmail($email);
+        $exists = $this->userModel->getUserByEmail($email);
         if(!$exists){
             header("Location: /emailverification?error=Email%20isn't%20registered"); //if the email doesnt exits then the user doesnt have an account and thus cant change a password
             exit;
@@ -136,8 +180,7 @@ class AuthController extends Controller{
             $cpassword = $_POST['cpassword'];
             if($password = $cpassword){
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $user = new User();
-                $user->setPassword($email, $hashedPassword);
+                $this->userModel->setPassword($email, $hashedPassword);
             }
             else{
                 header("Location : /passwordchange?message=Check%20password");
