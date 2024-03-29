@@ -18,7 +18,7 @@
         </h2>
         <div class="navigation">
             <a href="/">Home</a>
-            <a href="#">About</a>
+            <a href="/dashboard">Dashboard</a>
             <a href="/blog">Blog</a>
             <a href="#">Contact</a>
             <a href="#">Feedback</a>
