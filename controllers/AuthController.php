@@ -19,7 +19,7 @@ class AuthController extends Controller{
         $user = $userModel->getUserByEmail($email);
         if($user){
             if($user->Verified){
-                header('Location: /dashboard?message=Email%20Already%20Verified');
+                header('Location: /dashboard?email=' . $email);
                 exit;
             }
         }
@@ -40,7 +40,7 @@ class AuthController extends Controller{
         $verificationModel = new Verification();
         $result = $verificationModel->verifiy($email, $token);
         if($result){
-            header('Location: /dashboard?message=Email%20Verified');
+            header('Location: /dashboard?email=' . $email);
         }
         else{
             header("Location: /emailverification?email=$email&error=Invalid%20Token");
@@ -65,7 +65,7 @@ class AuthController extends Controller{
                 header('Location: /emailverification?email=' . $email);
                 exit;
             }
-            header('Location: /dashboard');
+            header('Location: /dashboard?email=' . $email);
             exit;
         } else {
             header('Location: /auth?error=' . urlencode($loginResult));
@@ -83,7 +83,7 @@ class AuthController extends Controller{
         $userModel = new User();
 
         if($password == $cpassword){
-            try{;
+            try{
                 $exists= $userModel->getUserByEmail($email);
                 error_log($exists);
 

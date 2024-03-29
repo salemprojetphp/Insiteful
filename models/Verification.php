@@ -1,8 +1,9 @@
 <?php
 require_once 'Model.php';
 
-class Verification  extends Model{
+class Verification extends Model{
     public $db;
+    
     public function insertVerificationToken($email, $token){
         $query = "insert into verification(email, verification_code) values (?, ?)";
         $queryPrep = $this->db->prepare($query);
