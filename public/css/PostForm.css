@@ -89,6 +89,13 @@ main {
     margin-bottom: 20px;
     align-self: center;
 }
+.image-preview {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+    scale: 0.8;
+}
 /* Mobile*/
 @media (max-width: 1110px) {
     .add-post-form{

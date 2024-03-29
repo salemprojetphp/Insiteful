@@ -10,6 +10,10 @@ class PostController {
         require_once 'views/addPost.php';
     }
 
+    public function edit(){
+        require_once 'views/editPost.php';
+    }
+    
     public function handleFormSubmission() {
         $title = $_POST["title"];
         $content = $_POST["content"];
@@ -20,16 +24,20 @@ class PostController {
     }
 
     public function handleDeletePost() {
-        $jsonData = file_get_contents('php://input');
-
-        $data = json_decode($jsonData, true);
-
-        // Access the postId from the decoded data
-        $postId = $data['postId'];
-
+        $postId = $_GET['id'];
         $postDeleter = new Post();
         $postDeleter->delete($postId);
         header("Location: /blog");
     }
+
+    public function handleEditPost() {
+        $postId = $_GET["id"];
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $postEditor = new Post();
+        $postEditor->edit($title, $content, $postId,"image");
+        header("Location: /blog");
+    }
+
 }
 ?>

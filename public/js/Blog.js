@@ -86,32 +86,18 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         });
     });
 
-    // send ajax request to delete post when clicking the delete button
+    // redirecting to the deletePost/editPost page
     dropdownMenus.forEach(function(menu) {
         menu.addEventListener('click', function(event) {
             if (event.target.classList.contains('delete-btn')) {
                 const postId = event.target.dataset.postId;
                 // Confirm deletion with the user
                 if (confirm('Are you sure you want to delete this post?')) {
-                    // Send an AJAX request to delete the post as JSON
-                    fetch('/blog/deletePost', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ 'postId': postId })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.href = '/blog/deletePost';
-                        } else {
-                            console.error('Failed to delete post');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
+                    window.location.href = `/blog/deletePost?id=${postId}`;
                 }
+            } else if (event.target.classList.contains('edit-btn')) {
+                const postId = event.target.dataset.postId;
+                window.location.href = `/editPost?id=${postId}`;
             }
         });
     });
