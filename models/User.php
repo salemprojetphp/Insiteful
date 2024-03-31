@@ -62,12 +62,5 @@ class User  extends Model{
         return $queryResult->Verified;
     }
 
-    public function setPassword($email, $password){
-        $query = "Update users set Password = ? where Email = ?";
-        $queryPrep = $this->db->prepare($query);
-        $queryPrep->execute([$password, $email]);
-
-    }
-
 }
 ?>

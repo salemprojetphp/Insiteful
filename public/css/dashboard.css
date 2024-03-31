@@ -126,21 +126,22 @@ select {
     display: flex;
     flex-direction: row;
     column-gap: 10px;
-    .percentage{
-        background: #F18835;
-        border-radius: 20px;
-        width: 40px;
-        margin-bottom: 6px;
-        padding-top: 2px;
-        padding-left: 7px;
-        position: relative;
-        left: 75%;
-    }
-    .number{
-        position: relative;
-        left: 70%;
-    }
+
 }  
+.percentage{
+    background: #F18835;
+    border-radius: 20px;
+    width: 40px;
+    margin-bottom: 6px;
+    padding-top: 2px;
+    padding-left: 4px;
+    position: absolute;
+    left: 90%;
+}
+.number{
+    position: absolute;
+    left: 85%;
+}
 
 .devices-container{
     display: flex;

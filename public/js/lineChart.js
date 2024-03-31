@@ -1,17 +1,32 @@
 const lineChart = document.getElementById('lineChart');
-let time = [];
-numbers = []
-new Chart(lineChart, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Visitiors',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-    }
-});
+const time = [];
+const numbers = []
+//reading the json file and putting the dates(key) in time array and numbers(value) in numbers
+//array 
+fetch("public/json/lineChart.json").then(response => response.json())
+                                    .then(data => {
+                                      for (const key in data){
+                                        time.push(key);
+                                        numbers.push(data[key]);
+                                      }
+                                      new Chart(lineChart, {
+                                        type: 'line',
+                                        data: {
+                                          labels: time,
+                                          datasets: [{
+                                            label: '# of Visitors',
+                                            data: numbers,
+                                            borderWidth: 5,
+                                            fill: false,
+                                          }]
+                                        },
+                                        options: {
+                                          responsive: true,
+                                        }
+                                    });
+                                    })
+                                    .catch(error => console.error('Error:', error));
+
+
+
+
