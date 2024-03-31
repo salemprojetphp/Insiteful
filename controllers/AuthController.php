@@ -18,6 +18,11 @@ class AuthController extends Controller{
         require_once 'views/auth.php';
     }
 
+    public function logout(){
+        session_destroy();
+        header('Location: ');
+    }
+
     public function verifyEmail(){
         $email = $_GET['email'];
         $user = $this->userModel->getUserByEmail($email);
@@ -112,7 +117,7 @@ class AuthController extends Controller{
                 exit;
             }
             session_start();
-            $user = $userModel->getUserByEmail($email);
+            $user = $this->userModel->getUserByEmail($email);
             $user_id = $user -> id;
             echo $user_id;
             $_SESSION['user_id'] = $user_id;

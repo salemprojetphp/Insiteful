@@ -33,27 +33,42 @@ const likeBtns = document.querySelectorAll(".like-btn");
 //removing the refresh from the articles && truncating the description
 const posts = document.querySelectorAll('.blog-article');
 
-    // Truncate text to a specified length without cutting words in half
+    // Truncate text to a specified length without cutting words in half and only taking the three first lines
     function truncateText(text, limit) {
         let lastSpaceIndex = text.lastIndexOf(' ', limit);
         if (lastSpaceIndex === -1) {
             return text;
         }
-        let truncatedText = text.substring(0, lastSpaceIndex);
-        return truncatedText + ' ...';
+        let truncatedText;
+        if(text.length < 200){
+            truncatedText=text;
+        } else {
+            truncatedText = text.substring(0, lastSpaceIndex);
+        }
+        let lines = truncatedText.split('\n');
+        if (lines.length > 3) {
+            lines=lines.slice(0,3);
+            lines = lines.join('<br>');
+            return lines+' ...';
+        } else {
+            return lines.join('<br>') + ' ...';
+        }
     }
+    
 
     // Truncate text in each post
     posts.forEach(function(post) {
         const description = post.querySelector('.blog-description');
         const originalText = description.textContent;
-        const truncatedText = truncateText(originalText, 200);
-        if (originalText.length > 200) {
-            description.textContent = truncatedText ;
-        }
-        post.addEventListener('click', function(e) {
+        description.innerHTML = truncateText(originalText,200);
+
+        post.addEventListener('click', function(e,index) {
             e.preventDefault();
             e.stopPropagation();
+            console.log(post.id);
+            if(!e.target.closest('.blog-article-content-info')){
+                window.location.href = `/blog/article?id=${post.id}`;
+            }
         });
     });
 
@@ -64,11 +79,10 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
     // Attach click event listener to each dropdown button
     dropdownButtons.forEach(function(button, index) {
         button.addEventListener('click', function(event) {
-            // Toggle visibility of corresponding dropdown menu
             const menu = dropdownMenus[index];
+            console.log(index);
             menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
-            // Close other dropdown menus
             dropdownMenus.forEach(function(otherMenu, otherIndex) {
                 if (index !== otherIndex) {
                     otherMenu.style.display = 'none';
@@ -102,5 +116,4 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         });
     });
 
-//show whole article when clicking on it
 

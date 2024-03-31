@@ -30,7 +30,7 @@ class Post extends Model {
             return false;
         }
         $insertQuery->bindParam(':title', $title);
-        $insertQuery->bindParam(':description', $description);
+        $insertQuery->bindParam(':description', str_replace("\n", "<br>", $description));
         $insertQuery->bindParam(':author', $author);
         $insertQuery->bindParam(':date', $date);
         $insertQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
@@ -92,7 +92,7 @@ class Post extends Model {
             $imgSrc = $this->extractImage($post['id']);
             // Format date
             $date = date('F j, Y', strtotime($post['date']));
-            $html .= "<a href='#' class='blog-article bg-white shadow-sm mb32' id='" .$post["id"]."'>";
+            $html .= "<a href='/blog/article?id=" .$post['id']."' class='blog-article bg-white shadow-sm mb32' id='" .$post["id"]."'>";
             $html .= "<div class='blog-preview'>";
             $html .= "<img src='" . $imgSrc . "' width='258' height='200' alt='" . $post['title'] . "'>";
             $html .= "</div>";
@@ -110,7 +110,7 @@ class Post extends Model {
             $html .= "<img src='../public/images/like.svg' alt='like'>";
             $html .= "<p>0</p>";
             $html .= "</button>";
-            $html .= "<button>";
+            $html .= "<button class='comment-btn'>";
             $html .= "<img src='../public/images/comment.svg' alt='comment'>";
             $html .= "<p>0</p>";
             $html .= "</button>";

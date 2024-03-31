@@ -43,5 +43,9 @@ class PostController extends Controller{
         header("Location: /blog");
     }
 
+    public function fullArticle(){
+        require_once 'views/Blog/Article.php';
+    }
+
 }
 ?>

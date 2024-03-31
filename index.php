@@ -17,6 +17,7 @@ $routes = [
     '/auth' => 'AuthController@auth',
     '/signup/action' => 'AuthController@register',
     '/login/action' => 'AuthController@authenticate',
+    '/logout' => 'AuthController@logout',
     '/dashboard' => 'DashboardController@index',
     '/post-form' => 'PostController@handleFormSubmission',
     '/blog' => 'PostController@blog',
@@ -32,6 +33,7 @@ $routes = [
     '/forgotPassword/action' => 'AuthController@resetPasswordAction',
     '/setPassword' => 'AuthController@setPassword',
     '/setPassword/action' => 'AuthController@setPasswordAction',
+    '/blog/article' => 'PostController@fullArticle',
 ];
 
 

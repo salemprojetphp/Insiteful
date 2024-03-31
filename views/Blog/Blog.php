@@ -38,6 +38,16 @@
         <!-- contenu -->
         <section class="blog">
             <div class="content">
+                <!-- blog  -->
+                <div class="blog-articles" id="blogContainer">
+                    <h1 class="h2 mb32">Blog</h1>
+                    <!-- Articles -->
+                        <?php
+                            $postDisplayer= new Post();
+                            echo $postDisplayer->getAllPosts();
+                        ?>
+                </div>
+
                 <!-- newsletter -->
                 <div class="blog-sidebar newsletter gradient-orange">
                     <h3 class="mb8">Newsletter</h3>
@@ -47,15 +57,6 @@
                         <button type="submit" name="button" class="btn-white">Subscribe</button>
                     </form>         
                 </div> 
-
-                <!-- blog  -->
-                <div class="blog-articles" id="blogContainer">
-                    <h1 class="h2 mb32">Blog</h1>
-                    <!-- Articles -->
-                        <?php
-                            $postDisplayer= new Post();
-                            echo $postDisplayer->getAllPosts();
-                        ?>
             </div>
         </section>
     </main>
