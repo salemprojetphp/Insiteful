@@ -9,7 +9,9 @@
 header {
     position: relative;
 }
-
+header .navigation .login-btn{
+    display: none;
+}
 body{
     margin: -30px 0 20px;
     display: flex;
