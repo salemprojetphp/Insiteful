@@ -44,7 +44,7 @@ CREATE TABLE likes (
     user_id INT NOT NULL REFERENCES users(id),
     post_id INT NOT NULL REFERENCES post(id),
     PRIMARY KEY (user_id,post_id)
-)
+);
 
 CREATE TABLE comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,8 +53,13 @@ CREATE TABLE comments (
     comment TEXT NOT NULL,
     date DATE
 );
-
-
+CREATE TABLE feedbacks(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES user(id),
+    Feedback TEXT NOT NULL,
+    Date DATE,
+    Hidden BOOLEAN DEFAULT FALSE
+);
 -- 20 Examples 
 INSERT INTO visitors (user_id, website, ip, date, referrer, country, device, browswer)
 VALUES (1, 'insat.tn', '192.168.1.1', '2024-03-27', 'Facebook', 'Country A', 'Computer', 'Chrome'),

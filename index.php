@@ -13,7 +13,10 @@ if (php_sapi_name() === 'cli-server') {
 
 
 $routes = [
+
     '' => 'HomeController@index',
+    '/feedback/action'=>'FeedbackController@addFeedback',
+    '/feedback'=>'FeedbackController@index',
     '/auth' => 'AuthController@auth',
     '/signup/action' => 'AuthController@register',
     '/login/action' => 'AuthController@authenticate',

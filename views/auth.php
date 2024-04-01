@@ -1,3 +1,6 @@
+<?php 
+include_once 'header.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +16,6 @@
 </head>
 <body>
 
-<header>
-    <h2>
-        <a href="blog.php" class="logo"><img src="../public/images/insiteful.png" alt="logo"></a>
-    </h2>
-    <div class="navigation">
-        <a href="/">Home</a>
-        <a href="#">About</a>
-        <a href="/blog">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#">Feedback</a>
-    </div>
-</header>
 <?php
     if(isset($_GET['error'])) {
         echo "<h3>" . $_GET['error'] . "</h3>";
@@ -40,7 +31,7 @@
             <input type="email" name='email' placeholder="Email" />
             <input type="password" name='password' placeholder="Password" />
             <input type="password" name='cpassword' placeholder="Confirm Password" />
-            <button>Sign Up</button>
+            <button type="submit">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">

@@ -21,7 +21,7 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/blog">Blog</a>
             <a href="#">Contact</a>
-            <a href="#">Feedback</a>
+            <a href="/feedback">Feedback</a>
             <a href="/auth" class="login-btn">Get Started</a>
         </div>
         <label for="check">
