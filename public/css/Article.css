@@ -168,9 +168,12 @@ main {
     padding: 10px;
     border-bottom: #1f254c47 1px solid;
 }
-.comment p {
+.comment-content{
     margin: 2%;
     margin-left: 10%;
+    resize: none;
+    border: none;
+    font-size: 16px;
 }
 .comment-info {
     display: flex;
@@ -211,18 +214,23 @@ main {
     cursor: pointer;
     position:absolute;
 }
-.delete-comment-btn{
+.comment-btns button{
     background-color: transparent;
     color: none;
     border: none;
     cursor: pointer;
 }
-.delete-comment-btn :hover{
+.comment-btns button:hover{
     scale: 1.1;
 }
-.delete-comment-btn img{
+.comment-btns button img{
     width: 24px;
     height: 24px;
+}
+.comment-btns{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
 }
 
 /* Mobile*/

@@ -3,7 +3,7 @@ function timeSince($date) {
     $seconds = time() - strtotime($date)-3600;
     
     if ($seconds < 60) {
-        return "just now";
+        return "Just Now";
     } elseif ($seconds < 3600) {
         $minutes = floor($seconds / 60);
         return $minutes . " minute" . ($minutes == 1 ? "" : "s") . " ago";

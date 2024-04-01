@@ -39,6 +39,8 @@ $routes = [
     '/blog/comment' => 'PostController@addComment',
     '/getCommentId' => 'PostController@getCommentById',
     '/deleteComment' => 'PostController@deleteComment',
+    '/editComment' => 'PostController@editComment',
+    '/commentId' => 'PostController@getCommentId',
 ];
 
 

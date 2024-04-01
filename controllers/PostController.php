@@ -67,7 +67,6 @@ class PostController extends Controller{
     public function addComment(){
         $postId = $_GET['id'];
         $comment = $_POST['comment'];
-        echo $comment;
         session_start();
         $user_id=$_SESSION['user_id'];
         $commentAdder = new Comment();
@@ -78,6 +77,18 @@ class PostController extends Controller{
         $comment_id = $_GET['id'];
         $commentDeleter = new Comment();
         $commentDeleter->deleteComment($comment_id);
+    }
+
+    public function editComment(){
+        $comment_id=$_GET['id'];
+        $comment=$_GET['content'];
+        $commentEditor = new Comment();
+        $commentEditor->editComment($comment_id,$comment);
+    }
+
+    public function getCommentId(){
+        $commentModel = new Comment();
+        $commentModel->getCommentId();
     }
 
 }
