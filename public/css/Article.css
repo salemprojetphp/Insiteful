@@ -46,8 +46,7 @@ main {
 }
 
 /* Article */
-.article-container,
-.comments-container {
+.article-container {
     position: relative;
     width: 80%  ;
     margin: 0 5% 0 0;
@@ -58,9 +57,9 @@ main {
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 .comments-container {
-    border: #1F254C 1px solid;
-    width: 800px;
-    margin-left: 6%;
+    width: 825px;
+    padding: 3%  5% 0 5%;
+    /* margin-left: 6%; */
 }
 .article-container h1 {
     font-size: 48px;
@@ -69,6 +68,9 @@ main {
     margin:0;
     margin-bottom: 24px;
 }
+/* .article-container h2 a {
+    position: absolute;
+} */
 .article-container p {
     font-size: 18px;
     font-weight: 400;
@@ -155,6 +157,74 @@ main {
     background-color: #f0f0f0;
 }
 
+/* COMMENTS  */
+.comment{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 20px 0;
+    margin-left: 10%;
+    padding: 10px;
+    border-bottom: #1f254c47 1px solid;
+}
+.comment p {
+    margin: 2%;
+    margin-left: 10%;
+}
+.comment-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+.comment-form{
+    width: 825px;
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: #1f254c47 1px solid;
+}
+.comment-form textarea {
+    position: relative;
+    width: 690px ;
+    height: 48px;
+    padding: 10px;
+    border: 1px solid #1f254c47;
+    border-radius: 5px;
+    resize: none;
+}
+.comment-form button {
+    background-color: #1F254C;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position:absolute;
+}
+.delete-comment-btn{
+    background-color: transparent;
+    color: none;
+    border: none;
+    cursor: pointer;
+}
+.delete-comment-btn :hover{
+    scale: 1.1;
+}
+.delete-comment-btn img{
+    width: 24px;
+    height: 24px;
+}
+
 /* Mobile*/
 @media (max-width: 1110px) {
     .newsletter{
@@ -172,6 +242,9 @@ main {
         border-left: none;
         border-radius: 0%;
         box-shadow: none;
+    }
+    .comment-form{
+        width: 100%;
     }
 }
   

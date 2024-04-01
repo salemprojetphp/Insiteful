@@ -5,13 +5,11 @@ class Post extends Model {
     public $db;
 
     public function insert($title, $description, $author, $date, $imageInputName) {
-        // checking if image was provided
         if (empty($_FILES[$imageInputName]['tmp_name']) || $_FILES[$imageInputName]['error'] === UPLOAD_ERR_NO_FILE) {
             $photo = null;
             $imageFormat = null;
         } elseif ($_FILES[$imageInputName]['error'] === UPLOAD_ERR_OK) {
             // Image provided and upload was successful
-            // Extract image format
             $imageInfo = getimagesize($_FILES[$imageInputName]['tmp_name']);
             $imageFormat = $imageInfo['mime'];
     
@@ -21,7 +19,7 @@ class Post extends Model {
                 return false;
             }
         } else {
-            return false; // error
+            return false;
         }
     
         $query = "INSERT INTO post (title, description, author, date, image, imageFormat) VALUES (:title, :description, :author, :date, :image, :imageFormat)";
@@ -106,13 +104,13 @@ class Post extends Model {
             $html .= "<span>" . $date . "</span>";
             $html .= "</div>";
             $html .= "<div class='interact flex'>";
-            $html .= "<button class='like-btn'>";
-            $html .= "<img src='../public/images/like.svg' alt='like'>";
-            $html .= "<p>0</p>";
+            $html .= "<button class='like-btn' >";
+            $html .= "<img src='../public/images/". $this->isLiked($post['id']) .".svg' data-post-id='" .$post["id"]. "' alt='like'>";
+            $html .= "<p>" . $this->nbLikes($post["id"]) ."</p>";
             $html .= "</button>";
-            $html .= "<button class='comment-btn'>";
-            $html .= "<img src='../public/images/comment.svg' alt='comment'>";
-            $html .= "<p>0</p>";
+            $html .= "<button class='comment-btn' >";
+            $html .= "<img src='../public/images/comment.svg' data-post-id='" .$post["id"]. "' alt='comment'>";
+            $html .= "<p>" . $this->nbComments($post['id']) ."</p>";
             $html .= "</button>";
             if($user && $user->Role == "Admin"){
                 $html .= "<button class='more-btn'><img src='../public/images/more.svg' alt='more'></button>";
@@ -171,6 +169,57 @@ class Post extends Model {
         $editQuery->bindParam(':post_id', $postId);
         $result = $editQuery->execute();
         return $result;
+    }
+
+    public function like($userId, $postId) {
+        $query = "INSERT INTO likes (user_id, post_id) VALUES (:user_id, :post_id)";
+        $likeQuery = $this->db->prepare($query);
+        $likeQuery->bindParam(':user_id', $userId);
+        $likeQuery->bindParam(':post_id', $postId);
+        $result = $likeQuery->execute();
+        return $result;
+    }
+
+    public function dislike($userId,$postId){
+        $query = "DELETE FROM likes WHERE user_id = :user_id AND post_id = :post_id";
+        $dislikeQuery = $this->db->prepare($query);
+        $dislikeQuery->bindParam(':user_id', $userId);
+        $dislikeQuery->bindParam(':post_id', $postId);
+        $result = $dislikeQuery->execute();
+        return $result;
+    }
+
+    public function nbLikes($postId){
+        $query = "SELECT COUNT(*) FROM likes WHERE post_id = :post_id";
+        $nbLikesQuery = $this->db->prepare($query);
+        $nbLikesQuery->bindParam(':post_id', $postId);
+        $nbLikesQuery->execute();
+        $nbLikes = $nbLikesQuery->fetchColumn();
+        return $nbLikes;
+    }
+
+    public function isLiked($post_id){
+        $user_id = $_SESSION['user_id'];
+        $query = "SELECT COUNT(*) FROM likes WHERE user_id = :user_id AND post_id = :post_id";
+        $isLikedQuery = $this->db->prepare($query);
+        $isLikedQuery->bindParam(':user_id', $user_id);
+        $isLikedQuery->bindParam(':post_id', $post_id);
+        $isLikedQuery->execute();
+        $isLiked = $isLikedQuery->fetchColumn();
+        if($isLiked){
+            return 'like-active';
+        }else{
+            return 'like';
+        }
+    }
+
+    public function nbComments($post_id){
+        $query = "SELECT COUNT(*) FROM comments WHERE post_id = :post_id";
+        $nbCommentsQuery = $this->db->prepare($query);
+        $nbCommentsQuery->bindParam(':post_id', $post_id);
+        $nbCommentsQuery->execute();
+        $nbComments = $nbCommentsQuery->fetchColumn();
+        return $nbComments;
     }
     
 }    

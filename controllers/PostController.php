@@ -2,6 +2,7 @@
 require_once __DIR__ . '\\..\\models\\Post.php';
 require_once 'Controller.php';
 require_once __DIR__ . '\\..\\models\\User.php';
+require_once __DIR__ . '\\..\\models\\Comment.php';
 
 class PostController extends Controller{
     public function blog(){
@@ -45,6 +46,38 @@ class PostController extends Controller{
 
     public function fullArticle(){
         require_once 'views/Blog/Article.php';
+    }
+
+    public function like(){
+        $postId = $_GET['id'];
+        session_start();
+        $userId= $_SESSION['user_id'];
+        $postLiker = new Post();
+        $postLiker->like($userId,$postId);
+    }
+
+    public function dislike(){
+        $postId = $_GET['id'];
+        session_start();
+        $userId= $_SESSION['user_id'];
+        $postDisliker = new Post();
+        $postDisliker->dislike($userId,$postId);
+    }
+
+    public function addComment(){
+        $postId = $_GET['id'];
+        $comment = $_POST['comment'];
+        echo $comment;
+        session_start();
+        $user_id=$_SESSION['user_id'];
+        $commentAdder = new Comment();
+        $commentAdder->addComment($user_id,$postId,$comment);
+    }
+
+    public function deleteComment(){
+        $comment_id = $_GET['id'];
+        $commentDeleter = new Comment();
+        $commentDeleter->deleteComment($comment_id);
     }
 
 }

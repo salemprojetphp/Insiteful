@@ -1,10 +1,22 @@
 <?php
     require_once 'views/header.php';
     require_once 'models/Post.php';
+    require_once 'models/Comment.php';
+    require_once 'models/User.php';
     session_start();
     $postId = $_GET['id'];
     $postModel = new Post();
+    $commentModel = new Comment();
     $post = $postModel->getPostById($postId);
+    $userModel = new User();
+    $user_id=$_SESSION['user_id'];
+    $user= $userModel->getUserById($user_id);
+    $username = $user->username;
+    if(isset($_GET['comment'])) {
+        echo '<script>
+        window.onload = function() { document.querySelector("#comments").scrollIntoView(); }
+        </script>';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +30,15 @@
     <link rel="stylesheet" href="../../public/css/Article.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../../public/js/Article.js" defer></script>
+    <script src="../../public/js/Blog/Article.js" defer></script>
+    <script src="../../public/js/Blog/LikeSystem.js" defer></script>
+    <script src="../../public/js/Blog/CommentSystem.js" defer></script>
 </head>
 <body>
-    <main class="flex">
+    <main class="flex" id='<?= $username ?>'>
         <div class="content">
             <!-- Article  -->
+            <h2 style="position: absolute; z-index:3;"><a href="/blog"><</a></h2>
             <div class="article-container">
                 <h1 class="h2 mb32"><?= $post['title'] ?></h1>
                 <p class="article-content"><?= $post['content']?></p>
@@ -36,12 +51,20 @@
                     <span class="caption gray"><?= $post['date'] ?></span>
                     <div class="interact">
                         <button class="like-btn">
-                            <img src="../public/images/like.svg" alt="like">
-                            <p>0</p>
+                            <img src='../public/images/<?= $postModel->isLiked($postId)?>.svg' alt='like'>
+                            <p>
+                                <?php
+                                    echo $postModel->nbLikes($postId);
+                                ?>
+                            </p>
                         </button>
                         <button>
                             <img src="../public/images/comment.svg" alt="comment">
-                            <p>0</p>
+                            <p class="nb-comments">
+                                <?php
+                                    echo $postModel->nbComments($postId);
+                                ?>
+                            </p>
                         </button>
                         <?php
                         if(isset($_SESSION['user']) && $_SESSION['user']->Role == "Admin"){
@@ -66,34 +89,19 @@
                 </form>         
             </div> 
         </div>
-        <div class="comments-container">
+        <div class="comments-container" id="comments">
             <h2 class="h2 mb32">Comments</h2>
             <div class="comment-form">
-                <form id="comment-form" method="POST">
+                <form id="comment-form" method="POST" action="/blog/comment?id=<?= $postId?>">
                     <textarea name="comment" class="width-full mb16" placeholder="Write your comment here"></textarea>
-                    <button type="submit" name="button" class="btn-white">Comment</button>
+                    <button type="submit" name="button" class="btn-white comment-btn">Comment</button>
                 </form>
             </div>
             <div class="comments">
                 <!-- Comment -->
-                <div class="comment">
-                    <div class="comment-info flex">
-                        <img src="../public/images/user.png" width="32" height="32" alt="author">
-                        <span class="ml8 mr32">John Doe</span>
-                        <span class="caption gray">2 hours ago</span>
-                    </div>
-                    <p class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies.</p>
-                    <!-- <div class="interact">
-                        <button class="like-btn">
-                            <img src="../public/images/like.svg" alt="like">
-                            <p>0</p>
-                        </button>
-                        <button>
-                            <img src="../public/images/comment.svg" alt="comment">
-                            <p>0</p>
-                        </button>
-                    </div> -->
-                </div>
+                <?php
+                    echo $commentModel->displayComments($postId);
+                ?>
             </div>
         </div>
     </main>

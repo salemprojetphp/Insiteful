@@ -1,6 +1,7 @@
 <?php 
     include_once 'views/header.php';
     require_once 'models/User.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,8 @@
     <link rel="icon" href="../../public/images/insiteful.png">
     <link rel="stylesheet" href="../../public/css/Blog.css">
     <link rel="stylesheet" href="../../public/css/general.css">
-    <script src="../../public/js/Blog.js" defer></script>
+    <script src="../../public/js/Blog/Blog.js" defer></script>
+    <script src="../../public/js/Blog/LikeSystem.js" defer></script>
 </head>
 
 <body>
@@ -28,7 +30,6 @@
         <!-- add btn for admin  -->
         <?php
             $userModel = new User();
-            session_start();
             $user = $userModel->getUserById($_SESSION['user_id']);
             if($user && $user->Role == "Admin"){
                 echo "<a href='/addPost' class='add-btn'>+</a>";

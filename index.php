@@ -34,6 +34,11 @@ $routes = [
     '/setPassword' => 'AuthController@setPassword',
     '/setPassword/action' => 'AuthController@setPasswordAction',
     '/blog/article' => 'PostController@fullArticle',
+    '/blog/like' => 'PostController@like',
+    '/blog/dislike' => 'PostController@dislike',
+    '/blog/comment' => 'PostController@addComment',
+    '/getCommentId' => 'PostController@getCommentById',
+    '/deleteComment' => 'PostController@deleteComment',
 ];
 
 

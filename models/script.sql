@@ -5,6 +5,7 @@ CREATE TABLE users(
     Username VARCHAR(255) NOT NULL,
     Role ENUM('Admin', 'User') DEFAULT 'User',
     Verified BOOLEAN DEFAULT FALSE,
+    picture LONGBLOB,
 );
 
 CREATE TABLE verification (
@@ -37,6 +38,20 @@ CREATE TABLE visitors(
     device ENUM('Computer', 'Phone') DEFAULT 'Computer',
     browswer ENUM('Chrome', 'Firefox', 'Safari', 'Opera', 'Edge', 'Other') DEFAULT 'Other',
     FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE likes (
+    user_id INT NOT NULL REFERENCES users(id),
+    post_id INT NOT NULL REFERENCES post(id),
+    PRIMARY KEY (user_id,post_id)
+)
+
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
+    post_id INT NOT NULL REFERENCES post(id),
+    comment TEXT NOT NULL,
+    date DATE
 );
 
 

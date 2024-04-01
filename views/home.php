@@ -1,7 +1,8 @@
 <?php
     include_once 'header.php';
     session_start();
-    $_SESSION['user_id'] = null;
+    if (!isset($_SESSION['user_id']))
+        $_SESSION['user_id'] = null;
 ?>
 
 <!DOCTYPE html>
