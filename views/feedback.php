@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="/public/js/utils.js"></script><script data-id="33671ad4-a966-4a52-b48f-56c92d10a678" data-utcoffset="1" data-server="https://simple-web-analytics.com" src="https://cdn.counter.dev/script-testing.js"></script>
+    <script data-id="33671ad4-a966-4a52-b48f-56c92d10a678" data-utcoffset="1" data-server="https://simple-web-analytics.com" src="https://cdn.counter.dev/script-testing.js"></script>
     <script src="components/counter-flash.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AerWkj-d8OVv4VFbb4c0YC2C9EYlKw9A6QzZdKqaKHomGcnfiQcBFXL0vtL2A1sF_pfSuVY2IUg8XFbx&amp;vault=true&amp;intent=subscription" data-sdk-integration-source="button-factory" data-uid-auto="uid_mjhnbdvtjqseghzieuoeabthzjrlbg"></script><script src="https://www.paypal.com/tagmanager/pptm.js?id=counter.dev&amp;t=xo&amp;v=5.0.431&amp;source=payments_sdk&amp;client_id=AerWkj-d8OVv4VFbb4c0YC2C9EYlKw9A6QzZdKqaKHomGcnfiQcBFXL0vtL2A1sF_pfSuVY2IUg8XFbx&amp;disableSetCookie=true&amp;vault=true" id="xo-pptm" async=""></script>
 </head>
