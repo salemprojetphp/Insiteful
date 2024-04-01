@@ -4,6 +4,7 @@ require_once 'utils/date_since.php';
 
 class Comment extends Model
 {
+    public $db;
     public function addComment($user_id,$post_id, $comment){
         $query = "INSERT INTO comments (user_id, post_id, comment, date) VALUES (:user_id, :post_id, :comment, :current_date)";
         $addCommentQuery = $this->db->prepare($query);
