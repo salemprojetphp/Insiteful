@@ -8,6 +8,9 @@ class FeedbackController extends Controller {
     public function index() {
         require_once 'views/feedback.php';
     }
+    public function adminFeedback(){
+        require_once 'views/admin/adminfeedback.php';
+    }
     public function addFeedback(){
         $feedback = $_POST['feedback'];
         $feedbackModel = new Feedback();
@@ -20,6 +23,11 @@ class FeedbackController extends Controller {
                 header('Location: /feedback?error=Feedback%20Cannot%20be%20empty');
             }
         } 
+    } public function hideFeedback(){
+        $feedback = $_GET['id'];
+        $feedbackModel = new Feedback();
+        $feedbackModel->hide($feedback);
     }
 }
+
 ?>
