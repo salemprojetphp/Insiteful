@@ -53,6 +53,7 @@ CREATE TABLE comments (
     comment TEXT NOT NULL,
     date DATE
 );
+
 CREATE TABLE feedbacks(
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL REFERENCES user(id),

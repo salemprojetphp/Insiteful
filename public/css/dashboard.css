@@ -137,6 +137,7 @@ select {
     padding-left: 4px;
     position: absolute;
     left: 90%;
+    text-align: center;
 }
 .number{
     position: absolute;
@@ -163,4 +164,8 @@ canvas{
 }
 .devices-container .devices, .browsers{
     padding-top: 15px;
+}
+.users{
+    margin-left: auto;
+    margin-right: auto;
 }

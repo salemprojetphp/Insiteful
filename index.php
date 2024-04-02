@@ -44,6 +44,10 @@ $routes = [
     '/deleteComment' => 'PostController@deleteComment',
     '/editComment' => 'PostController@editComment',
     '/commentId' => 'PostController@getCommentId',
+    '/adminDashboard' => 'DashboardController@adminDashboard',
+    '/adminFeedback' => 'FeedbackController@adminFeedback',
+    '/hideFeedback' => 'FeedbackController@hideFeedback',
+
 ];
 
 

@@ -5,8 +5,8 @@ class User  extends Model{
     public $db;
 
     public function getUsers() {
-        $query = $this->db->query("SELECT * FROM users");
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $query = $this->db->query("SELECT * FROM users where Role != 'Admin' ");
+        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function login($email, $password) {
@@ -60,6 +60,13 @@ class User  extends Model{
         $queryPrep->execute([$email]);
         $queryResult = $queryPrep->fetch(PDO::FETCH_OBJ);
         return $queryResult->Verified;
+    }
+    public function getNumberOfUsers(){
+        $query = "select count(*) as number from users where Role != 'Admin'";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute();
+        $queryResult = $queryPrep->fetch(PDO::FETCH_OBJ);
+        return $queryResult->number;
     }
 
 }

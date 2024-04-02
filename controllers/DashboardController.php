@@ -9,5 +9,9 @@ class DashboardController extends Controller
     {
         require_once 'views/dashboard.php';
     }
+    public function adminDashboard(){
+        require_once 'views/admin/admindashboard.php';
+    }
+
 }
 ?>

@@ -1,7 +1,14 @@
 <?php 
-    include_once 'views/header.php';
-    require_once 'models/User.php';
     session_start();
+    require_once 'models/User.php';
+    $userModel = new User();
+    $user = $userModel->getUserById($_SESSION['user_id']);
+    if($user->role == "user"){
+        include_once 'views/header.php';
+    }
+    elseif($user->role == "admin"){
+        include_once 'views/admin/adminheader.php';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +36,7 @@
 
         <!-- add btn for admin  -->
         <?php
-            $userModel = new User();
-            $user = $userModel->getUserById($_SESSION['user_id']);
+
             if($user && $user->Role == "Admin"){
                 echo "<a href='/addPost' class='add-btn'>+</a>";
             }

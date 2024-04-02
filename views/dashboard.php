@@ -117,12 +117,13 @@
         <div class="chart-container">
             <div class="chart">
                 <?php
+                //generating the json file to be used in the javascript script to create the chart
                     if(isset($websiteSelected)){
                         $visitors->generateLineChartJSONFile(1, $websiteSelected);
                     } 
                 ?>
                 <canvas id="lineChart"></canvas>
-                <script src="/public/js/lineChart.js"></script>        
+                <script src="/public/js/dashboard/lineChart.js"></script>        
             </div>
         </div>
     </section>
@@ -138,7 +139,7 @@
                         $visitors->generateSourcesJSONFile(1,$websiteSelected);
                     } 
                 ?>
-                <script src="/public/js/sources.js"></script>
+                <script src="/public/js/dashboard/sources.js"></script>
 
             </div>
             <div class="countries">
@@ -151,7 +152,7 @@
                         $visitors->generateCountriesJSONFile(1,$websiteSelected);
                     } 
                 ?>
-                <script src="/public/js/countries.js"></script>
+                <script src="/public/js/dashboard/countries.js"></script>
             </div>
         </div>
     </section>
@@ -164,8 +165,8 @@
                     $visitors->generateDevicesDonutChartJSONFile(1,$websiteSelected);
                 }
                 ?>
-                <canvas id='devicesDonutChart'>aze</canvas>
-                <script src="public/js/devicesDonutChart.js"></script> 
+                <canvas id='devicesDonutChart'></canvas>
+                <script src="public/js/dashboard/devicesDonutChart.js"></script> 
             </div>
             <div class="browsers">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAvVJREFUSEvFlknIjlEUx39fZhvExoJELAyZo8xlKGMhs2RaWEiGKNOKMpSFjZApc5GiRDJT5inJvDEWmTNG7l/nqee97n2e93376ju757nnnP+95/zPUEEVSUUV4VIqcAOgL9AWqGaX/gjcAm4D74p9SLHAI4FpwCCgesT5H+AssAXYnXeBPOBmwE6gZ54j7/wiMB14ELPLAh5moPVKBE3UPwD9gesh+xjwGGB/mYBps89AL8t/gbsY8DHLZyVg8wjoAHxNOwsBjwXeuJuerAxU87EdmJoF3A24BPQAFgNDAuA/gXXA8RIvdh74ndj4L97jmDje2DgOuOk5vwBMAboAre3sBnDY6Y4A5mZcRiSbHwKuBbwH6tjhAsfqFsAs+9YL5wG7gI4egOpW5aOLq+ZD8g1QhfzSYfrFva0BJEZfgK4W+u/2wqtA84jjE4Ci9AKoHdFRKq/4wDOBTZ7BDleLCm974DRwMCevAlbIla6QiGAiWsGLF7owrw5oKxKPXRrmAItygEVIRXFlRE85FjELgJe4PrwiYHAZ6O7Ct6oI4KXAD2BtBFiXX+8DzwA2RwyGAw2BbTkvHm2hnhzRmwDs9YH7uJF3JmLwxEahOpr0QvIUGAjcA2pGdDolJZpmdQ1XLp8yGKmSUYkdsTpO+1aNilTiwOwIqKpE5aTx+d8ioBE4KSOcG1zPFQlVs1oKJKp9/VdDuZZaEHw3SpNm+j/xO1dnM85K5StXXoesn0uvnTWZoy4aso+JSvJODFj/DwCjckiUPtbGocG/NcNGHW1i+jw0nbR1qP8mocy6gzqa9i8NgMYRxbfWgF7mASfhOwU0ynm5end9R5jlEb3Xrg33c630vn+etfo0deNR/bdVxKmcDQXuRipB/wc7Ij4L2ecte3VtLqvV+Y1fC+CywKai6bPGuqBSEZQ84MSoiY3EAUAbG40ik9KRiDbKfS7XGwExP1OKBU47aQmIMBoemssPgXPA8zywYshVio+ydMt5cVlAvtFfz0SEH9RaN3YAAAAASUVORK5CYII="/>
@@ -175,7 +176,7 @@
                 }
                 ?>
                 <canvas id="browsersDonutChart"></canvas> 
-                <script src="public/js/browsersDonutChart.js"></script> 
+                <script src="public/js/dashboard/browsersDonutChart.js"></script> 
             </div>
         </div>
     </section>

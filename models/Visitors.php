@@ -101,5 +101,38 @@ class Visitors extends model{
         endforeach;
         $this->generateJSONFile($data, "countries");
     }
+    public function generateWebsitesLineChartJSONFile(){
+        $query = "select website, count(website) as number from visitors group by(website)";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute();
+        $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
+        $data = array();
+        foreach($queryRes as $result):
+            $data[$result->website] = $result->number;
+        endforeach;
+        $this->generateJSONFile($data, "/adminjson/websitesLineChart");
+    }
+    public function generateLikesDonutChartJSONFile(){
+        $query = "select p.title as post, count(p.title) as number from post p inner join likes l on p.id = l.post_id group by(p.title)";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute();
+        $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
+        $data = array();
+        foreach($queryRes as $result):
+            $data[$result->post] = $result->number;
+        endforeach;
+        $this->generateJSONFile($data, "/adminjson/likesDonutChart");
+    }
+    public function generateCommentsDonutChartJSONFile(){
+        $query = "select p.title as post, count(p.title) as number from post p inner join comments c on p.id = c.post_id group by(p.title)";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute();
+        $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
+        $data = array();
+        foreach($queryRes as $result):
+            $data[$result->post] = $result->number;
+        endforeach;
+        $this->generateJSONFile($data, "/adminjson/commentsDonutChart");
+    }
 }
 ?>

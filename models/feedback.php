@@ -12,6 +12,17 @@ class Feedback extends Model
         $queryPrep = $this->db->prepare($query);
         $queryPrep->execute([$feedback,$date]);
     }
+    public function getFeedbacks(){
+        $query = "select f.id, u.Username, f.Feedback, f.Date from feedbacks f inner join users u on f.user_id= u.id where  Hidden=False";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute();
+        return $queryPrep->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function hide($id){
+        $query = "update feedbacks set Hidden = True where id = ?";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute([$id]);
+    }
 }
 
 ?>
