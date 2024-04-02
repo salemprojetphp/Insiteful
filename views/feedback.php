@@ -36,10 +36,10 @@
         <div class="modal-content">
             <form action="/feedback/action" method="POST">
                 <label class="feedback">How can we make the service better for you?
-                    <textarea class="feedback" name="feedback" style="min-height: 200px;"></textarea>
+                    <textarea class="feedback" name="feedback" style="min-height: 200px;" id ="feedback"></textarea>
                 <div class="account-btn-group flex mt24 mb32">
                     <a href="/" class="btn-secondary full mr16" rel="modal:close">Cancel</a>
-                    <button type="submit" class="btn-primary full">Send</button>
+                    <button type="submit" class="btn-primary full" id="add-btn">Send</button>
                 </div>
 
             </form>
@@ -47,4 +47,5 @@
     </div>
 </div>
 </body>
+<script src="../public/js/feedback.js"></script>
 </html>
