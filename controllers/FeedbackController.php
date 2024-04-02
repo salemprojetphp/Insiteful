@@ -13,10 +13,9 @@ class FeedbackController extends Controller {
         $feedbackModel = new Feedback();
         if($feedback){
             try{
-                echo"saleeemmm11<br>";
                 $feedbackModel->insert($feedback);
-                echo"saleeemmm";
                 header('Location: /feedback?success=Feedback%20Submitted');
+                exit;
             }
             catch(Exception $e){
                 header('Location: /feedback?error=Feedback%20Cannot%20be%20empty');
