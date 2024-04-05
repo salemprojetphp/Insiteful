@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <main class="flex" style = "margin-top:12%">
+    <main class="flex">
         <form action="/editPost/action?id=<?=$postId?>" method="post" enctype="multipart/form-data" class="add-post-form gradient-white flex">
             <h2 style="position: absolute"><a href="/blog"><</a></h2>
             <h2 class="mb32 form-title">Edit Post</h2>
@@ -35,13 +35,21 @@
             <label for="content">Content</label>
             <textarea name="content" placeholder="Content" class=" ml8 content-input"><?= $content ?></textarea>
             <br>
+            <label for="bg-color">Background Color</label>
+            <div class="color-inputs">
+                <input type="color" name="bg-color1" class="ml8 bg-color-input" value="#00ffff">
+                <input type="color" name="bg-color2" class="ml8 bg-color-input" value="#147efb">
+            </div>
+            <br>
             <label for="image">Image</label>
             <div class="image-input-container">
                 <input type="file" name="image" class = "image-input ml8" value="<?= $imgSrc?>">
                 <a class="btn-white" id="no-img-btn">Delete Image</a>
             </div>
             <br>
-            <img src="<?= $imgSrc?>" alt="" class="image-preview">
+            <div class="image-preview">
+                <img src="<?= $imgSrc?>" alt="" class="image-preview-image">
+            </div>
             <div class="btn-container">
                 <a href="/blog" class="btn-white">Cancel</a>
                 <input type="submit" value="Edit" class="btn-blue" id="add-btn">

@@ -1,5 +1,6 @@
 <?php
-    include_once "adminheader.php";
+    session_start();
+    include_once "views/header.php";
     include_once 'models/Feedback.php';
     $feedbackModel = new Feedback();
 ?>

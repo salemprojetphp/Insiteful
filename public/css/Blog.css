@@ -3,7 +3,7 @@ main{
   position: relative;
   margin-top: 12%;
 }
-main a {
+#blogContainer a {
   text-decoration: none;
   color: #147efb;
   transition: color .2s
@@ -74,7 +74,7 @@ main a:hover {
   height: 200px;
   text-align: center;
   border-radius: 16px 16px 0px 0px;
-  background: linear-gradient(96.55deg, #00ffff -25.2%, #147efb 55.15%);
+  /* background: linear-gradient(96.55deg, #00ffff -25.2%, #147efb 55.15%); */
 }
 .blog-article-content {
   padding: 24px 32px 32px 32px;
@@ -182,6 +182,26 @@ main a:hover {
   background-color: #f0f0f0;
 }
 
+.pagination{
+  display: flex;
+  justify-content: center;
+  column-gap: 5px;
+  margin: 20px;
+}
+.pagination-btn {
+  padding:5px;
+  height: auto;
+  border: solid 1px #1f254c26;
+}
+.pagination-btn:hover {
+  background-color: #1f254c;
+  color: white;
+}
+.page-selected{
+  background-color: #1f254c;
+  color: white;
+  margin: 0;
+}
 
 /* Mobile*/
 @media (max-width: 1110px) {

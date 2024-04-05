@@ -4,7 +4,7 @@ require_once 'Model.php';
 class Post extends Model {
     public $db;
 
-    public function insert($title, $description, $author, $date, $imageInputName) {
+    public function insert($title, $description, $author, $date, $imageInputName,$bgColor) {
         if (empty($_FILES[$imageInputName]['tmp_name']) || $_FILES[$imageInputName]['error'] === UPLOAD_ERR_NO_FILE) {
             $photo = null;
             $imageFormat = null;
@@ -22,7 +22,8 @@ class Post extends Model {
             return false;
         }
     
-        $query = "INSERT INTO post (title, description, author, date, image, imageFormat) VALUES (:title, :description, :author, :date, :image, :imageFormat)";
+        $query = "INSERT INTO post (title, description, author, date, image, imageFormat, bgColor) 
+        VALUES (:title, :description, :author, :date, :image, :imageFormat, :bgColor)";
         $insertQuery = $this->db->prepare($query);
         if (!$insertQuery) {
             return false;
@@ -33,7 +34,7 @@ class Post extends Model {
         $insertQuery->bindParam(':date', $date);
         $insertQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
         $insertQuery->bindParam(':imageFormat', $imageFormat);
-    
+        $insertQuery->bindParam(':bgColor', $bgColor);
         $result = $insertQuery->execute();
     
         return $result;
@@ -79,10 +80,32 @@ class Post extends Model {
     }
 
     //return all posts as html elements
-    public function getAllPosts() {
-        $query = "SELECT post.*, users.username AS author_name FROM post JOIN users ON post.author = users.id";
-        $posts = $this->db->query($query);
-        $posts->setFetchMode(PDO::FETCH_ASSOC);
+    public function getAllPosts($page=1,$filter='recent') {
+        $limit=5;
+        $offset = ($page - 1) * $limit;
+        if($filter == 'recent'){
+            $query = "SELECT post.*, users.username AS author_name 
+                    FROM post 
+                    JOIN users ON post.author = users.id"
+                    . " ORDER BY post.date DESC LIMIT :limit OFFSET :offset";
+        } elseif ($filter == 'old'){
+            $query = "SELECT post.*, users.username AS author_name 
+                    FROM post 
+                    JOIN users ON post.author = users.id"
+                    . " ORDER BY post.date ASC LIMIT :limit OFFSET :offset";
+        } elseif ($filter == 'popular'){
+            $query = "SELECT post.*, users.username AS author_name 
+                    FROM post 
+                    JOIN users ON post.author = users.id
+                    ORDER BY (SELECT COUNT(*) FROM likes WHERE likes.post_id = post.id) + 
+                            (SELECT COUNT(*) FROM comments WHERE comments.post_id = post.id) DESC
+                    LIMIT :limit OFFSET :offset";
+        }
+        $getpostsquery = $this->db->prepare($query);
+        $getpostsquery->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $getpostsquery->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $getpostsquery->execute();
+        $posts = $getpostsquery->fetchAll(PDO::FETCH_ASSOC);
         $userModel = new User();
         $user = $userModel->getUserById($_SESSION['user_id']);
         $html = "";
@@ -91,8 +114,8 @@ class Post extends Model {
             // Format date
             $date = date('F j, Y', strtotime($post['date']));
             $html .= "<a href='/blog/article?id=" .$post['id']."' class='blog-article bg-white shadow-sm mb32' id='" .$post["id"]."'>";
-            $html .= "<div class='blog-preview'>";
-            $html .= "<img src='" . $imgSrc . "' width='258' height='200' alt='" . $post['title'] . "'>";
+            $html .= "<div class='blog-preview' style='background: " . $post['bgColor'] . ";'>";
+            $html .= "<img src='" . $imgSrc . "' width='auto' height='200' alt='" . $post['title'] . "'>";
             $html .= "</div>";
             $html .= "<div class='blog-article-content'>";
             $html .= "<h2 class='h3 mb16 black'>" . $post['title'] . "</h2>";
@@ -123,6 +146,14 @@ class Post extends Model {
         }
         return $html;
     }
+
+    public function getTotalPostsCount(){
+        $query = "SELECT COUNT(*) AS total_count FROM post";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total_count'];
+    }
     
     //return post by id
     public function getPostById($postId) {
@@ -144,7 +175,7 @@ class Post extends Model {
         return $postData;
     }
 
-    public function edit($title, $description, $postId, $imageInputName) {
+    public function edit($title, $description, $postId, $imageInputName, $bgColor) {
         // checking if image was provided
         if (empty($_FILES[$imageInputName]['tmp_name']) || $_FILES[$imageInputName]['error'] === UPLOAD_ERR_NO_FILE) {
             $photo = null;
@@ -159,14 +190,14 @@ class Post extends Model {
         } else {
             return false;
         }
-    
-        $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat WHERE id = :post_id";
+        $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat, bgColor = :bgColor WHERE id = :post_id";
         $editQuery = $this->db->prepare($query);
         $editQuery->bindParam(':title', $title);
         $editQuery->bindParam(':description', $description);
         $editQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
         $editQuery->bindParam(':imageFormat', $imageFormat);
         $editQuery->bindParam(':post_id', $postId);
+        $editQuery->bindParam(':bgColor', $bgColor);
         $result = $editQuery->execute();
         return $result;
     }

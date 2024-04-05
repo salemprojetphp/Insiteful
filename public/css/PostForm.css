@@ -1,5 +1,6 @@
 main {
     flex-direction: column;
+    margin-top: 12%;
 }
 
 .add-post-form{
@@ -82,6 +83,20 @@ main {
     width: 90%;
     cursor: pointer;
 }
+.color-inputs{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    margin-bottom: 16px;
+    justify-content: center;
+}
+.color-inputs input {
+    width: 200px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 .form-title {
     font-size: 24px;
     font-weight: 700;
@@ -90,18 +105,24 @@ main {
     align-self: center;
 }
 .image-preview {
-    margin: 0;
-    padding: 0;
+    width: 90%;
+    height: 200px;
+    text-align: center;
+    border-radius: 16px 16px 0px 0px;
+    background: linear-gradient(96.55deg, #00ffff -25.2%, #147efb 55.15%);
+    align-self: center;
+}
+.image-preview img {
     width: auto;
-    height: auto;
-    scale: 0.8;
+    height: 100%;
 }
 #no-img-btn{
-    width: 170px;
-    height: 32px;
+    width: auto;
+    height: auto;
     text-align: center;
-    padding-top: 6px;
+    padding-top: 10px;
     border: rgba(0, 0, 0, 0.05) 1px solid;
+    white-space: nowrap;
 }
 .image-input-container{
     display: flex;
@@ -110,8 +131,13 @@ main {
 }
 /* Mobile*/
 @media (max-width: 1110px) {
+    main {
+        margin-top:40%;
+    }
     .add-post-form{
         width: 100%;
+        box-shadow: none;
+        border: none;
     }
     .title-input{
         width: 100%;
@@ -131,8 +157,5 @@ main {
     }
     .form-title {
         font-size: 20px;
-    }
-    main {
-        margin-top: 30%;
     }
 }

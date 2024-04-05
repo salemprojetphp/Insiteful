@@ -1,3 +1,5 @@
+SET GLOBAL max_allowed_packet=16*1024*1024; -- Set max_allowed_packet to 16MB to accept high quality images
+
 CREATE TABLE users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     Email VARCHAR(255) UNIQUE NOT NULL,
@@ -24,7 +26,8 @@ CREATE TABLE post(
     description TEXT NOT NULL,
     Author INT NOT NULL,
     date DATE,
-    FOREIGN KEY (Author) REFERENCES users(id)
+    FOREIGN KEY (Author) REFERENCES users(id),
+    bgColor VARCHAR(255) DEFAULT 'linear-gradient(96.55deg, #00ffff -25.2%, #147efb 55.15%)',
 );
 
 CREATE TABLE visitors(

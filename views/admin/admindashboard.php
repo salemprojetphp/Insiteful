@@ -1,9 +1,11 @@
 <?php
-    include_once "adminheader.php";
+    session_start();
+    include_once "views/header.php";
     include_once "models/Visitors.php";
     include_once "models/User.php";
     $visitors = new Visitors();
     $user = new User(); 
+    echo !$_SESSION['user_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

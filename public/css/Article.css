@@ -1,20 +1,23 @@
-main {
+.content{
     margin-top: 12%;
     flex-direction: column;
+    width: 70%;
+    margin-left: 2% ;
 }
 
-.content {
+main {
     display: flex;
     flex-direction: row;    
-    width: 1110px;
     margin: 0 auto;
     padding-top: 48px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    column-gap: 15px;
 }
 
 /* Newsletter */
 .newsletter {
     position: sticky;
+    margin-top: 12%;
     top: 32px;
     padding: 24px;
     border-radius: 16px;
@@ -48,8 +51,8 @@ main {
 /* Article */
 .article-container {
     position: relative;
-    width: 80%  ;
-    margin: 0 5% 0 0;
+    width: 100%  ;
+    margin: 0;
     padding: 5%  7% 0 5%;
     flex-direction: column;
     align-items: center;
@@ -57,9 +60,7 @@ main {
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 .comments-container {
-    width: 825px;
     padding: 3%  5% 0 5%;
-    /* margin-left: 6%; */
 }
 .article-container h1 {
     font-size: 48px;
@@ -68,9 +69,6 @@ main {
     margin:0;
     margin-bottom: 24px;
 }
-/* .article-container h2 a {
-    position: absolute;
-} */
 .article-container p {
     font-size: 18px;
     font-weight: 400;
@@ -88,9 +86,9 @@ main {
     align-items: center;
     justify-content: space-between;
 }
-.article-container div span {
-    width: auto;
-}
+/* .article-container div span {
+    width: 100%;
+} */
 .author-info{
     display: flex;
     flex-direction: row;
@@ -157,14 +155,12 @@ main {
     background-color: #f0f0f0;
 }
 
-/* COMMENTS  */
+/* comments  */
 .comment{
     width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    margin: 20px 0;
-    margin-left: 10%;
     padding: 10px;
     border-bottom: #1f254c47 1px solid;
 }
@@ -174,6 +170,7 @@ main {
     resize: none;
     border: none;
     font-size: 16px;
+    overflow: hidden !important;
 }
 .comment-info {
     display: flex;
@@ -188,7 +185,7 @@ main {
     column-gap: 10px;
 }
 .comment-form{
-    width: 825px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     row-gap: 10px;
@@ -196,14 +193,17 @@ main {
     padding: 10px;
     border-bottom: #1f254c47 1px solid;
 }
+.comment-form form{
+    width: 80%;
+}
 .comment-form textarea {
     position: relative;
-    width: 690px ;
-    height: 48px;
+    width: 100%;
     padding: 10px;
     border: 1px solid #1f254c47;
     border-radius: 5px;
     resize: none;
+    overflow: hidden !important;
 }
 .comment-form button {
     background-color: #1F254C;
@@ -253,6 +253,9 @@ main {
     }
     .comment-form{
         width: 100%;
+    }
+    .comment-form textarea{
+        width: 90%;
     }
 }
   

@@ -3,12 +3,19 @@
     require_once 'models/User.php';
     $userModel = new User();
     $user = $userModel->getUserById($_SESSION['user_id']);
-    if($user->role == "user"){
-        include_once 'views/header.php';
+    // if($user && $user->Role == "Admin"){
+    //     include_once 'views/admin/adminheader.php';
+    // } else {
+    //     include_once 'views/header.php';
+    // }
+    include_once 'views/header.php';
+    if(($_SESSION['user_id'])!=null){
+        $logged="true";
+    } else {
+        $logged="false";
     }
-    elseif($user->role == "admin"){
-        include_once 'views/admin/adminheader.php';
-    }
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $currentFilter = isset($_GET['filter']) ? $_GET['filter'] : 'recent';
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +31,17 @@
     <script src="../../public/js/Blog/LikeSystem.js" defer></script>
 </head>
 
-<body>
+<body class="<?= $logged?>">
     <main class="flex" style="margin-top:12%">
         <!-- filter buttons  -->
         <div class="filter-box flex">
-            <button class="filter-btn selected" id="all-btn">All</button>
-            <button class="filter-btn" id="recent-btn">Recent</button>
-            <button class="filter-btn" id="pertinence-btn">Pertinence</button>
-            <button class="filter-btn" id="popular-btn">Popular</button>
+            <a href="/blog?page=<?=$currentPage?>&filter=recent" class="filter-btn<?= $currentFilter === 'recent' ? ' selected' : '' ?>" id="recent-btn">Recent</a>
+            <a href="/blog?page=<?=$currentPage?>&filter=old" class="filter-btn<?= $currentFilter === 'old' ? ' selected' : '' ?>" id="less-recent-btn">Old</a>
+            <a href="/blog?page=<?=$currentPage?>&filter=popular" class="filter-btn<?= $currentFilter === 'popular' ? ' selected' : '' ?>" id="popular-btn">Popular</a>
         </div>
 
         <!-- add btn for admin  -->
         <?php
-
             if($user && $user->Role == "Admin"){
                 echo "<a href='/addPost' class='add-btn'>+</a>";
             }
@@ -51,21 +56,41 @@
                     <!-- Articles -->
                         <?php
                             $postDisplayer= new Post();
-                            echo $postDisplayer->getAllPosts();
+                            echo $postDisplayer->getAllPosts($page=$currentPage,$filter=$currentFilter);
                         ?>
                 </div>
 
                 <!-- newsletter -->
                 <div class="blog-sidebar newsletter gradient-orange">
-                    <h3 class="mb8">Newsletter</h3>
-                    <div class="caption gray mb16">No spam, ever. Only musings and writings.</div>
-                    <form id="newsletter-subscribe" method="POST">
-                        <input type="text" class="width-full mb16" name="mail" placeholder="Enter your email" />
-                        <button type="submit" name="button" class="btn-white">Subscribe</button>
-                    </form>         
+                    <h3 class="mb8">Welcome</h3>
+                    <div class="caption gray mb16">Our dedicated team uploads interesting articles on a weekly basis, covering a wide range of topics to inform, inspire, and entertain.</div>
                 </div> 
             </div>
         </section>
+
+        <!-- Pagination buttons -->
+        <div class="pagination">
+            <?php
+            $totalPages = ceil($postDisplayer->getTotalPostsCount() / 5);
+            for ($i = 1; $i <= $totalPages; $i++) {
+                if ($totalPages > 8) {
+                    if ($i == $currentPage) {
+                        echo "<a href='?page=$i&filter=$currentFilter' class='pagination-btn btn-white page-selected'>$i</a>";
+                    } elseif ($i == $totalPages || ($i >= $currentPage - 2 && $i <= $currentPage + 2)) {
+                        echo "<a href='?page=$i&filter=$currentFilter' class='pagination-btn btn-white'>$i</a>";
+                    } elseif ($i == $currentPage - 3 || $i == $currentPage + 3) {
+                        echo "<span>...</span>";
+                    }
+                } else {
+                    if ($i == $currentPage) {
+                        echo "<a href='?page=$i&filter=$currentFilter' class='pagination-btn btn-white page-selected'>$i</a>";
+                    } else {
+                       echo "<a href='?page=$i&filter=$currentFilter' class='pagination-btn btn-white'>$i</a>"; 
+                    }
+                }
+            }
+            ?>
+        </div>
     </main>
     <footer></footer>
 </body>

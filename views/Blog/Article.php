@@ -10,12 +10,22 @@
     $post = $postModel->getPostById($postId);
     $userModel = new User();
     $user_id=$_SESSION['user_id'];
-    $user= $userModel->getUserById($user_id);
-    $username = $user->username;
+    if($user_id){
+        $user= $userModel->getUserById($user_id);
+        $username = $user->Username;
+    } else {
+        $username = "";
+    }
     if(isset($_GET['comment'])) {
         echo '<script>
         window.onload = function() { document.querySelector("#comments").scrollIntoView(); }
         </script>';
+    }
+    if(($_SESSION['user_id'])!=null){
+        $logged="true";
+        
+    } else {
+        $logged="false";
     }
 ?>
 
@@ -34,7 +44,7 @@
     <script src="../../public/js/Blog/LikeSystem.js" defer></script>
     <script src="../../public/js/Blog/CommentSystem.js" defer></script>
 </head>
-<body>
+<body class="<?= $logged?>">
     <main class="flex" id='<?= $username ?>'>
         <div class="content">
             <!-- Article  -->
@@ -78,32 +88,28 @@
                     </div>
                 </div>
             </div>    
-            
-            <!-- newsletter -->
-            <div class="blog-sidebar newsletter gradient-orange">
-                <h3 class="mb8">Newsletter</h3>
-                <div class="caption gray mb16">No spam, ever. Only musings and writings.</div>
-                <form id="newsletter-subscribe" method="POST">
-                    <input type="text" class="width-full mb16" name="mail" placeholder="Enter your email" />
-                    <button type="submit" name="button" class="btn-white">Subscribe</button>
-                </form>         
-            </div> 
-        </div>
-        <div class="comments-container" id="comments">
-            <h2 class="h2 mb32">Comments</h2>
-            <div class="comment-form">
-                <form id="comment-form" method="POST" action="/blog/comment?id=<?= $postId?>">
-                    <textarea name="comment" class="width-full mb16" placeholder="Write your comment here"></textarea>
-                    <button type="submit" name="button" class="btn-white comment-btn">Comment</button>
-                </form>
-            </div>
-            <div class="comments">
-                <!-- Comment -->
-                <?php
-                    echo $commentModel->displayComments($postId);
-                ?>
+            <div class="comments-container" id="comments">
+                <h2 class="h2 mb32">Comments</h2>
+                <div class="comment-form">
+                    <form id="comment-form" method="POST" action="/blog/comment?id=<?= $postId?>">
+                        <textarea name="comment" class="mb16" placeholder="Write your comment here"></textarea>
+                        <button type="submit" name="button" class="btn-white comment-btn">Comment</button>
+                    </form>
+                </div>
+                <div class="comments">
+                    <!-- Comment -->
+                    <?php
+                        echo $commentModel->displayComments($postId);
+                    ?>
+                </div>
             </div>
         </div>
+
+        <!-- newsletter -->
+        <div class="blog-sidebar newsletter gradient-orange">
+            <h3 class="mb8">Welcome</h3>
+            <div class="caption gray mb16">Our dedicated team uploads interesting articles on a weekly basis, covering a wide range of topics to inform, inspire, and entertain.</div>
+        </div> 
     </main>
     <footer></footer>
 </body>

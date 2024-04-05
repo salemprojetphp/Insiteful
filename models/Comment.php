@@ -48,7 +48,7 @@ class Comment extends Model
                 $html .= "</div>";
             }
             $html .= "</div>";
-            $html .= "<textarea class='comment-content' readonly>" . $comment['comment'] . "</textarea>";
+            $html .= "<textarea class='comment-content' readonly>" .  nl2br($comment['comment']). "</textarea>";
             $html .= "</div>";
         }
         return $html;

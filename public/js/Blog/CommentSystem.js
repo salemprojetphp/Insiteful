@@ -5,10 +5,15 @@ const username = document.querySelector("main").id;
 const nbComments = document.querySelector('.nb-comments');
 let deleteCommentBtns= document.querySelectorAll('.delete-comment-btn');
 
+
 commentBtn.addEventListener('click', function(e) {
     e.preventDefault();
     const comment = form.querySelector('textarea[name="comment"]').value;
     if (!comment) {
+        return;
+    }
+    if(!session){
+        window.location.href="/auth";
         return;
     }
     fetch(form.action, {
@@ -17,6 +22,7 @@ commentBtn.addEventListener('click', function(e) {
     })
     .then(response => {
         form.reset();
+        typeComment.style.height = originalHeightTypeComment + 'px';
         const author = username;
         const currentDate = new Date();
         addComment(author, comment, "Just Now");
@@ -41,8 +47,26 @@ function assignDeleteEventListeners() {
         });
     });
 }
-assignDeleteEventListeners();
-
+function assignEditCommentEventListener() {
+    document.querySelectorAll('.edit-comment-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const comment = btn.closest('.comment');
+            const textarea = comment.querySelector('.comment-content');
+            if (btn.querySelector('img').src.includes('edit.png')) {
+                btn.querySelector('img').src = '../public/images/save.png';
+                textarea.readOnly = false; 
+                textarea.focus(); 
+            } else {
+                const comment_id = btn.id;
+                fetch(`/editComment?id=${comment_id}&content=${textarea.value}`, {
+                    method: 'GET'
+                });
+                textarea.readOnly = true; 
+                btn.querySelector('img').src = '../public/images/edit.png';
+            }
+        });
+    });
+}
 function addComment(author, content, time) {
     fetch('/commentId',{
         header : 'Content-Type: application/json',
@@ -82,26 +106,5 @@ function addComment(author, content, time) {
     .catch(error => console.error('Error fetching max comment ID:', error));
 }
 
-function assignEditCommentEventListener() {
-    document.querySelectorAll('.edit-comment-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const comment = btn.closest('.comment');
-            const textarea = comment.querySelector('.comment-content');
-            if (btn.querySelector('img').src.includes('edit.png')) {
-                btn.querySelector('img').src = '../public/images/save.png';
-                textarea.readOnly = false; 
-                textarea.focus(); 
-            } else {
-                const comment_id = btn.id;
-                fetch(`/editComment?id=${comment_id}&content=${textarea.value}`, {
-                    method: 'GET'
-                });
-                textarea.readOnly = true; 
-                btn.querySelector('img').src = '../public/images/edit.png';
-            }
-        });
-    });
-}
-
 assignEditCommentEventListener();
-
+assignDeleteEventListeners();

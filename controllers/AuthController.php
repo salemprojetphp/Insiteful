@@ -119,10 +119,15 @@ class AuthController extends Controller{
             session_start();
             $user = $this->userModel->getUserByEmail($email);
             $user_id = $user -> id;
-            echo $user_id;
             $_SESSION['user_id'] = $user_id;
-            header('Location: /dashboard?email=' . $email);
-            exit;
+            $user=$this->userModel->getUserById($user_id);
+            if($user->Role == 'Admin'){
+                header('Location: /adminDashboard?email=' . $email);
+                exit;
+            } else {
+                header('Location: /dashboard?email=' . $email);
+                exit;
+            }
         } else {
             header('Location: /auth?error=' . urlencode($loginResult));
             exit;

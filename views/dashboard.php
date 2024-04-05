@@ -1,7 +1,8 @@
 <?php
     include_once "header.php";
     include_once "models/Visitors.php";
-    //$currentUser = $_SESSION["user_id"]
+    session_start();
+    // echo $_SESSION["user_id"];
     $visitors = new Visitors();
     if(isset($_GET["data"])){
         $websiteSelected = $_GET["data"];
@@ -14,7 +15,6 @@
         $visitors->generateJSONFile('', "countries");
         $visitors->generateJSONFile('', "sources");
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,6 +180,6 @@
             </div>
         </div>
     </section>
-
+    
 </body>
 </html>

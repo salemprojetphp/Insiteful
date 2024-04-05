@@ -20,11 +20,13 @@ class PostController extends Controller{
     public function handleFormSubmission() {
         $title = $_POST["title"];
         $content = $_POST["content"];
+        $bgColor = 'linear-gradient(96.55deg, ' . $_POST['bg-color1'] .' -25.2%, ' . $_POST['bg-color2'] .' 55.15%)';
+        echo $bgColor;
         $postAdder = new Post(); 
         $userModel = new User();
         session_start();
         $userId= $_SESSION['user_id'];
-        $postAdder->insert($title, $content, $userId, date("Y-m-d"), "image");
+        $postAdder->insert($title, $content, $userId, date("Y-m-d"), "image",$bgColor);
         header("Location: /blog");
     }
 
@@ -39,8 +41,9 @@ class PostController extends Controller{
         $postId = $_GET["id"];
         $title = $_POST["title"];
         $content = $_POST["content"];
+        $bgColor = 'linear-gradient(96.55deg,' . $_POST['bg-color1'] .' -25.2%, ' . $_POST['bg-color2'] .' 55.15%)';
         $postEditor = new Post();
-        $postEditor->edit($title, $content, $postId,"image");
+        $postEditor->edit($title, $content, $postId,"image",$bgColor);
         header("Location: /blog");
     }
 
