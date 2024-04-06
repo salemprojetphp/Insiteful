@@ -119,7 +119,7 @@
                 <?php
                 //generating the json file to be used in the javascript script to create the chart
                     if(isset($websiteSelected)){
-                        $visitors->generateLineChartJSONFile(1, $websiteSelected);
+                        $visitors->generateChartJSONFile(1, $websiteSelected, "date", "lineChart");
                     } 
                 ?>
                 <canvas id="lineChart"></canvas>
@@ -136,7 +136,7 @@
                 </div>
                 <?php
                     if(isset($websiteSelected)){
-                        $visitors->generateSourcesJSONFile(1,$websiteSelected);
+                        $visitors->generateChartJSONFile(1, $websiteSelected, "referrer", "sources");
                     } 
                 ?>
                 <script src="/public/js/dashboard/sources.js"></script>
@@ -149,7 +149,7 @@
                 </div>
                 <?php
                     if(isset($websiteSelected)){
-                        $visitors->generateCountriesJSONFile(1,$websiteSelected);
+                        $visitors->generateChartJSONFile(1, $websiteSelected, "country", "countries");
                     } 
                 ?>
                 <script src="/public/js/dashboard/countries.js"></script>
@@ -162,7 +162,7 @@
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXtJREFUSEvll70uRUEQx3/XI2glvmrCG+ARUEg0NHpR+7h4AGqtEFEpVYLQEhEtUXsAHw37T+4mm5s9Z8eek5yb3OnuyX/nNzO7O7O3RUPWaohLz4IV2CQwWLEyb8B76KMs4yHgEpioCPXLj4EV4FcfysBHwFpNUO9mHrhIga+AOeAJWM8IYLWTYbh0B9hLga+BGQe/AWYzwG1XVoFC23U/9D1a6hFgDDgEpiIZfwGPwHciGDN4ADgFlgzZfbiAtF/3JVozeBk4MUC9RHs/XQd425VeeyDToSoyf2h0LVSlIjNnHArLrlmOzgcXPVw5Dq0B1gJW1NqW1HWsvdT9B1bL22qi1P0H3gc2myh1eKo1uYpsFNDACW0DOOi+h+G9860z5lQjUuPyv/bZec28doPDXm1xql59axECginTZ68PW57G4ZnRkWQvVd5jIViT5txFtWiAax4vAHcGbVQSa/LjwHCJQ71AHoCfXGiqyVfxm1zbs/8kkpHnCv4A5OpdHwlmzyAAAAAASUVORK5CYII="/>
                 <h3>Devices</h3>
                 <?php if(isset($websiteSelected)){
-                    $visitors->generateDevicesDonutChartJSONFile(1,$websiteSelected);
+                        $visitors->generateChartJSONFile(1, $websiteSelected, "device", "devicesDonutChart");
                 }
                 ?>
                 <canvas id='devicesDonutChart'></canvas>
@@ -172,7 +172,7 @@
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAvVJREFUSEvFlknIjlEUx39fZhvExoJELAyZo8xlKGMhs2RaWEiGKNOKMpSFjZApc5GiRDJT5inJvDEWmTNG7l/nqee97n2e93376ju757nnnP+95/zPUEEVSUUV4VIqcAOgL9AWqGaX/gjcAm4D74p9SLHAI4FpwCCgesT5H+AssAXYnXeBPOBmwE6gZ54j7/wiMB14ELPLAh5moPVKBE3UPwD9gesh+xjwGGB/mYBps89AL8t/gbsY8DHLZyVg8wjoAHxNOwsBjwXeuJuerAxU87EdmJoF3A24BPQAFgNDAuA/gXXA8RIvdh74ndj4L97jmDje2DgOuOk5vwBMAboAre3sBnDY6Y4A5mZcRiSbHwKuBbwH6tjhAsfqFsAs+9YL5wG7gI4egOpW5aOLq+ZD8g1QhfzSYfrFva0BJEZfgK4W+u/2wqtA84jjE4Ci9AKoHdFRKq/4wDOBTZ7BDleLCm974DRwMCevAlbIla6QiGAiWsGLF7owrw5oKxKPXRrmAItygEVIRXFlRE85FjELgJe4PrwiYHAZ6O7Ct6oI4KXAD2BtBFiXX+8DzwA2RwyGAw2BbTkvHm2hnhzRmwDs9YH7uJF3JmLwxEahOpr0QvIUGAjcA2pGdDolJZpmdQ1XLp8yGKmSUYkdsTpO+1aNilTiwOwIqKpE5aTx+d8ioBE4KSOcG1zPFQlVs1oKJKp9/VdDuZZaEHw3SpNm+j/xO1dnM85K5StXXoesn0uvnTWZoy4aso+JSvJODFj/DwCjckiUPtbGocG/NcNGHW1i+jw0nbR1qP8mocy6gzqa9i8NgMYRxbfWgF7mASfhOwU0ynm5end9R5jlEb3Xrg33c630vn+etfo0deNR/bdVxKmcDQXuRipB/wc7Ij4L2ecte3VtLqvV+Y1fC+CywKai6bPGuqBSEZQ84MSoiY3EAUAbG40ik9KRiDbKfS7XGwExP1OKBU47aQmIMBoemssPgXPA8zywYshVio+ydMt5cVlAvtFfz0SEH9RaN3YAAAAASUVORK5CYII="/>
                 <h3>Browsers</h3>
                 <?php if(isset($websiteSelected)){
-                    $visitors->generateBrowsersDonutChartJSONFile(1,$websiteSelected);
+                        $visitors->generateChartJSONFile(1, $websiteSelected, "browswer", "browsersDonutChart");
                 }
                 ?>
                 <canvas id="browsersDonutChart"></canvas> 

@@ -25,7 +25,7 @@
         <div class="chart-container">
             <div class="chart">
                 <?php
-                    $visitors->generateWebsitesLineChartJSONFile(); 
+                    $visitors->generateAdminChartJSONFile("website", "websitesLineChart"); 
                 ?>
                 <canvas id="websitesLineChart"></canvas>
                 <script src="public/js/dashboard/admindashboard/websitesLineChart.js"></script>        
@@ -38,7 +38,7 @@
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAYZJREFUSEvl1r9LVXEYx/HXxcWhIDBoqJyCFqFoaopMiIygSVEaXGvqDwj6AeUcLerWJEiLOCQuFUI4Fg7S0hQtDiE0RA7W9wvnXo6nc73ee+73CPms5/t93ny+53k+z9NwRNE4Iq4q4POYwFt86VZAr+AhfMRF/MZNrHcD7wV8Eh9wJQdawd2U4EGs4VoB8gaTqcADWMadEsB9LKQCL2K6JPkfnMaPFOCXeNgm8ftQWDe6gcazhymuq9g4IPEDzFcFP0JMdBajWfVeR1RVJb5jDi+aSfKKxzMzaH7rJ7iZ81bWFfueOqp9npOVAhwZs8V//BRPEoOfhfyRs0/xfw2+h+gHtSreRpxou3WDW4VVJ/hX6OMz+FnWxymL61XRcvMGkgq8h2FE92pFHeClsBpNFf22DvAlbB4EfhzaKzpLP736HcbKpkte8Qxe9xl8G6udwCfCwvYJF7KDVYfEFkaC/8cN5Z8oWwQi+Bw+Ywenwq51uYdh/A1f2907zAbSA7PzleMH/gsZylsfNRWwMwAAAABJRU5ErkJggg=="/>
                 <h3>Likes</h3>
                 <?php
-                    $visitors->generateLikesDonutChartJSONFile();
+                    $visitors->generateAdminDonutChartJSONFile("likes", "likesDonutChart");
                 ?>
                 <canvas id='likesDonutChart'></canvas>
                 <script src="public/js/dashboard/admindashboard/likesDonutChart.js"></script> 
@@ -47,7 +47,7 @@
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAQ9JREFUSEvt1zFOw0AQheEvNQXcACIuEAlRwyFyhEhI9NQkPS0NEgUtXIL0FLRBCskVQEK0iQsjYxkym8SYCFzaM+/febNaz7Y09LQa4iqDt9BFe80LmuAW77luEbyDB+yvGZrLjXCAt+xFEXyKy5qguWwP12VwH+c1gwdz/YzzqeJ/cO76Cx4TW9DBdkVOktVDHCeC73G0seDGrE50+dvwpB5HKt7DbmCFSeDI5oqeAZsBbszqQOvCIUlWh1UDgX8PfIKrn/4tPuEQrxHwDaaB3i0KecbdVzNX+RD42AiLVJf5Xpy5iuCL+VB2toxgNKcKXDu0qsfZXF1rpVVzdTZPj6NWrRr3a64wqxYSzp8BzmhIH416I5UAAAAASUVORK5CYII="/>
                 <h3>Comments</h3>
                 <?php 
-                    $visitors->generateCommentsDonutChartJSONFile();
+                    $visitors->generateAdminDonutChartJSONFile("comments", "commentsDonutChart");
                 ?>
                 <canvas id="commentsDonutChart"></canvas> 
                 <script src="public/js/dashboard/admindashboard/commentsDonutChart.js"></script> 
