@@ -9,11 +9,11 @@
     }
     //empty the previous json files if a website isn't selected when he opens the dashboard page
     if(!isset($websiteSelected)){
-        $visitors->generateJSONFile('', "browsersDonutChart");
-        $visitors->generateJSONFile('', "devicesDonutChart");
-        $visitors->generateJSONFile('', "lineChart");
-        $visitors->generateJSONFile('', "countries");
-        $visitors->generateJSONFile('', "sources");
+        $visitors->generateJSONFile('', "browsersDonutChart", "");
+        $visitors->generateJSONFile('', "devicesDonutChart", "");
+        $visitors->generateJSONFile('', "lineChart", "");
+        $visitors->generateJSONFile('', "countries", "");
+        $visitors->generateJSONFile('', "sources", "");
     }
 ?>
 <!DOCTYPE html>
