@@ -19,8 +19,9 @@ class AuthController extends Controller{
     }
 
     public function logout(){
-        session_destroy();
-        header('Location: ');
+        session_start();
+        $_SESSION['user_id']=null;
+        header('Location: /home');
     }
 
     public function verifyEmail(){

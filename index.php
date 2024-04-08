@@ -15,6 +15,7 @@ if (php_sapi_name() === 'cli-server') {
 $routes = [
 
     '' => 'HomeController@index',
+    '/home' => 'HomeController@index',
     '/feedback/action'=>'FeedbackController@addFeedback',
     '/feedback'=>'FeedbackController@index',
     '/auth' => 'AuthController@auth',
