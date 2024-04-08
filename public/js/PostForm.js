@@ -36,7 +36,7 @@ const imagePreviewimg = document.querySelector('.image-preview-image');
 const deleteImageButton = document.getElementById('no-img-btn');
 
 function isImage(file) {
-    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff', 'image/webp', 'image/svg+xml'];
+    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff', 'image/webp'];
     return file && acceptedImageTypes.includes(file.type);
 }
 

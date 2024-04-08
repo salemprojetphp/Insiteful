@@ -6,9 +6,6 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-header{
-    z-index: auto;
-}
 
 section{
     position: relative;

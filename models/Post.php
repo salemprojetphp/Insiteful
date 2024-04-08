@@ -122,7 +122,7 @@ class Post extends Model {
             $html .= "<div class='blog-description gray mb24'>" . $post['description'] . "</div>";
             $html .= "<div class='blog-article-content-info flex caption gray'>";
             $html .= "<div class='flex'>";
-            $html .= "<img src='../public/images/user.png' width='24' height='24' alt='author'>";
+            $html .= "<img src='../public/images/user.png' width='36' height='36' alt='author'>";
             $html .= "<span class='ml8 mr24'>" . $post['author_name'] . "</span>";
             $html .= "<span>" . $date . "</span>";
             $html .= "</div>";
