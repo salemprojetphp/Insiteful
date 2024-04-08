@@ -45,7 +45,7 @@
                     <a href="/">Home</a>
                     <a href="/dashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
-                    <a href="#">Contact</a>
+                    <a href="/contact">Contact</a>
                     <a href="/feedback">Feedback</a>
                 ';
             } 

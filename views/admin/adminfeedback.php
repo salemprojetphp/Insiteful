@@ -1,5 +1,13 @@
 <?php
     session_start();
+    // $userModel = new User(); 
+    // include_once "models/User.php";
+    // $user = $userModel->getUserById($_SESSION['user_id']);
+    // echo $_SESSION['user_id'];
+    // if(!isset($user) || $user->Role != 'Admin'){
+    //     echo "404 - not found";
+    //     return false;
+    // }
     include_once "views/header.php";
     include_once 'models/Feedback.php';
     $feedbackModel = new Feedback();

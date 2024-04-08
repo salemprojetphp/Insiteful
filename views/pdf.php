@@ -6,6 +6,7 @@
     $user = $userModel->getUserById(1);
     $username = $user->Username;
     $visitors = new Visitors();
+    $currentDate = date("d-m-Y");
     $websites = $visitors->getUserWebsites(1);
     $html = "<!DOCTYPE html>
             <html lang='en'>
@@ -20,9 +21,7 @@
                         font-family: 'Poppins', sans-serif;
                         color: #1F254C;
                     }
-                    h2{
-                        text-align: center;
-                    }
+
                     table{
                         border-collapse: collapse;
                         width: 100%;
@@ -34,9 +33,27 @@
                         padding: 8px;
                         text-align: center;
                     }
+                    .bottom{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        margin-top: 50px;
+                        border-top: 1px solid gray;
+                        padding-top: 10px;
+                    }
+                    .username, .date{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        column-gap: space-between;
+                    }
                 </style>
             </head>
-            <body>";
+            <body>
+                    <h2 class='username'>
+                        $username
+                    </h2>
+                    <h2 class='date'>
+                        $currentDate
+                    </h2>";
                 foreach($websites as $website):
                     $html .= "<h2>$website->website</h2>";
                     $html .= "<table>
@@ -65,9 +82,11 @@
                                     </table>";
 
                 endforeach;
-            $html .= "</body>
+            $html .= "
+                            <div class='bottom'>insitefulcontact@gmail.com</div>
+                        </body>
                     </html>";
-    PDFGenerator::generatePDF($html, $username)
+    PDFGenerator::generatePDF($html, "$username recap file $currentDate");
 ?>
 
 

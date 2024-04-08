@@ -1,11 +1,16 @@
 <?php
     session_start();
-    include_once "views/header.php";
     include_once "models/Visitors.php";
     include_once "models/User.php";
     $visitors = new Visitors();
-    $user = new User(); 
-    echo !$_SESSION['user_id'];
+    $userModel = new User(); 
+    // $user = $userModel->getUserById($_SESSION['user_id']);
+    // echo $_SESSION['user_id'];
+    // if(!isset($user) || $user->Role != 'Admin'){
+    //     echo "404 - not found";
+    //     return false;
+    // }
+    include_once "views/header.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,11 +64,11 @@
             <div class="users"> <!-- Users -->
                 <div class="countries-title">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAb1JREFUSEvN1k3ITUEYB/DfK18lJcmOhCyUKCs7lGJhQcpGoXyUlJ0US5LsUD42rFCilLKwYMVCCYWVfKWUkgUbCTN1jt6ue95nzts5XbOd5/x/M819Zu6YEY2xEbkmA0/BNiyvFv0SN/C7zSbawmtwBcsGkFfYiceleBt4Pe5iekP4d2zAoxK8FJ6F95gbhH7AUvyI8FJ4Ly5FYdV8Pv+bUW0pfAH7o7Bq/jQOR7Wl8EXsi8Kq+fM4ENWWwkdxPAqr5o/gVFRbCueefRGFVb28JLXWm6i2FM45l7ErCDyDQxGa59vAM6obanNDcF7YHvzqGq4XugNbxvX0J1zD7RKwrmmz4za5Ye1/Dy/A1nQjrUiPxKLUWlMHtvQz/fDepiN4hlv4GG052vFKnMSmKGhg/k51e+VXa+iYCM431TlMa4nW5fmh2J2e0KvDvm+Ct+P6JMHxn+XW2oh7g1nD4Plppe8wswM4R3zBQuT3+u8YBp/FwY7QOuZYOrITEfw5ne28juEnWD0RvBivO0bruNn41nRz5T9zD3uCc2s+b4LX4n5P8Do8aILnYFVP8FN8bYJ7Mv+Nja7M3hYyMvgPElg8H/XErXYAAAAASUVORK5CYII="/>
-                    <h2>Users : <?php echo $user->getNumberOfUsers(); ?></h2>
+                    <h2>Users : <?php echo $userModel->getNumberOfUsers(); ?></h2>
 
                 </div>
                 <?php
-                    $users = $user->getUsers();
+                    $users = $userModel->getUsers();
                     foreach($users as $u) : ?>
                         <div class="source-country-item">
                             <div class="name">
