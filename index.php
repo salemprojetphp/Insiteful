@@ -19,6 +19,7 @@ $routes = [
     '/feedback/action'=>'FeedbackController@addFeedback',
     '/feedback'=>'FeedbackController@index',
     '/auth' => 'AuthController@auth',
+    '/contact'=> 'ContactController@index',
     '/signup/action' => 'AuthController@register',
     '/login/action' => 'AuthController@authenticate',
     '/logout' => 'AuthController@logout',
