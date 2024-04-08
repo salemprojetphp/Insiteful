@@ -47,6 +47,7 @@ $routes = [
     '/adminDashboard' => 'DashboardController@adminDashboard',
     '/adminFeedback' => 'FeedbackController@adminFeedback',
     '/hideFeedback' => 'FeedbackController@hideFeedback',
+    '/dashboard/pdf' => 'DashboardController@pdf',
 
 ];
 

@@ -10,6 +10,13 @@ class Visitors extends model{
         $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
         return($queryRes);
     }
+    public function getUserWebsiteInformation($user_id, $website){
+        $query = "Select date, referrer, country, device, browswer from visitors where user_id = ? and website = ?";
+        $queryPrep = $this->db->prepare($query);
+        $queryPrep->execute([$user_id, $website]);
+        $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
+        return($queryRes);
+    }
     public function getNumberOfVisits($user_id, $website){
         $query = "select count(website) as number from visitors where user_id=? and website = ?";
         $queryPrep = $this->db->prepare($query);
@@ -73,6 +80,10 @@ class Visitors extends model{
         $queryPrep->execute();
         $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
         $this->generateJSONFile($queryRes, "/adminjson/$json", "post");
+    }
+    public function generateHTMLTable($website){
+
+
     }
 }
 ?>
