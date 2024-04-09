@@ -5,7 +5,6 @@
         session_start();
     }
     $userID = $_SESSION["user_id"];
-    // echo $_SESSION["user_id"];
     $visitors = new Visitors();
     if(isset($_GET["data"])){
         $websiteSelected = $_GET["data"];

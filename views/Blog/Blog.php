@@ -3,11 +3,6 @@
     require_once 'models/User.php';
     $userModel = new User();
     $user = $userModel->getUserById($_SESSION['user_id']);
-    // if($user && $user->Role == "Admin"){
-    //     include_once 'views/admin/adminheader.php';
-    // } else {
-    //     include_once 'views/header.php';
-    // }
     include_once 'views/header.php';
     if(($_SESSION['user_id'])!=null){
         $logged="true";

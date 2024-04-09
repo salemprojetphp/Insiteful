@@ -3,7 +3,9 @@
     require_once 'models/Post.php';
     require_once 'models/Comment.php';
     require_once 'models/User.php';
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $postId = $_GET['id'];
     $postModel = new Post();
     $commentModel = new Comment();
