@@ -11,6 +11,13 @@
     include_once "views/header.php";
     include_once 'models/Feedback.php';
     $feedbackModel = new Feedback();
+    $feedbacksToHide = [];
+    if(isset($_GET["id"])){
+        $feedbacksToHide[] = $_GET["id"];
+    }
+    foreach($feedbacksToHide as $feedback):
+        $feedbackModel->hide($feedback);
+    endforeach;
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +35,9 @@
     <div class="container">
         <?php 
             $feedbacks = $feedbackModel->getFeedbacks();
+            if(count((array)$feedbacks) === 0){
+                echo "<h2>Looks like we're clear for now ! </h2>";
+            }
             foreach($feedbacks as $feedback): ?>
             <div class="feedback">
                 <button id="remove">
@@ -42,15 +52,20 @@
                 <div class="content">
                     <?php echo $feedback->Feedback; ?>
                 </div>
+                <div id="feedbackid" style="display :none">
+                    <?php echo $feedback->id; ?>
+                </div>
             </div>
         <?php endforeach ?>
     </div>
     <script>
         const buttons = document.querySelectorAll("#remove");
+        const feedbackID = document.querySelector("#feedbackid").textContent;
         buttons.forEach(addEventListener("click", (e) =>{
             let feedback = e.target.parentNode;
             if(feedback.className == "feedback" && e.target.id == "remove"){
-                feedback.remove();
+                fetch(`/adminFeedback?id=${feedbackID}`).then(feedback.remove());
+                
             }
         }))
     </script>

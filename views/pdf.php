@@ -2,12 +2,16 @@
     include_once "models/Visitors.php";
     include_once "utils/PDFGenerator/PDFGenerator.php";
     include_once "models/User.php";
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    $userID = $_SESSION["user_id"];
     $userModel = new User();
-    $user = $userModel->getUserById(1);
+    $user = $userModel->getUserById($userID);
     $username = $user->Username;
     $visitors = new Visitors();
     $currentDate = date("d-m-Y");
-    $websites = $visitors->getUserWebsites(1);
+    $websites = $visitors->getUserWebsites($userID);
     $html = "<!DOCTYPE html>
             <html lang='en'>
             <head>
@@ -68,7 +72,7 @@
                                 </thead>
                                 <tbody>";
 
-                            $infos = $visitors->getUserWebsiteInformation(1, $website->website);
+                            $infos = $visitors->getUserWebsiteInformation($userID, $website->website);
                             foreach ($infos as $info):
                                 $html .= "<tr>
                                             <td>$info->date</td>
