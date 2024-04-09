@@ -13,18 +13,12 @@
     $currentFilter = isset($_GET['filter']) ? $_GET['filter'] : 'recent';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSITEFUL</title>
-    <link rel="icon" href="../../public/images/insiteful.png">
-    <link rel="stylesheet" href="../../public/css/Blog.css">
-    <link rel="stylesheet" href="../../public/css/general.css">
-    <script src="../../public/js/Blog/Blog.js" defer></script>
-    <script src="../../public/js/Blog/LikeSystem.js" defer></script>
-</head>
+
+<link rel="stylesheet" href="../../public/css/Blog.css">
+<link rel="stylesheet" href="../../public/css/general.css">
+<script src="../../public/js/Blog/Blog.js" defer></script>
+<script src="../../public/js/Blog/LikeSystem.js" defer></script>
+
 
 <body class="<?= $logged?>">
     <main class="flex" style="margin-top:12%">
