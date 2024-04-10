@@ -3,6 +3,11 @@
     require_once 'models/User.php';
     $userModel = new User();
     $user = $userModel->getUserById($_SESSION['user_id']);
+    // if($user && $user->Role == "Admin"){
+    //     include_once 'views/admin/adminheader.php';
+    // } else {
+    //     include_once 'views/header.php';
+    // }
     include_once 'views/header.php';
     if(($_SESSION['user_id'])!=null){
         $logged="true";
@@ -13,12 +18,18 @@
     $currentFilter = isset($_GET['filter']) ? $_GET['filter'] : 'recent';
 ?>
 
-
-<link rel="stylesheet" href="../../public/css/Blog.css">
-<link rel="stylesheet" href="../../public/css/general.css">
-<script src="../../public/js/Blog/Blog.js" defer></script>
-<script src="../../public/js/Blog/LikeSystem.js" defer></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSITEFUL</title>
+    <link rel="icon" href="../../public/images/insiteful.png">
+    <link rel="stylesheet" href="../../public/css/Blog.css">
+    <link rel="stylesheet" href="../../public/css/general.css">
+    <script src="../../public/js/Blog/Blog.js" defer></script>
+    <script src="../../public/js/Blog/LikeSystem.js" defer></script>
+</head>
 
 <body class="<?= $logged?>">
     <main class="flex" style="margin-top:12%">
@@ -81,7 +92,9 @@
             ?>
         </div>
     </main>
-    <footer></footer>
+    
 </body>
 
 </html>
+<?php
+include_once 'footer.php';?>
