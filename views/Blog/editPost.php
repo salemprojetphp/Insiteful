@@ -40,7 +40,7 @@
         <br>
         <label for="image">Image</label>
         <div class="image-input-container">
-            <input type="file" name="image" class = "image-input ml8" value="<?= $imgSrc?>">
+            <input type="file" name="image" class = "image-input ml8">
             <a class="btn-white" id="no-img-btn">Delete Image</a>
         </div>
         <br>
@@ -53,7 +53,8 @@
         </div>
     </form>
 </main>
+    <?php
+        include_once 'views/footer.php';
+    ?>
 </body>
 </html>
-<?php
-include_once 'footer.php';?>

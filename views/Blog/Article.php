@@ -39,8 +39,8 @@
     <script src="../../public/js/Blog/LikeSystem.js" defer></script>
     <script src="../../public/js/Blog/CommentSystem.js" defer></script>
 <body class="<?= $logged?>">
-    <main id='<?= $username ?>'>
-        <div class="full-article">
+    <main >
+        <div class="full-article" id='<?= $username ?>'>
             <div class="full-article-content">
                 <!-- Article  -->
                 <h2 style="position: absolute; z-index:3;"><a href="/blog"><</a></h2>
@@ -109,6 +109,6 @@
     </main>
     <?php
         include_once 'views/footer.php';
-        ?>
+    ?>
 </body>
 </html>

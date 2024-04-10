@@ -194,15 +194,25 @@ class Post extends Model {
         } else {
             return false;
         }
-        $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat, bgColor = :bgColor WHERE id = :post_id";
-        $editQuery = $this->db->prepare($query);
-        $editQuery->bindParam(':title', $title);
-        $editQuery->bindParam(':description', $description);
-        $editQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
-        $editQuery->bindParam(':imageFormat', $imageFormat);
-        $editQuery->bindParam(':post_id', $postId);
-        $editQuery->bindParam(':bgColor', $bgColor);
-        $result = $editQuery->execute();
+        if($photo == null){
+            $query = "UPDATE post SET title = :title, description = :description, bgColor = :bgColor WHERE id = :post_id";
+            $editQuery = $this->db->prepare($query);
+            $editQuery->bindParam(':title', $title);
+            $editQuery->bindParam(':description', $description);
+            $editQuery->bindParam(':post_id', $postId);
+            $editQuery->bindParam(':bgColor', $bgColor);
+            $result = $editQuery->execute();
+        }else {
+            $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat, bgColor = :bgColor WHERE id = :post_id";
+            $editQuery = $this->db->prepare($query);
+            $editQuery->bindParam(':title', $title);
+            $editQuery->bindParam(':description', $description);
+            $editQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
+            $editQuery->bindParam(':imageFormat', $imageFormat);
+            $editQuery->bindParam(':post_id', $postId);
+            $editQuery->bindParam(':bgColor', $bgColor);
+            $result = $editQuery->execute();
+        }
         return $result;
     }
 
