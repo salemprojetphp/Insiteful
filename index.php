@@ -52,7 +52,8 @@ $routes = [
     '/dashboard/pdf' => 'DashboardController@pdf',
     '/editProfile'=>'EditProfileController@index',
     '/editProfile/action'=>'EditProfileController@handleProfileUpdate',
-    '/notifications' => 'NotificationController@index',
+    '/notifications/markAsSeen' => 'NotificationController@markAsSeen',
+    '/track' => 'VisitorController@track',
 ];
 
 

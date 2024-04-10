@@ -48,6 +48,9 @@ class Post extends Model {
         $deleteQuery = $this->db->prepare($query);
         $deleteQuery->bindParam(':post_id', $postId);
         $result = $deleteQuery->execute();
+        //delete from notifications
+        $notification = new Notification();
+        $notification->deleteNotification($postId);
         return $result;
     }
 
@@ -163,13 +166,13 @@ class Post extends Model {
         $getPost->execute();
         $post = $getPost->fetch(PDO::FETCH_ASSOC);
         $imgSrc = $this->extractImage($postId);
-        $date = date('F j, Y', strtotime($post['date']));
         $postData = array(
             'postId' => $postId,
             'title' => $post['title'],
             'content' => $post['description'],
+            'user_id' => $post['Author'],
             'author' => $post['author_name'],
-            'date' => $date,
+            'date' => date('F j, Y', strtotime($post['date'])),
             'imgSrc' => $imgSrc,
             'bgColor' => $post['bgColor']
         );
@@ -191,15 +194,25 @@ class Post extends Model {
         } else {
             return false;
         }
-        $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat, bgColor = :bgColor WHERE id = :post_id";
-        $editQuery = $this->db->prepare($query);
-        $editQuery->bindParam(':title', $title);
-        $editQuery->bindParam(':description', $description);
-        $editQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
-        $editQuery->bindParam(':imageFormat', $imageFormat);
-        $editQuery->bindParam(':post_id', $postId);
-        $editQuery->bindParam(':bgColor', $bgColor);
-        $result = $editQuery->execute();
+        if($photo == null){
+            $query = "UPDATE post SET title = :title, description = :description, bgColor = :bgColor WHERE id = :post_id";
+            $editQuery = $this->db->prepare($query);
+            $editQuery->bindParam(':title', $title);
+            $editQuery->bindParam(':description', $description);
+            $editQuery->bindParam(':post_id', $postId);
+            $editQuery->bindParam(':bgColor', $bgColor);
+            $result = $editQuery->execute();
+        }else {
+            $query = "UPDATE post SET title = :title, description = :description, image = :image, imageFormat = :imageFormat, bgColor = :bgColor WHERE id = :post_id";
+            $editQuery = $this->db->prepare($query);
+            $editQuery->bindParam(':title', $title);
+            $editQuery->bindParam(':description', $description);
+            $editQuery->bindParam(':image', $photo, PDO::PARAM_LOB);
+            $editQuery->bindParam(':imageFormat', $imageFormat);
+            $editQuery->bindParam(':post_id', $postId);
+            $editQuery->bindParam(':bgColor', $bgColor);
+            $result = $editQuery->execute();
+        }
         return $result;
     }
 
@@ -209,6 +222,9 @@ class Post extends Model {
         $likeQuery->bindParam(':user_id', $userId);
         $likeQuery->bindParam(':post_id', $postId);
         $result = $likeQuery->execute();
+        //send notification to the admin
+        $notification = new Notification();
+        $notification->addNotification($userId, "liked your post", $postId);
         return $result;
     }
 

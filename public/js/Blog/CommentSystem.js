@@ -1,7 +1,7 @@
 const commentBtn = document.querySelector(".comment-btn");
 const form = document.querySelector("#comment-form");
 const commentsContainer = document.querySelector('.comments');
-const username = document.querySelector("main").id;
+const username = document.querySelector(".full-article").id;
 const nbComments = document.querySelector('.nb-comments');
 let deleteCommentBtns= document.querySelectorAll('.delete-comment-btn');
 

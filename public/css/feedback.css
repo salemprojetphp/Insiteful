@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-
-}
 
 .feedback-container{
     background-color: #fff;
@@ -15,27 +8,25 @@
     0 10px 10px rgba(0,0,0,0.22);
     height: 500px;
     width: 500px;
-    display: flex;
+    display: none;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    padding: 3%;
+    padding-bottom: 5%;
+    z-index: 9999;
 }
 
-body,html {
-    height: 100%;
-    color: #1F254C;
-    line-height: 25px;
-}
-
-.container .content{
+.feedback-container .feedback-content{
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-right: 100;
 }
 
-.container .feedback-content{
+.feedback-container .feedback-content{
     width: 25%;
     height: 100%;
     align-items: center;
@@ -43,7 +34,7 @@ body,html {
     margin-top: 15px;
     position: relative;
 }
-.content h3{
+.feedback-content h3{
     font-size: 20px;
     font-weight: 600;
     display: flex;
@@ -115,7 +106,10 @@ a:active {
     cursor: not-allowed;
 }
 .account-btn-group{
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -199,7 +193,8 @@ label input,label textarea,label select {
     margin-top: 8px;
 }
 
-textarea,input[type=text] {
+.feedback-content textarea,
+.feedback-content input[type=text] {
     
     background: #fff;
     border: 1px solid #e0e0e0;
@@ -212,15 +207,20 @@ textarea,input[type=text] {
     resize: none;
 }
 
-textarea:hover,input[type=text]:hover {
+.feedback-content textarea:hover,
+.feedback-content input[type=text]:hover {
     border: 1px solid #ccc;
 }
 
-textarea:focus,input[type=text]:focus{
+.feedback-content textarea:focus,
+.feedback-content input[type=text]:focus{
     border: 1px solid #1F254C;
 }
 
-textarea:disabled,input[type=text]:disabled,input[type=email]:disabled,input[type=password]:disabled {
+.feedback-content textarea:disabled,
+.feedback-content input[type=text]:disabled,
+.feedback-content input[type=email]:disabled,
+.feedback-content input[type=password]:disabled {
     background: #f5f5f5;
     border: 1px solid #e0e0e0;
     box-shadow: none;

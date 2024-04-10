@@ -1,16 +1,15 @@
-.content{
+.full-article-content{
     margin-top: 12%;
     flex-direction: column;
     width: 70%;
     margin-left: 2% ;
 }
 
-main {
+.full-article {
     display: flex;
     flex-direction: row;    
     margin: 0 auto;
     padding-top: 48px;
-    /* justify-content: space-between; */
     column-gap: 15px;
 }
 
@@ -86,9 +85,6 @@ main {
     align-items: center;
     justify-content: space-between;
 }
-/* .article-container div span {
-    width: 100%;
-} */
 .author-info{
     display: flex;
     flex-direction: row;
@@ -163,6 +159,7 @@ main {
     row-gap: 10px;
     padding: 10px;
     border-bottom: #1f254c47 1px solid;
+    margin-bottom: 2%;
 }
 .comment-content{
     margin: 2%;
