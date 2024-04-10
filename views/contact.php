@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include_once 'views/home.php';
 ?>
@@ -41,7 +40,6 @@ include_once 'views/home.php';
                         <div class="topic">Email</div>
                         <div class="text-one">insiteful@gmail.com</div>
                     </div>
-=======
 <link rel="stylesheet" href="../public/css/contact.css">
 <script src="../public/js/contact.js" defer></script>
 <div class="container" id="contact-container">
@@ -53,7 +51,6 @@ include_once 'views/home.php';
                     <div class="topic">Address</div>
                     <div class="text-one">Centre Urbain Nord</div>
                     <div class="text-two">INSAT</div>
->>>>>>> de2265d9ba28ff771053fd09315f7c32926d9289
                 </div>
                 <div class="phone details">
                     <i class="fas fa-phone-alt"></i>
