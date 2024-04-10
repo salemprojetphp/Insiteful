@@ -168,6 +168,7 @@ class Post extends Model {
             'postId' => $postId,
             'title' => $post['title'],
             'content' => $post['description'],
+            'user_id' => $post['Author'],
             'author' => $post['author_name'],
             'date' => $date,
             'imgSrc' => $imgSrc,
@@ -209,6 +210,9 @@ class Post extends Model {
         $likeQuery->bindParam(':user_id', $userId);
         $likeQuery->bindParam(':post_id', $postId);
         $result = $likeQuery->execute();
+        //send notification to the admin
+        $notification = new Notification();
+        $notification->addNotification($userId, "liked your post", $postId);
         return $result;
     }
 

@@ -1,21 +1,16 @@
 <?php
-    include_once 'views/header.php';
+    require_once 'models/notifications.php';
+    $notificationModel = new Notification();
 ?>
-<link rel="stylesheet" href="public/css/notifications.css">
-<main>
-    <h1>Notifications</h1>
-    <div class="notifications">
-        <div class="notification">
-            <h2>Notification 1</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-        </div>
-        <div class="notification">
-            <h2>Notification 2</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-        </div>
-        <div class="notification">
-            <h2>Notification 3</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-        </div>
+
+<link rel="stylesheet" href="/public/css/notifications.css">
+<link rel="stylesheet" href="/public/css/general.css">
+<div class="dropdown__wrapper dropdown__wrapper--fade-in none hide">
+    <h3>Notifications</h3>
+    <div class="notification-container">
+        <?php
+            $notifications = $notificationModel->showNotifications();
+        ?>
     </div>
-</main>
+</div>
+<script src="/public/js/notifications.js" defer></script>

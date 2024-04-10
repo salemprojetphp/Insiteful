@@ -3,12 +3,14 @@
         session_start();
     }
     require_once 'Models/User.php';
+    require_once 'Models/notifications.php';
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
     } else {
         $user_id = null;
     }
     $userModel = new User();
+    $notifModel = new Notification();
     $user = $userModel->getUserById($user_id);
 ?>
 
@@ -41,7 +43,7 @@
                     <a href="/adminDashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
                     <a href="/adminFeedback">Feedback</a>
-                    <a href="/notifications">Notifications <span>0</span></a>
+                    <a href="/notifications" class="notification-btn">Notifications <span>'.$notifModel->nbNotifications().'</span></a>
                 ';
             } else{
                 echo '
@@ -85,6 +87,9 @@
         if(!$user || $user->Role == 'User'){
             require_once 'views/contact.php';
             require_once 'views/feedback.php';
+        }
+        if($user && $user->Role == 'Admin'){
+            require_once 'views/admin/notifications.php';
         }
     ?>
     <main>

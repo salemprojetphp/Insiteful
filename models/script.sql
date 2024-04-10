@@ -55,15 +55,25 @@ CREATE TABLE comments (
     user_id INT NOT NULL REFERENCES users(id),
     post_id INT NOT NULL REFERENCES post(id),
     comment TEXT NOT NULL,
-    date DATE
+    date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE feedbacks(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES user(id),
+    user_id INT NOT NULL REFERENCES users(id),
     Feedback TEXT NOT NULL,
     Date DATE,
     Hidden BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE notifications(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL REFERENCES users(id),
+    user_id INT NOT NULL REFERENCES users(id),
+    message VARCHAR(255),
+    post_id INT NOT NULL REFERENCES post(id),
+    date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    seen BOOLEAN DEFAULT FALSE
 );
 -- 20 Examples 
 INSERT INTO visitors (user_id, website, ip, date, referrer, country, device, browswer)

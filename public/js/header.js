@@ -22,23 +22,9 @@ document.addEventListener('click', (event) => {
     } 
 });
 
-document.addEventListener('click', (event) => {
-    const targetElement = event.target;
-    console.log(!targetElement.closest('.contact-container'));
-    if (!targetElement.closest('.contact-container') && targetElement !== contactBtn && contactForm.style.display === 'block') {
-        contactForm.style.display = 'none';
-        background.classList.remove('blur');
-        
-    }
-});
 
-document.addEventListener('click', (event) => {
-    const targetElement = event.target;
-    if (!targetElement.closest('.feedback-container') && targetElement !== feedbackBtn && feedbackForm.style.display === 'flex') {
-        feedbackForm.style.display = 'none';
-        background.classList.remove('blur');
-    }
-});
+
+
 
 
 if(cancelContactBtn && contactBtn && contactForm) {
@@ -54,6 +40,16 @@ if(cancelContactBtn && contactBtn && contactForm) {
         contactForm.style.display = 'none';
         background.classList.remove('blur');
     });
+    
+    document.addEventListener('click', (event) => {
+    const targetElement = event.target;
+    console.log(!targetElement.closest('.contact-container'));
+    if (!targetElement.closest('.contact-container') && targetElement !== contactBtn && contactForm.style.display === 'block') {
+        contactForm.style.display = 'none';
+        background.classList.remove('blur');
+        
+    }
+});
 }
 
 if(cancelFeedbackBtn && feedbackBtn && feedbackForm) {
@@ -69,6 +65,13 @@ if(cancelFeedbackBtn && feedbackBtn && feedbackForm) {
         feedbackForm.style.display = 'none';
         background.classList.remove('blur');
     });
+    document.addEventListener('click', (event) => {
+    const targetElement = event.target;
+    if (!targetElement.closest('.feedback-container') && targetElement !== feedbackBtn && feedbackForm.style.display === 'flex') {
+        feedbackForm.style.display = 'none';
+        background.classList.remove('blur');
+    }
+});
 }
 
 

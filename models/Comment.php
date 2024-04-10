@@ -1,6 +1,7 @@
 <?php
 require_once 'Model.php';
 require_once 'utils/date_since.php';
+require_once 'models/notifications.php';
 
 class Comment extends Model
 {
@@ -14,6 +15,9 @@ class Comment extends Model
         $current_date = date('Y-m-d H:i', strtotime(date('Y-m-d H:i') . ' -1 hour'));
         $addCommentQuery->bindParam(':current_date', $current_date);
         $result = $addCommentQuery->execute(); 
+        //send notification to the admin
+        $notification = new Notification();
+        $notification->addNotification($user_id, "commented on your post", $post_id);
         if ($result) {
             return $this->db->lastInsertId();
         } else {
