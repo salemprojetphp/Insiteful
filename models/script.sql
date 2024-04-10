@@ -40,7 +40,7 @@ CREATE TABLE visitors(
     referrer VARCHAR(255) DEFAULT 'Direct',
     country VARCHAR(255),
     device ENUM('Computer', 'Phone') DEFAULT 'Computer',
-    browswer ENUM('Chrome', 'Firefox', 'Safari', 'Opera', 'Edge', 'Other') DEFAULT 'Other',
+    browser ENUM('Chrome', 'Firefox', 'Safari', 'Opera', 'Edge', 'Other') DEFAULT 'Other',
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

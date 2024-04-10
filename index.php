@@ -53,6 +53,7 @@ $routes = [
     '/editProfile'=>'EditProfileController@index',
     '/editProfile/action'=>'EditProfileController@handleProfileUpdate',
     '/notifications' => 'NotificationController@index',
+    '/track' => 'VisitorController@track',
 ];
 
 
