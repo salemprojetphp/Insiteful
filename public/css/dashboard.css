@@ -147,9 +147,9 @@ select {
 .devices-container{
     display: flex;
     flex-direction: row;
-    height: 400px;
+    height: 80%;
     width: 100%;
-    column-gap: 500px;
+    column-gap: 40%;
     background: rgb(249, 249, 249);
     border-radius: 15px;
 

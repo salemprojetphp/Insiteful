@@ -3,19 +3,11 @@
     session_start();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSITEFUL</title>
-    <link rel="icon" href="../../public/images/insiteful.png">
-    <link rel="stylesheet" href="../../public/css/general.css">
-    <link rel="stylesheet" href="../../public/css/PostForm.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../../public/js/PostForm.js" defer></script>
-</head>
+<link rel="stylesheet" href="../../public/css/general.css">
+<link rel="stylesheet" href="../../public/css/PostForm.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="../../public/js/PostForm.js" defer></script>
 
 <body>
     <main class="flex">

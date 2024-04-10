@@ -1,17 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins" , sans-serif;
+
+.container{
+    display: none;
 }
-body{
-    height: 100%;
-    color: #1F254C;
-    line-height: 25px;
+
+.blur {
+    filter: blur(5px)
 }
 
 .contact-container{
+    z-index: 9999;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
@@ -20,8 +17,8 @@ body{
     width: 800px;
     display: flex;
     justify-content: center;
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 58%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
@@ -30,6 +27,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 0%;
 }
 
 .container .content .left-side{
