@@ -21,8 +21,7 @@ include_once 'header.php';
         echo "<h3>" . $_GET['error'] . "</h3>";
     }
 ?>
-<div class="container" id="container">
-    
+<div class="auth-container" id="auth-container">
     <div class="form-container sign-up-container">
         <form method="post" action="/signup/action">
             <h1>Create Account</h1>

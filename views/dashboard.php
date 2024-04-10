@@ -5,12 +5,10 @@
 //    echo $_SESSION["user_id"];
 
     include_once "models/Visitors.php";
-//    echo $_SESSION["user_id"];
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
     $userID = $_SESSION["user_id"];
-
     $visitors = new Visitors();
     if(isset($_GET["data"])){
         $websiteSelected = $_GET["data"];

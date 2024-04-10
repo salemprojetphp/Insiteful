@@ -170,7 +170,8 @@ class Post extends Model {
             'content' => $post['description'],
             'author' => $post['author_name'],
             'date' => $date,
-            'imgSrc' => $imgSrc
+            'imgSrc' => $imgSrc,
+            'bgColor' => $post['bgColor']
         );
         return $postData;
     }

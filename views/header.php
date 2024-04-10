@@ -1,5 +1,4 @@
 <?php
-    
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -66,7 +65,7 @@
                     </div>
                     </div>
                     <div class="dropdown">
-                            <a href="/profile">Profile</a>
+                            <a href="/editProfile">Profile</a>
                             <a href="/logout">Logout</a>
                     </div>
                 ';
