@@ -1,4 +1,4 @@
-.content{
+.full-article-content{
     margin-top: 12%;
     flex-direction: column;
     width: 70%;
@@ -85,9 +85,6 @@
     align-items: center;
     justify-content: space-between;
 }
-/* .article-container div span {
-    width: 100%;
-} */
 .author-info{
     display: flex;
     flex-direction: row;

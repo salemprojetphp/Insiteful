@@ -77,4 +77,11 @@ class Notification extends Model
         $stmt->bindParam(':admin_id', $admin_id);
         return $stmt->execute();
     }
+
+    public function deleteNotification($post_id){
+        $query = "DELETE FROM notifications WHERE post_id = :post_id";
+        $deleteQuery = $this->db->prepare($query);
+        $deleteQuery->bindParam(':post_id', $post_id);
+        $deleteQuery->execute();
+    }
 }

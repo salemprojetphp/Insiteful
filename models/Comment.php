@@ -7,13 +7,11 @@ class Comment extends Model
 {
     public $db;
     public function addComment($user_id,$post_id, $comment){
-        $query = "INSERT INTO comments (user_id, post_id, comment, date) VALUES (:user_id, :post_id, :comment, :current_date)";
+        $query = "INSERT INTO comments (user_id, post_id, comment) VALUES (:user_id, :post_id, :comment)";
         $addCommentQuery = $this->db->prepare($query);
         $addCommentQuery->bindParam(':user_id', $user_id);
         $addCommentQuery->bindParam(':post_id', $post_id);
         $addCommentQuery->bindParam(':comment', $comment);
-        $current_date = date('Y-m-d H:i', strtotime(date('Y-m-d H:i') . ' -1 hour'));
-        $addCommentQuery->bindParam(':current_date', $current_date);
         $result = $addCommentQuery->execute(); 
         //send notification to the admin
         $notification = new Notification();

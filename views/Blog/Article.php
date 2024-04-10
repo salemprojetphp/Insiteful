@@ -41,7 +41,7 @@
 <body class="<?= $logged?>">
     <main id='<?= $username ?>'>
         <div class="full-article">
-            <div class="content">
+            <div class="full-article-content">
                 <!-- Article  -->
                 <h2 style="position: absolute; z-index:3;"><a href="/blog"><</a></h2>
                 <div class="article-container">

@@ -26,7 +26,7 @@ CREATE TABLE post(
     title VARCHAR(30) NOT NULL,
     description TEXT NOT NULL,
     Author INT NOT NULL,
-    date DATE,
+    date DATE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (Author) REFERENCES users(id),
     bgColor VARCHAR(255) DEFAULT 'linear-gradient(96.55deg, #00ffff -25.2%, #147efb 55.15%)',
 );
@@ -97,3 +97,17 @@ VALUES (1, 'insat.tn', '192.168.1.1', '2024-03-27', 'Facebook', 'Country A', 'Co
        (1, 'website.tn', '192.168.1.18', '2024-03-10', 'Direct', 'Country B', 'Phone', 'Other'),
        (1, 'insat.tn', '192.168.1.19', '2024-03-09', 'Facebook', 'Country A', 'Computer', 'Chrome'),
        (1, 'website.tn', '192.168.1.20', '2024-03-08', 'Instagram', 'Country B', 'Phone', 'Firefox');
+
+
+--10 posts insertion
+INSERT INTO post (title, description, Author) VALUES 
+('Introduction to HTML5', 'HTML5 is the latest version of Hypertext Markup Language, the code that describes web pages. It provides new features and improvements over previous versions, making it easier to create modern and interactive websites.', 1),
+('CSS3 Styling Techniques', 'CSS3 introduces a wide range of styling techniques for web developers, including advanced selectors, transitions, and animations. By leveraging these features, developers can create visually appealing and responsive web designs.', 1),
+('JavaScript Fundamentals', 'JavaScript is a versatile programming language commonly used in web development to add interactivity and dynamic behavior to websites. This post covers the fundamentals of JavaScript, including variables, functions, and control structures.', 1),
+('Responsive Web Design Principles', 'Responsive web design is an approach to designing websites that automatically adapt to various screen sizes and devices. This post explores the principles of responsive design and best practices for creating mobile-friendly websites.', 1),
+('Backend Development with Node.js', 'Node.js is a popular runtime environment for server-side JavaScript development. This post explains how to use Node.js to build backend applications, handle HTTP requests, and interact with databases.', 1),
+('Introduction to React.js', 'React.js is a JavaScript library for building user interfaces, developed by Facebook. This post provides an introduction to React.js, including its component-based architecture and virtual DOM.', 1),
+('Building RESTful APIs with Express', 'Express is a minimalist web framework for Node.js that simplifies the process of building web applications and APIs. This post demonstrates how to create RESTful APIs with Express, handle routes, and perform CRUD operations.', 1),
+('Database Design and SQL Basics', 'Understanding database design and SQL basics is essential for web developers working with relational databases. This post covers the fundamentals of database design, normalization, and SQL queries.', 1),
+('Authentication and Authorization in Web Applications', 'Authentication and authorization are crucial aspects of web application security. This post explores different authentication methods, such as JWT and OAuth, and techniques for implementing user authentication and authorization.', 1),
+('Deploying Web Applications to the Cloud', 'Cloud computing offers scalable and cost-effective solutions for deploying web applications. This post discusses different cloud platforms, deployment strategies, and tools for managing web application deployments.', 1);

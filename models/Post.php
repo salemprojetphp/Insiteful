@@ -48,6 +48,9 @@ class Post extends Model {
         $deleteQuery = $this->db->prepare($query);
         $deleteQuery->bindParam(':post_id', $postId);
         $result = $deleteQuery->execute();
+        //delete from notifications
+        $notification = new Notification();
+        $notification->deleteNotification($postId);
         return $result;
     }
 
@@ -163,14 +166,13 @@ class Post extends Model {
         $getPost->execute();
         $post = $getPost->fetch(PDO::FETCH_ASSOC);
         $imgSrc = $this->extractImage($postId);
-        $date = date('F j, Y', strtotime($post['date']));
         $postData = array(
             'postId' => $postId,
             'title' => $post['title'],
             'content' => $post['description'],
             'user_id' => $post['Author'],
             'author' => $post['author_name'],
-            'date' => $date,
+            'date' => date('F j, Y', strtotime($post['date'])),
             'imgSrc' => $imgSrc,
             'bgColor' => $post['bgColor']
         );
