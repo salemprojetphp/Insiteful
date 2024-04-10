@@ -1,5 +1,4 @@
 <?php
-    
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -51,7 +50,7 @@
                     <a href="/dashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
                     <a href="" class="contact-btn">Contact</a>
-                    <a href="/feedback">Feedback</a>
+                    <a href="/feedback" class="feedback-btn">Feedback</a>
                 ';
             } 
         ?>  
@@ -66,7 +65,7 @@
                     </div>
                     </div>
                     <div class="dropdown">
-                            <a href="/profile">Profile</a>
+                            <a href="/editProfile">Profile</a>
                             <a href="/logout">Logout</a>
                     </div>
                 ';
@@ -85,6 +84,7 @@
     <?php
         if(!$user || $user->Role == 'User'){
             require_once 'views/contact.php';
+            require_once 'views/feedback.php';
         }
     ?>
     <main>

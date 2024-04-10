@@ -1,7 +1,5 @@
 <?php
     include_once 'header.php';
-
-    session_start();
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -22,7 +20,8 @@
 
     </section>
     <?php
-include_once 'footer.php';?>
+        require_once 'views/footer.php';
+    ?>
 </body>
 
 </html>

@@ -44,11 +44,14 @@ imageInput.addEventListener('input', function(event) {
     const file = imageInput.files[0];
     const reader = new FileReader();
 
-    if (!isImage(file)) {
+    if (file && !isImage(file)) {
         event.preventDefault(); 
         window.alert('Invalid image file');
         imageInput.value = null; 
         imagePreviewimg.src =''; 
+        return;
+    } else if (!file) {
+        imagePreviewimg.src = '../../public/images/hello.svg';
         return;
     }
 
@@ -65,15 +68,30 @@ imageInput.addEventListener('input', function(event) {
 deleteImageButton.addEventListener('click', function(event) {
     event.preventDefault();
     imageInput.value = null;
-    imagePreview.src = '';
+    imagePreviewimg.src = '../../public/images/hello.svg';
 });
 
 // color preview
+function toHex(color) {
+    if (color.startsWith('#')) {
+        return color;
+    }
+    if (color.startsWith('rgb')) {
+        const rgbValues = color.match(/\d+/g); 
+        const hexValues = rgbValues.map(value => {
+            const hex = parseInt(value).toString(16); 
+            return hex.length === 1 ? '0' + hex : hex; 
+        });
+        return `#${hexValues.join('')}`;
+    }
+    return color;
+}
+
 [firstColorInput,secondColorInput].forEach(
     element => element.addEventListener('input', function() {
         console.log('input');
-        let bgColor1 = firstColorInput.value;
-        let bgColor2 = secondColorInput.value;
+        let bgColor1 = toHex(firstColorInput.value);
+        let bgColor2 = toHex(secondColorInput.value);
         imagePreview.style.background = `linear-gradient(96.55deg, ${bgColor1} -25.2%, ${bgColor2} 55.15%)`;
     })
 );

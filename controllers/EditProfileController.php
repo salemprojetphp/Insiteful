@@ -1,11 +1,11 @@
 <?php
 require_once 'Controller.php';
 require_once 'models/User.php';
-require_once 'editProfilePage.php';
+require_once 'views/editProfilePage.php';
 
 class EditProfileController extends Controller{
     public function index(){
-        require_once 'editProfilePage.php';
+        require_once 'views/editProfilePage.php';
     }
     public function handleProfileUpdate(){
         $userModel=new User();
