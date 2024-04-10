@@ -7,4 +7,4 @@ class ContactController extends Controller{
     }
 
 }
-
+?>

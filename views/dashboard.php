@@ -2,7 +2,7 @@
     include_once "header.php";
     include_once "models/Visitors.php";
     session_start();
-    // echo $_SESSION["user_id"];
+//    echo $_SESSION["user_id"];
     $visitors = new Visitors();
     if(isset($_GET["data"])){
         $websiteSelected = $_GET["data"];

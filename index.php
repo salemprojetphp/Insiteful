@@ -50,6 +50,8 @@ $routes = [
     '/adminFeedback' => 'FeedbackController@adminFeedback',
     '/hideFeedback' => 'FeedbackController@hideFeedback',
     '/dashboard/pdf' => 'DashboardController@pdf',
+    '/editProfile'=>'EditProfileController@index',
+    '/editProfile/action'=>'EditProfileController@handleProfileUpdate'
 
 ];
 
