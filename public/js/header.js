@@ -55,7 +55,8 @@ if(cancelContactBtn && contactBtn && contactForm) {
 
 if(contactBtn && contactForm) {
     contactBtn.addEventListener('click', function(event) {
-        const contactFormDisplay = window.getComputedStyle(contactForm).getPropertyValue('display');
+        const contactFormDisplay = window.getComputedStyle(contactForm).getPropertyValue('display');})
+}
 if(cancelFeedbackBtn && feedbackBtn && feedbackForm) {
     feedbackBtn.addEventListener('click', function(event) {
         const feedbackFormDisplay = window.getComputedStyle(feedbackForm).getPropertyValue('display');

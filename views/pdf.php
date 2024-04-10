@@ -90,6 +90,9 @@
                             <div class='bottom'>insitefulcontact@gmail.com</div>
                         </body>
                     </html>";
+    if(count((array)$websites) === 0){
+        header('location: /dashboard');
+    }
     PDFGenerator::generatePDF($html, "$username recap file $currentDate");
 ?>
 

@@ -46,7 +46,7 @@
                         $email =$_POST['email'];
                         $object = $_POST['object'];
                         $message = $_POST['message'];
-                        MailSender::receiveMail($email,$object,$message);
+                        MailSender::sendMail($email,$object,$message);
                     }
                 ?>
             </div>
