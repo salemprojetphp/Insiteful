@@ -7,7 +7,8 @@ CREATE TABLE users(
     Username VARCHAR(255) NOT NULL,
     Role ENUM('Admin', 'User') DEFAULT 'User',
     Verified BOOLEAN DEFAULT FALSE,
-    picture LONGBLOB,
+    profilePicture LONGBLOB DEFAULT NULL,
+    profilePictureFormat VARCHAR(10)
 );
 
 CREATE TABLE verification (
