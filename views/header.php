@@ -84,6 +84,7 @@
     <?php
         if(!$user || $user->Role == 'User'){
             require_once 'views/contact.php';
+            // require_once 'views/feedback.php';
         }
     ?>
     <main>

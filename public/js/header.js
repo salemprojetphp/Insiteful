@@ -4,6 +4,7 @@ const contactBtn = document.querySelector('.contact-btn');
 const cancelContactBtn = document.querySelector('.cancel-button');
 const contactForm = document.querySelector('.container');
 const background = document.querySelector('main');
+const feedbackBtn = document.querySelector('.feedback-btn');
 
 if(openMenu && menu) {
     openMenu.addEventListener('click', (event) => {

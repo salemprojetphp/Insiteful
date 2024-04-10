@@ -1,25 +1,16 @@
 <?php 
 include_once 'header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insiteful</title>
-    <link rel="icon" href="../public/images/insiteful.png">
-    <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/auth.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/public/css/auth.css" type="text/css">
+<link rel="stylesheet" href="../public/css/header.css">
+<link rel="stylesheet" href="../public/css/auth.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/public/css/auth.css" type="text/css">
 
-</head>
-<body>
 
 <?php
-    if(isset($_GET['error'])) {
-        echo "<h3>" . $_GET['error'] . "</h3>";
-    }
+    // if(isset($_GET['error'])) {
+    //     echo "<h3>" . $_GET['error'] . "</h3>";
+    // }
 ?>
 <div class="auth-container" id="auth-container">
     <div class="form-container sign-up-container">
@@ -58,8 +49,10 @@ include_once 'header.php';
         </div>
     </div>
 </div>
+</main>
+<?php
+    require_once 'footer.php';
+?>
 </body>
 <script src="../public/js/auth.js"></script>
 </html>
-<?php
-include_once 'footer.php';?>

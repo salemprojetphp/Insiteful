@@ -115,7 +115,10 @@ a:active {
     cursor: not-allowed;
 }
 .account-btn-group{
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
 }
 
