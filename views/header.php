@@ -26,7 +26,7 @@
     <input type="checkbox" id="check">
     <header>
         <h2>
-            <a href="#" class="logo"><img src="/public/images/insiteful.png" alt="logo"></a>
+            <a href="/" class="logo"><img src="/public/images/insiteful.png" alt="logo"></a>
         </h2>
 
         <!-- choosing the navigation based on the user role -->

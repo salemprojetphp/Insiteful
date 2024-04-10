@@ -1,5 +1,6 @@
 <?php
     include_once 'header.php';
+
     session_start();
     if (!isset($_SESSION['user_id']))
         $_SESSION['user_id'] = null;
@@ -29,11 +30,10 @@
                 <a href="#" class="info-btn">More Info</a>
             </div>
         </div>
-        <div class="media-icons">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        </div>
+
     </section>
+    <?php
+include_once 'footer.php';?>
 </body>
+
 </html>

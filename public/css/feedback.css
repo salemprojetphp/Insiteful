@@ -3,18 +3,24 @@
 * {
     margin: 0;
     padding: 0;
-    outline: none;
-    border: none;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+
 }
-header{
-    position: relative;
-}
-button,select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+
+.feedback-container{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0,0,0,0.22);
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 body,html {
@@ -23,67 +29,31 @@ body,html {
     line-height: 25px;
 }
 
-section .content {
+.container .content{
     display: flex;
-    width: 1110px;
-    margin: 0 auto;
+    align-items: center;
+    margin-right: 100;
 }
 
-.shadow-sm {
-    box-shadow: 0 2px 2px rgba(0,0,0,.04);
+.container .feedback-content{
+    width: 25%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
 }
-
-.shadow-lg {
-    box-shadow: 0 24px 24px rgba(0,0,0,.03);
-}
-
-h3,.h3 {
-    font: 700 22px poppins;
-    line-height: 30px;
-}
-
-
-.mt16 {
-    margin-top: 16px;
-}
-
-.mr8 {
-    margin-right: 8px;
-}
-
-.mr16 {
-    margin-right: 16px;
-}
-
-.mb32 {
-    margin-bottom: 32px;
-}
-
-.ml16 {
-    margin-left: 16px;
-}
-
-.animation {
-    transition: all .3s;
-}
-
-.flex {
+.content h3{
+    font-size: 20px;
+    font-weight: 600;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20;
+
 }
 
-.full {
-    margin-bottom: auto;
-    flex: 1;
-}
-
-.feedback {
-    width: 100%;
-}
-
-.width-half {
-    width: 50%;
-}
 
 a {
     text-decoration: none;
@@ -116,14 +86,19 @@ a:active {
     transition: all .3s;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     border-radius: 50px;
-}
+    margin-right: 0;
+    width: 120;
+    
 
+}
 .btn-primary:hover {
     background-size: auto 100%;
     background-position: 0 0;
     color: #fff;
+    transform: translateY(-3px)translateX(-5px);
+
 }
 
 .btn-primary:active {
@@ -138,6 +113,10 @@ a:active {
     box-shadow: none;
     opacity: .4;
     cursor: not-allowed;
+}
+.account-btn-group{
+
+    margin-top: 20px;
 }
 
 .btn-secondary {
@@ -158,12 +137,16 @@ a:active {
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 50px;
+    margin-right: 40;
+    width: 120;
+
 }
 
 .btn-secondary:hover {
     background-size: auto 100%;
     background-position: 0 0;
     color: #F18835;
+    transform: translateY(-3px)translateX(-5px);
 }
 
 .btn-secondary:active {
@@ -179,18 +162,6 @@ a:active {
     opacity: .4;
 }
 
-
-.btn-close {
-    width: 24px;
-    height: 24px;
-
-    cursor: pointer;
-    transition: .2s;
-    margin-left: auto;
-}
-.btn-close:hover {
-    transform: rotate(90deg);
-}
 
 @media screen and (-ms-high-contrast:active),(-ms-high-contrast:none) {
     .btn-primary {
@@ -210,11 +181,16 @@ a:active {
     }
 }
 
-label {
-    display: inline-block;
-    font: 400 14px nunito sans;
-}
 
+label.feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font: 300 14px "Poppins", sans-serif;
+
+}
 label:focus-within {
     color: #1F254C;
 }
@@ -223,8 +199,8 @@ label input,label textarea,label select {
     margin-top: 8px;
 }
 
-textarea,input[type=text],input[type=email],input[type=date],input[type=password] {
-    display: block;
+textarea,input[type=text] {
+    
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 3px;
@@ -233,13 +209,14 @@ textarea,input[type=text],input[type=email],input[type=date],input[type=password
     color: #1F254C;
     padding: 11px 16px;
     transition: border .2s;
+    resize: none;
 }
 
-textarea:hover,input[type=text]:hover,input[type=email]:hover,input[type=password]:hover {
+textarea:hover,input[type=text]:hover {
     border: 1px solid #ccc;
 }
 
-textarea:focus,input[type=text]:focus,input[type=email]:focus,input[type=password]:focus {
+textarea:focus,input[type=text]:focus{
     border: 1px solid #1F254C;
 }
 
