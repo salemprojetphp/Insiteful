@@ -1,11 +1,11 @@
 <?php
     include_once "header.php";
-    include_once "models/Visitors.php"
-    // echo $_SESSION["user_id"];
 
     
 //    echo $_SESSION["user_id"];
 
+    include_once "models/Visitors.php";
+//    echo $_SESSION["user_id"];
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
