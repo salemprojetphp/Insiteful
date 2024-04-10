@@ -3,7 +3,9 @@
     require_once 'models/Post.php';
     require_once 'models/Comment.php';
     require_once 'models/User.php';
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $postId = $_GET['id'];
     $postModel = new Post();
     $commentModel = new Comment();
@@ -29,21 +31,13 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSITEFUL</title>
-    <link rel="icon" href="../../public/images/insiteful.png">
-    <link rel="stylesheet" href="../../public/css/general.css">
-    <link rel="stylesheet" href="../../public/css/Article.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../../public/js/Blog/Article.js" defer></script>
-    <script src="../../public/js/Blog/LikeSystem.js" defer></script>
-    <script src="../../public/js/Blog/CommentSystem.js" defer></script>
-</head>
+<link rel="stylesheet" href="../../public/css/general.css">
+<link rel="stylesheet" href="../../public/css/Article.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="../../public/js/Blog/Article.js" defer></script>
+<script src="../../public/js/Blog/LikeSystem.js" defer></script>
+<script src="../../public/js/Blog/CommentSystem.js" defer></script>
 <body class="<?= $logged?>">
     <main class="flex" id='<?= $username ?>'>
         <div class="content">

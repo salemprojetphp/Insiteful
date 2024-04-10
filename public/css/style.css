@@ -91,50 +91,7 @@ label{
     display: none;
 }
 @media (max-width: 960px){
-    label{
-        display: block;
-        font-size: 25px;
-        cursor: pointer;
-    }
-    label:hover{
-        color: #F18835;
-    }
-    label .close-btn{
-        display: none;
-    }
-    #check:checked ~ header .navigation{
-        z-index: 2;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        background: rgb(119, 143, 164,0.9);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-    }
-    #check:checked ~ header .navigation a{
-        font-weight: 700;
-        margin-right: 0;
-        margin-bottom: 50px;
-        letter-spacing: 2px;
-    }
-    #check:checked ~ header label .menu-btn{
-        display: none;
-    }
-    #check:checked ~ header label .close-btn{
-        z-index: 2;
-        display: block;
-        position: fixed;
-    }
-    label .menu-btn{
-        position: absolute;
-    }
+    
 .content .info h2 {
     font-size: 45px;
     line-height: 50px;

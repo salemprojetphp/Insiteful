@@ -2,11 +2,16 @@
     include_once "models/Visitors.php";
     include_once "utils/PDFGenerator/PDFGenerator.php";
     include_once "models/User.php";
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    $userID = $_SESSION["user_id"];
     $userModel = new User();
-    $user = $userModel->getUserById(1);
+    $user = $userModel->getUserById($userID);
     $username = $user->Username;
     $visitors = new Visitors();
-    $websites = $visitors->getUserWebsites(1);
+    $currentDate = date("d-m-Y");
+    $websites = $visitors->getUserWebsites($userID);
     $html = "<!DOCTYPE html>
             <html lang='en'>
             <head>
@@ -20,9 +25,7 @@
                         font-family: 'Poppins', sans-serif;
                         color: #1F254C;
                     }
-                    h2{
-                        text-align: center;
-                    }
+
                     table{
                         border-collapse: collapse;
                         width: 100%;
@@ -34,9 +37,27 @@
                         padding: 8px;
                         text-align: center;
                     }
+                    .bottom{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        margin-top: 50px;
+                        border-top: 1px solid gray;
+                        padding-top: 10px;
+                    }
+                    .username, .date{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        column-gap: space-between;
+                    }
                 </style>
             </head>
-            <body>";
+            <body>
+                    <h2 class='username'>
+                        $username
+                    </h2>
+                    <h2 class='date'>
+                        $currentDate
+                    </h2>";
                 foreach($websites as $website):
                     $html .= "<h2>$website->website</h2>";
                     $html .= "<table>
@@ -51,7 +72,7 @@
                                 </thead>
                                 <tbody>";
 
-                            $infos = $visitors->getUserWebsiteInformation(1, $website->website);
+                            $infos = $visitors->getUserWebsiteInformation($userID, $website->website);
                             foreach ($infos as $info):
                                 $html .= "<tr>
                                             <td>$info->date</td>
@@ -65,9 +86,11 @@
                                     </table>";
 
                 endforeach;
-            $html .= "</body>
+            $html .= "
+                            <div class='bottom'>insitefulcontact@gmail.com</div>
+                        </body>
                     </html>";
-    PDFGenerator::generatePDF($html, $username)
+    PDFGenerator::generatePDF($html, "$username recap file $currentDate");
 ?>
 
 

@@ -1,4 +1,8 @@
 <?php
+    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once 'Models/User.php';
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
@@ -17,6 +21,7 @@
     <title>INSITEFUL</title>
     <link rel="icon" href="/public/images/insiteful.png">
     <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="../public/css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../public/js/header.js" defer></script>
@@ -37,7 +42,7 @@
                     <a href="/adminDashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
                     <a href="/adminFeedback">Feedback</a>
-                    
+                    <a href="/notifications">Notifications <span>0</span></a>
                 ';
             } else{
                 echo '
@@ -45,7 +50,7 @@
                     <a href="/">Home</a>
                     <a href="/dashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
-                    <a href="#">Contact</a>
+                    <a href="" class="contact-btn">Contact</a>
                     <a href="/feedback">Feedback</a>
                 ';
             } 
@@ -77,3 +82,9 @@
             <i class="fas fa-times close-btn"></i>
         </label>
     </header>
+    <?php
+        if(!$user || $user->Role == 'User'){
+            require_once 'views/contact.php';
+        }
+    ?>
+    <main>
