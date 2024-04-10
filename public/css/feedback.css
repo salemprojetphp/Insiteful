@@ -15,27 +15,31 @@
     0 10px 10px rgba(0,0,0,0.22);
     height: 500px;
     width: 500px;
-    display: flex;
+    display: none;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    padding: 3%;
+    padding-bottom: 5%;
+    z-index: 9999;
 }
 
-body,html {
+/* body,html {
     height: 100%;
     color: #1F254C;
     line-height: 25px;
-}
+} */
 
-.container .content{
+.feedback-container .feedback-content{
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-right: 100;
 }
 
-.container .feedback-content{
+.feedback-container .feedback-content{
     width: 25%;
     height: 100%;
     align-items: center;
@@ -43,7 +47,7 @@ body,html {
     margin-top: 15px;
     position: relative;
 }
-.content h3{
+.feedback-content h3{
     font-size: 20px;
     font-weight: 600;
     display: flex;

@@ -50,7 +50,7 @@
                     <a href="/dashboard">Dashboard</a>
                     <a href="/blog">Blog</a>
                     <a href="" class="contact-btn">Contact</a>
-                    <a href="/feedback">Feedback</a>
+                    <a href="/feedback" class="feedback-btn">Feedback</a>
                 ';
             } 
         ?>  
@@ -84,7 +84,7 @@
     <?php
         if(!$user || $user->Role == 'User'){
             require_once 'views/contact.php';
-            // require_once 'views/feedback.php';
+            require_once 'views/feedback.php';
         }
     ?>
     <main>
