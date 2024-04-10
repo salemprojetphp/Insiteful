@@ -9,10 +9,9 @@ class EditProfileController extends Controller{
     }
     public function handleProfileUpdate(){
         $userModel=new User();
-        session_start();
         $userId=$_SESSION['user_id'];
         $username=$_POST['username'];
-          $profilePic=$_POST['profile-picture'];
+//        $profilePic=$_POST['profile-picture'];
         $mail=$_POST['email'];
         $oldPassword=$_POST['old-password'];
         $newPassword=$_POST['new-password'];
@@ -25,19 +24,20 @@ class EditProfileController extends Controller{
                 if ($newPassword===$verifPassword){
                     $user=$userModel->getUserById($userId);
                     $userMail=$user->Email;
-                    $userModel->setPassword($userMail,$newPassword);
+                    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                    $userModel->setPassword($userMail,$hashedPassword);
                 }
                 else{
-                    echo "Reverify your new password";
+                    echo "<p>Reverify your new password</p>";
                 }
             }
             else{
-                echo "Old password incorrect";
+                echo "<p>Old password incorrect</p>";
             }
         }
-        if(isset($profilePic)){
-            $userModel->updateProfilePicture($userId,$profilePic);
-        }
+//        if(isset($profilePic)){
+//            $userModel->updateProfilePicture($userId,$profilePic);
+//        }
     }
 
 }

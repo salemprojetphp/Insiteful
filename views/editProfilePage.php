@@ -46,11 +46,11 @@
             <input type="password" name="old-password" class="form-input" placeholder="Old Password">
             <input name="new-password" class="form-input" placeholder="New Password">
             <input name="verif-password" class="form-input" placeholder="Confirm New Password">
+            <div class="button-container">
+                <a href="/" class="cancel-button" rel="modal:close">Cancel Changes</a>
+                <button type="submit" class="form-button">Save Changes</button>
+            </div>
         </form>
-        <div class="button-container">
-            <a href="/" class="cancel-button" rel="modal:close">Cancel Changes</a>
-            <button type="submit" class="form-button">Save Changes</button>
-        </div>
     </div>
 </div>
 </body>

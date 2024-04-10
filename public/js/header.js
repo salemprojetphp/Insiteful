@@ -31,7 +31,6 @@ document.addEventListener('click', (event) => {
 });
 
 
-
 if(contactBtn && contactForm) {
     contactBtn.addEventListener('click', function(event) {
         const contactFormDisplay = window.getComputedStyle(contactForm).getPropertyValue('display');

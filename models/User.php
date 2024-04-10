@@ -177,8 +177,7 @@ class User  extends Model{
                 $updateQuery->bindParam(":$field", $value);
             }
             $updateQuery->bindParam(':user_id', $userId);
-            $result=$updateQuery->execute();
-            return $result;
+            $updateQuery->execute();
         }
     }
 

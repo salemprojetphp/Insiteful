@@ -67,8 +67,9 @@ if (array_key_exists($url, $routes)) {
         require_once "controllers/$controllerName.php";
     } else {
         http_response_code(404);
-        echo '404 - Not Found';
-        exit;
+//        echo '404 - Not Found';
+//        exit;
+        require_once "404Page.php";
     }
     $controller = new $controllerName();
 
@@ -76,6 +77,7 @@ if (array_key_exists($url, $routes)) {
     $controller->$action();
 } else {
     http_response_code(404);
-    echo '404 - Not Found';
+//    echo '404 - Not Found';
+    require_once "404Page.php";
 }
 ?>
