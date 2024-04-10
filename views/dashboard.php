@@ -1,15 +1,12 @@
 <?php
     include_once "header.php";
     include_once "models/Visitors.php";
-<<<<<<< HEAD
     session_start();
 //    echo $_SESSION["user_id"];
-=======
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
     $userID = $_SESSION["user_id"];
->>>>>>> de2265d9ba28ff771053fd09315f7c32926d9289
     $visitors = new Visitors();
     if(isset($_GET["data"])){
         $websiteSelected = $_GET["data"];
