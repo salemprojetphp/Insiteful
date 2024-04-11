@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../public/css/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link  rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
     <script src="../public/js/header.js" defer></script>
 </head>
     
@@ -61,16 +62,21 @@
         <?php
             if($user) {
                 echo '
-                    <div class="user-session-info">
-                        <img src="../public/images/user.png" width="36" height="36">
-                        <span>'.$user->Username.'</span>
-                    </div>
-                    </div>
-                    <div class="dropdown">
-                            <a href="/editProfile">Profile</a>
-                            <a href="/logout">Logout</a>
-                    </div>
-                ';
+                    <div class="selection-menu">
+                        <div class="user-session-info">
+                            <img src="../public/images/user.png" width="36" height="36">
+                            <span class="username-text">'.$user->Username.'</span>
+                            <i class="bx bx-chevron-down"></i>
+                        </div>
+                        <ul class="options">
+                            <li class="option">
+                                <a href="/editProfile" class="option-text">Profile</a>
+                            </li>
+                            <li class="option">
+                                <a href="/logout" class="option-text">Logout</a>
+                            </li>
+                        </ul>
+                    </div>';
             } else {
                 echo '
                     <a href="/auth" class="login-btn">Get Started</a>

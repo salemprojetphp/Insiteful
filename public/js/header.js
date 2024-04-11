@@ -79,4 +79,16 @@ if(cancelFeedbackBtn && feedbackBtn && feedbackForm) {
 });
 }
 
+const optionMenu = document.querySelector(".selection-menu"),
+    userInfo = optionMenu.querySelector(".user-session-info"),
+    options = optionMenu.querySelectorAll(".option"),
+    usernameText = optionMenu.querySelector(".username-text");
+
+userInfo.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+options.forEach(option =>{
+    option.addEventListener("click", ()=>{*
+        optionMenu.classList.remove("active");
+    });
+});
 

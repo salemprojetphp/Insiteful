@@ -58,5 +58,43 @@ class MailSender{
             $mail->send();
         } catch (Exception $e) {}   
     }
+    public static function receiveMail($email,$subject,$message)
+    {
+        // Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            $mail->Host       = 'smtp.gmail.com';                        // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
+            $mail->Username   = 'insitefulcontact@gmail.com';            // SMTP username
+            $mail->Password   = 'lpgxakcemjcnrqjf';                      // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;             // Enable implicit TLS encryption
+            $mail->Port       = 465;                                     // TCP port to connect to
+
+            // Set sender
+            $mail->setFrom('insitefulcontact@gmail.com', $email);
+
+            // Add recipient
+            $mail->addAddress($email);
+
+
+            // Content
+            $mail->isHTML(true);                                         // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+
+            // Send email
+            $mail->send();
+        } catch (Exception $e) {}
+    }
 }
 ?>

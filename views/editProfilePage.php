@@ -19,17 +19,10 @@
     <link rel="stylesheet" href="../public/css/editProfilePage.css">
 </head>
 <body>
-<div class="container">
+<div class="editProfile-container">
     <div class="left-column">
         <?php
-//            if($user->profilePicture){
-//                echo '<img src="'.$user->profilePicture.'" alt="Profile Picture" class="profile-picture" width="150">';
-//            }
-//            else{
-//                echo '<img src="..\public\images\user.png" alt="Profile Picture" class="profile-picture" width="150">';
-//            }
-            $imgSrc=$userModel->extractProfilePic($_SESSION['user_id']);
-            echo '<img src="'.$imgSrc.'" alt="Profile Picture" class="profile-picture" width="150">';
+            echo '<img src="..\public\images\user.png" alt="Profile Picture" class="profile-picture" width="150">';
         ?>
         <h2 class="username"><?=$user->Username?></h2>
     </div>
@@ -38,8 +31,6 @@
         <form action="/editProfile/action" method="post" enctype="multipart/form-data">
             <label class="username-label">Username:</label>
             <input type="text" name="username" class="form-input" placeholder="Username">
-            <label class="profile-picture-label">Profile Picture:</label>
-            <input type="file" name="profile-picture" class="form-input">
             <label class="form-label">Email Address:</label>
             <input type="email" name="email" class="form-input" placeholder="Mail">
             <label class="form-label">Password:</label>

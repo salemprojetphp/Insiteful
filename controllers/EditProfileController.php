@@ -11,7 +11,6 @@ class EditProfileController extends Controller{
         $userModel=new User();
         $userId=$_SESSION['user_id'];
         $username=$_POST['username'];
-//        $profilePic=$_POST['profile-picture'];
         $mail=$_POST['email'];
         $oldPassword=$_POST['old-password'];
         $newPassword=$_POST['new-password'];
@@ -35,9 +34,6 @@ class EditProfileController extends Controller{
                 echo "<p>Old password incorrect</p>";
             }
         }
-//        if(isset($profilePic)){
-//            $userModel->updateProfilePicture($userId,$profilePic);
-//        }
     }
 
 }

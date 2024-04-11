@@ -83,13 +83,18 @@ header label{
     z-index: 12;
     display: none;
 }
-.user-session-info {
+
+.selection-menu {
+    position: relative;
+}
+
+.user-session-info{
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
     column-gap: 5%;
     padding-left: 1%;
-    padding-right: 3%;
+    padding-right: 10%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     cursor: pointer;
@@ -98,6 +103,57 @@ header label{
     color: white;
     white-space: nowrap;
 }
+.user-session-info i{
+    font-size: 20px;
+    color: white;
+    transition: 0.3s;
+}
+.selection-menu.active .user-session-info i{
+    transform: rotate(-180deg);
+}
+
+.selection-menu .options{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,.16);
+    display: none;
+}
+
+.selection-menu.active .options{
+    display: block;
+}
+
+.options .option{
+    display: flex;
+    height: 55px;
+    cursor: pointer;
+    padding: 0 16px;
+    border-radius: 8px;
+    align-items: center;
+    background: #fff;
+}
+
+.options .option:hover{
+    background: white;
+}
+
+.option .option-text{
+    font-size: 15px;
+    color: #1F254C;
+}
+
+.option .option-text:hover{
+    background: #1F254C;
+    color: white;
+}
+
 .dropdown{
     position: absolute;
     top: 65%;
