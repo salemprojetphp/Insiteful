@@ -54,6 +54,7 @@ $routes = [
     '/editProfile/action'=>'EditProfileController@handleProfileUpdate',
     '/notifications/markAsSeen' => 'NotificationController@markAsSeen',
     '/track' => 'VisitorController@track',
+    '/submitContact' => 'ContactController@handleContact',
 ];
 
 
@@ -79,6 +80,6 @@ if (array_key_exists($url, $routes)) {
 } else {
     http_response_code(404);
 //    echo '404 - Not Found';
-    require_once "404Page.php";
+    require_once "views/404Page.php";
 }
 ?>

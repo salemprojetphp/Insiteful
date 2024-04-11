@@ -46,9 +46,10 @@ class AuthController extends Controller{
 
     public function resetPasswordAction(){
         $email = $_POST['email'];
+        echo $email;
         $user = $this->userModel->getUserByEmail($email);
         if(!$user){
-            header('Location: /resetPassowrd?error=Email%20Not%20Registered');
+            // header('Location: /forgotPassword?error=Email%20Not%20Registered');
             exit;
         }
         $token = generateUniqueVerificationCode();

@@ -10,7 +10,7 @@ require 'src/PHPMailer.php';
 require 'src/SMTP.php';
 require 'src/Exception.php';
 
-class MailSender{
+class MailSender {
     public static function sendMail($emails, $subject, $body, $attachments = []) {
         // Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
@@ -56,10 +56,12 @@ class MailSender{
     
             // Send email
             $mail->send();
-        } catch (Exception $e) {}   
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }   
     }
-    public static function receiveMail($email,$subject,$message)
-    {
+
+    public static function receiveMail($email, $subject, $message) {
         // Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
 
@@ -84,8 +86,7 @@ class MailSender{
             $mail->setFrom('insitefulcontact@gmail.com', $email);
 
             // Add recipient
-            $mail->addAddress($email);
-
+            $mail->addAddress('insitefulcontact@gmail.com');
 
             // Content
             $mail->isHTML(true);                                         // Set email format to HTML
