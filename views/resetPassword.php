@@ -16,7 +16,7 @@
         <a href="Blog.php" class="logo"><img src="/public/images/insiteful.png" alt="logo"></a>
     </h2>
     <form method="post" action="/setPassword/action">
-        <div class="container">
+        <div class="pwd-container">
             <label>Password: </label> <input type="password" placeholder="password" required name="password"><br> <input type="submit" value="Submit" class="button">
             <?php echo "<input type='text' hidden name='token' value=". $_GET['token']."> "; ?>
             <?php echo "<input type='text' hidden name='email' value=". $_GET['email']."> "; ?>

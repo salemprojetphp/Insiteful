@@ -2,18 +2,10 @@
     include_once 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/public/images/insiteful.png">
-    <link rel="stylesheet" href="/public/css/pwdRecovery.css">
-    <title>Password Recovery</title>
-</head>
+<link rel="stylesheet" href="/public/css/pwdRecovery.css">
 <body>
     <form method="post" action="/forgotPassword/action">
-        <div class="container">
+        <div class="pwd-container">
             <?php
                 if(isset($_GET['error'])) {
                     echo "<h3>" . $_GET['error'] . "</h3>";
@@ -42,7 +34,7 @@
                 inputField.style.display = 'none';
 
                 // add email sent message inside form
-                var form = document.querySelector('.container');
+                var form = document.querySelector('.pwd-container');
                 form.innerHTML = 'Reset link was sent to your email' ;
                 form.appendChild(emailSentMessage);
                 
