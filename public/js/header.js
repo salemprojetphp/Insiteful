@@ -87,7 +87,7 @@ const optionMenu = document.querySelector(".selection-menu"),
 userInfo.addEventListener("click", () => optionMenu.classList.toggle("active"));
 
 options.forEach(option =>{
-    option.addEventListener("click", ()=>{*
+    option.addEventListener("click", ()=>{
         optionMenu.classList.remove("active");
     });
 });
