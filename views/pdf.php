@@ -79,7 +79,7 @@
                                             <td>$info->referrer</td>
                                             <td>$info->country</td>
                                             <td>$info->device</td>
-                                            <td>$info->browswer</td>
+                                            <td>$info->browser</td>
                                         </tr>";
                             endforeach;
                             $html .= "</tbody>

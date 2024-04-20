@@ -76,7 +76,7 @@ CREATE TABLE notifications(
     seen BOOLEAN DEFAULT FALSE
 );
 -- 20 Examples 
-INSERT INTO visitors (user_id, website, ip, date, referrer, country, device, browswer)
+INSERT INTO visitors (user_id, website, ip, date, referrer, country, device, browser)
 VALUES (1, 'insat.tn', '192.168.1.1', '2024-03-27', 'Facebook', 'Country A', 'Computer', 'Chrome'),
        (1, 'website.tn', '192.168.1.2', '2024-03-26', 'Instagram', 'Country B', 'Phone', 'Firefox'),
        (1, 'insat.tn', '192.168.1.3', '2024-03-25', 'Direct', 'Country A', 'Computer', 'Safari'),

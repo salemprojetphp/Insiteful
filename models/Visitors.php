@@ -11,7 +11,7 @@ class Visitors extends model{
         return($queryRes);
     }
     public function getUserWebsiteInformation($user_id, $website){
-        $query = "Select date, referrer, country, device, browswer from visitors where user_id = ? and website = ?";
+        $query = "Select date, referrer, country, device, browser from visitors where user_id = ? and website = ?";
         $queryPrep = $this->db->prepare($query);
         $queryPrep->execute([$user_id, $website]);
         $queryRes = $queryPrep->fetchAll(PDO::FETCH_OBJ);
@@ -40,7 +40,7 @@ class Visitors extends model{
         return ($queryRes->number);
     }
     public function getNumberOfSearchEngines($user_id, $website){
-        $query = "select count(website) as number from visitors where user_id=? and website = ? and browswer !='Other' ";
+        $query = "select count(website) as number from visitors where user_id=? and website = ? and browser !='Other' ";
         $queryPrep = $this->db->prepare($query);
         $queryPrep->execute([$user_id, $website]);
         $queryRes = $queryPrep->fetch(PDO::FETCH_OBJ);

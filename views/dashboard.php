@@ -178,7 +178,7 @@
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAvVJREFUSEvFlknIjlEUx39fZhvExoJELAyZo8xlKGMhs2RaWEiGKNOKMpSFjZApc5GiRDJT5inJvDEWmTNG7l/nqee97n2e93376ju757nnnP+95/zPUEEVSUUV4VIqcAOgL9AWqGaX/gjcAm4D74p9SLHAI4FpwCCgesT5H+AssAXYnXeBPOBmwE6gZ54j7/wiMB14ELPLAh5moPVKBE3UPwD9gesh+xjwGGB/mYBps89AL8t/gbsY8DHLZyVg8wjoAHxNOwsBjwXeuJuerAxU87EdmJoF3A24BPQAFgNDAuA/gXXA8RIvdh74ndj4L97jmDje2DgOuOk5vwBMAboAre3sBnDY6Y4A5mZcRiSbHwKuBbwH6tjhAsfqFsAs+9YL5wG7gI4egOpW5aOLq+ZD8g1QhfzSYfrFva0BJEZfgK4W+u/2wqtA84jjE4Ci9AKoHdFRKq/4wDOBTZ7BDleLCm974DRwMCevAlbIla6QiGAiWsGLF7owrw5oKxKPXRrmAItygEVIRXFlRE85FjELgJe4PrwiYHAZ6O7Ct6oI4KXAD2BtBFiXX+8DzwA2RwyGAw2BbTkvHm2hnhzRmwDs9YH7uJF3JmLwxEahOpr0QvIUGAjcA2pGdDolJZpmdQ1XLp8yGKmSUYkdsTpO+1aNilTiwOwIqKpE5aTx+d8ioBE4KSOcG1zPFQlVs1oKJKp9/VdDuZZaEHw3SpNm+j/xO1dnM85K5StXXoesn0uvnTWZoy4aso+JSvJODFj/DwCjckiUPtbGocG/NcNGHW1i+jw0nbR1qP8mocy6gzqa9i8NgMYRxbfWgF7mASfhOwU0ynm5end9R5jlEb3Xrg33c630vn+etfo0deNR/bdVxKmcDQXuRipB/wc7Ij4L2ecte3VtLqvV+Y1fC+CywKai6bPGuqBSEZQ84MSoiY3EAUAbG40ik9KRiDbKfS7XGwExP1OKBU47aQmIMBoemssPgXPA8zywYshVio+ydMt5cVlAvtFfz0SEH9RaN3YAAAAASUVORK5CYII="/>
                 <h3>Browsers</h3>
                 <?php if(isset($websiteSelected)){
-                        $visitors->generateChartJSONFile($userID, $websiteSelected, "browswer", "browsersDonutChart");
+                        $visitors->generateChartJSONFile($userID, $websiteSelected, "browser", "browsersDonutChart");
                 }
                 ?>
                 <canvas id="browsersDonutChart"></canvas> 
