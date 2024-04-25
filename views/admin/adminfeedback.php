@@ -26,7 +26,7 @@
 <h1>
     Feedbacks
 </h1>
-<div class="container">
+<div class="feedback-container">
     <?php 
         $feedbacks = $feedbackModel->getFeedbacks();
         if(count((array)$feedbacks) === 0){

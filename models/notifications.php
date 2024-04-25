@@ -34,7 +34,7 @@ class Notification extends Model
             $html .= '</div>';    
         }
         if($html==''){
-            $html = '<div class="notification notif-active">
+            $html = '<div class="notification-zero notif-active">
                         <h4>No notifications</h4>
                         <p>There is no activity for now.</p>
                     </div>';

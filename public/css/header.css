@@ -18,6 +18,7 @@ header{
     column-gap: 15%;
     align-items: center;
     z-index: 10;
+    justify-content: space-between;
 }
 header .logo{
     position: relative;

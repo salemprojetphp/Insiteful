@@ -46,7 +46,7 @@
                     <a href="/adminFeedback">Feedback</a>
                     <a href="/notifications" class="notification-btn">Notifications <span>'.$notifModel->nbNotifications().'</span></a>
                 ';
-            } else{
+            } elseif($user && $user->Role == "User"){
                 echo '
                 <div class="navigation">
                     <a href="/">Home</a>
@@ -56,6 +56,14 @@
                     <a href="/feedback" class="feedback-btn">Feedback</a>
                 ';
             } 
+            else{
+                echo '
+                <div class="navigation">
+                    <a href="/">Home</a>
+                    <a href="/blog">Blog</a>
+                    <a href="" class="contact-btn">Contact</a>
+                ';
+            }
         ?>  
 
         <!-- displaying session info  -->

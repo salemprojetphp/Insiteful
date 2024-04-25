@@ -25,7 +25,7 @@
             <div class="right-side">
                 <div class="topic-text">Contact Us</div>
                 <p>We are pleased to receive any questions from you !</p>
-                <form method="post">
+                <form action="/contact/action" method="post">
                     <div class="input-box">
                         <input type="text" id="email-input" name="email" placeholder="Enter your email" required>
                     </div>
@@ -40,16 +40,8 @@
                         <button type="submit" class="send-button" id="send-button" >Send</button>
                     </div>
                 </form>
-                <?php
-                    require_once 'utils/MailSender/MailSender.php';
-                    if (isset($_POST['send-button'])) {
-                        $email =$_POST['email'];
-                        $object = $_POST['object'];
-                        $message = $_POST['message'];
-                        MailSender::receiveMail($email,$object,$message);
-                    }
-                ?>
             </div>
         </div>
     </div>
 </div>
+

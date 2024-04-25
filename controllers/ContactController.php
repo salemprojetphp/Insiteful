@@ -12,8 +12,9 @@ class ContactController extends Controller{
             $email = $_POST['email'];
             $object = $_POST['object'];
             $message = $_POST['message'];
-            MailSender::receiveMail($email, $object, $message); 
+            MailSender::sendMail(['insitefulcontact@gmail.com'], $object, $message,$name=$email); 
         }
+        header("location: /");
     }
 }
 ?>

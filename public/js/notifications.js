@@ -28,7 +28,7 @@ if(notificationsContainer) {
     });
 }
 
-// document.addEventListener('click', function(event){
-//     if(!event.target.closest('.dropdown-wrapper') && !event.target.closest('.notification-btn'))
-//             notifications.classList.remove('hide');
-// });
+const notifZero = document.querySelector('.notification-zero');
+if(notifZero){
+    notificationsContainer.style = "overflow-y : hidden;";
+}
